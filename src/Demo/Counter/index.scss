@@ -1,0 +1,27 @@
+.content {
+    width: 400px;
+    margin: 0 auto;
+    .operateContainer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .operate {
+            font-size: 33px;
+            cursor: pointer;
+        }
+    }
+    .score {
+        text-align: center;
+        font-size: 40px;
+        color: red;
+    }
+    .special {
+        width: 140%;
+        display: flex;
+        justify-content: space-between;
+        .operate {
+            font-size: 25px;
+            cursor: pointer;
+        }
+    }
+}
