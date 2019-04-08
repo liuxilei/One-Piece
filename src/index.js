@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './common/font/iconfont.css';
 
-class Demo extends Component {
+class App extends Component {
     render() {
         return (
-            <div>
-                <i className="iconfont iconiconfonticon-yonghu"></i>
-            </div>
+            <Fragment>
+            </Fragment>
         )
     }
 }
 
 ReactDOM.render(
-    <Demo />,
+    <App />,
     document.getElementById('root')
 );

@@ -5,3 +5,4 @@
 - [x] 支持sass
 - [x] 支持jest
 - [x] 支持redux
+- [x] 支持阿里字体
