@@ -44,7 +44,7 @@ module.exports = {
                     loader: "sass-loader" // 将 Sass 编译成 CSS
                 }]
             },
-            // eslint配置
+            //eslint配置
             // {
             //     test: /\.js|jsx$/,
             //     enforce: 'pre',
