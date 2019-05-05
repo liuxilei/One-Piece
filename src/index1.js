@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './Demo/Todo/components/App';
+import Test from './Demo/Test';
 import RootReducer from './Demo/Todo/reducers';
 import './common/font/iconfont.css';
 
@@ -15,7 +16,7 @@ const rootEl = document.getElementById('root');
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Test />
     </Provider>,
     rootEl
 );

@@ -1,7 +1,10 @@
-class Person {
-    constructor(name = 'onePiece') {
-        this.name = name;
-    }
+function* testGenerator() {
+    yield '1';
+    yield '2';
+    return '3';
 }
-let lxl = new Person('liuxilei');
-console.log('实例',lxl);
+let g = testGenerator();
+console.log(g.next());
+console.log(g.next());
+console.log(g.next());
+console.log(g.next());
