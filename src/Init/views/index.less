@@ -1,6 +1,59 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+}
+
 .init {
     position: absolute;
     width: 100%;
     height: 100%;
     background: #f0f2f5;
+    
+    .init-header {
+        width: 100%;
+        height: 240px;
+        background: url(../../common/images/bg.png) no-repeat;
+        background-size: cover;
+        border-top: 0.1px solid transparent;
+        text-align: center;
+        .init-title {
+            margin-top: 61px;
+            color: #fff;
+            font: 24px PingFang-SC-Medium medium;    
+        }
+    }
+    
+}
+.init-modal {
+    .ant-modal-content {
+        border-radius: 0px;
+    }
+    .ant-btn-primary {
+        background-color: #387EE8;
+        border-color: #387EE8;
+    }
+    .ant-steps-item-process .ant-steps-item-icon {
+        background-color: #387EE8;
+        border-color: #387EE8;
+    }
+    .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title {
+        color: #387EE8;
+        font-size: 14px;
+    }
+    .ant-steps-item-wait > .ant-steps-item-content > .ant-steps-item-title {
+        color: #999;
+        font-size: 14px;
+    }
+    .ant-form-item-label > label {
+        color: #666;
+        font-size: 12px;
+    }
+    .ant-input:focus {
+        border-color: #387EE8;
+    }
+    .ant-form {
+        width: 81%;
+        padding-top: 40px;
+        height: 461px;
+    }
 }

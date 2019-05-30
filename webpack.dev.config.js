@@ -30,6 +30,21 @@ module.exports = {
                 ]
             },
             {
+                test: /\.less$/,
+                exclude: /(node_modules)/,
+                use: [{
+                    loader: 'style-loader'
+                }, {
+                    loader: 'css-loader'
+                }, {
+                    loader: "less-loader", options: {
+                        strictMath: true,
+                        noIeCompat: true
+                    }
+                }]
+            },
+            
+            {
                 test: /\.js|jsx?$/,
                 exclude: /(node_modules)/,
                 loader: 'babel-loader'
@@ -42,12 +57,6 @@ module.exports = {
                     loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
                 }, {
                     loader: "sass-loader" // 将 Sass 编译成 CSS
-                }]
-            },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: 'less-loader'
                 }]
             }
             //eslint配置
