@@ -44,6 +44,12 @@ module.exports = {
                     loader: "sass-loader" // 将 Sass 编译成 CSS
                 }]
             },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: 'less-loader'
+                }]
+            }
             //eslint配置
             // {
             //     test: /\.js|jsx$/,
