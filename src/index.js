@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import PropsChange from './PropsChange';
 import { Provider } from 'react-redux';
 import { view as Init } from './Init';
+import './common/font/iconfont.css';
 
 const store = createStore(reducer);
 

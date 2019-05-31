@@ -82,6 +82,6 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, './release'), //跟目录
         open: true, //自动打开浏览器
-        port: 9000 //端口
+        port: 8000, //端口
     }
 }

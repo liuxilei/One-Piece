@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "dev": "webpack-dev-server --host 10.10.3.26  --config ./webpack.dev.config.js --mode development",
     "start": "npm run dev",
     "build": "webpack -p"
   },

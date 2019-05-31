@@ -6,6 +6,8 @@ import {
     Form,
     Input,
     Select,
+    Row,
+    Col,
 } from 'antd';
 import './index.less';
 const Step = Steps.Step;
@@ -50,11 +52,11 @@ class Init extends Component {
                 {
                     current == 0 && <Fragment>
                         <Form.Item label="数据库类型">
-                            {getFieldDecorator('email', {
+                            {getFieldDecorator('xxx', {
                                 rules: [
                                     {
                                         required: true,
-                                        message: '请选择数据类型!',
+                                        message: '请选择数据库类型!',
                                     },
                                 ],
                             })(<Select
@@ -62,6 +64,7 @@ class Init extends Component {
                                     width: '100%', 
                                     fontSize: '12px'
                                 }}
+                                dropdownClassName="init-select"
                                 placeholder="请选择数据库类型"
                             >
                                 <Option value="jack">数据库一</Option>
@@ -70,7 +73,7 @@ class Init extends Component {
                             </Select>)}
                         </Form.Item>
                         <Form.Item label="主机">
-                            {getFieldDecorator('email', {
+                            {getFieldDecorator('a', {
                                 rules: [
                                     {
                                         required: true,
@@ -144,12 +147,18 @@ class Init extends Component {
                                 placeholder="请输入"
                             />)}
                         </Form.Item>
+                        <Row className="init-row">
+                            <Col push={8} span={16} type="flex" justify="space-between">
+                                <Col span={12} className="init-text"><span className="iconfont icon-lianjie init-connect"></span> 测试连接</Col>
+                                <Col span={12} className="init-text" align="right"><span className="iconfont icon-chuangjian init-create"></span> 创建并初始化数据库</Col>
+                            </Col>
+                        </Row>
                     </Fragment>
                 }
                 {
                     current == 1 && <Fragment>
                         <Form.Item label="组织名称">
-                            {getFieldDecorator('email', {
+                            {getFieldDecorator('eeee', {
                                 rules: [
                                     {
                                         required: true,
@@ -239,6 +248,19 @@ class Init extends Component {
         }))
     }
 
+    handleSubmit = (e) => {
+        const { form: { validateFields }} = this.props;
+        e.preventDefault();
+        validateFields(['xxx', 'a'], (err, values) => {
+            if (err) {
+                return;
+            } else {
+                this.next();
+            }
+        });
+        
+    }
+
     render() {
         const {
             current
@@ -255,17 +277,19 @@ class Init extends Component {
                     keyboard={false}
                     maskClosable={false}
                     style={{
-                        marginTop: 50,
+                        marginTop: 40,
+                        minWidth: 800
                     }}
                     bodyStyle={{
-                        paddingTop: 74,
-                        paddingLeft: 80,
-                        paddingRight: 80
+                        paddingTop: 54,
+                        paddingLeft: 73,
+                        paddingRight: 73,
+                        minWidth: 800
                     }}
-                    width={900}
+                    width={800}
                     wrapClassName="init-modal"
                     footer={
-                        <Button type="primary" onClick={this.next}>
+                        <Button type="primary" onClick={this.handleSubmit}>
                             {
                                 current != 2 ? '下一步' : '完成'
                             }
