@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index2.js',
     output: {
         path: __dirname,
         filename: './release/bundle.js'
@@ -77,7 +78,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html'
-        })
+        }),
+        new MonacoWebpackPlugin()
     ],
     devServer: {
         contentBase: path.join(__dirname, './release'), //跟目录

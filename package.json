@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --host 10.10.3.26  --config ./webpack.dev.config.js --mode development",
+    "dev": "webpack-dev-server --host 192.168.16.107  --config ./webpack.dev.config.js --mode development",
     "start": "npm run dev",
     "build": "webpack -p"
   },
@@ -32,6 +32,7 @@
     "jest": "^23.6.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
@@ -42,10 +43,11 @@
   },
   "dependencies": {
     "@antv/g6": "^3.0.4",
+    "antd": "^3.16.3",
+    "monaco-editor": "^0.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "antd": "^3.16.3"
+    "redux": "^4.0.1"
   }
 }
