@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
-    entry: './src/index2.js',
+    entry: './src/index.js',
     output: {
         path: __dirname,
         filename: './release/bundle.js'
@@ -44,7 +44,7 @@ module.exports = {
                     }
                 }]
             },
-            
+
             {
                 test: /\.js|jsx?$/,
                 exclude: /(node_modules)/,
@@ -59,6 +59,10 @@ module.exports = {
                 }, {
                     loader: "sass-loader" // 将 Sass 编译成 CSS
                 }]
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
             //eslint配置
             // {
@@ -84,6 +88,6 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, './release'), //跟目录
         open: true, //自动打开浏览器
-        port: 8000, //端口
+        port: 1234, //端口
     }
 }

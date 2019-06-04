@@ -1,17 +1,22 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import G6Demo1 from './g6-demo1';
-import reducer from './PropsChange/reducer';
-import { createStore } from 'redux';
-import PropsChange from './PropsChange';
-import { Provider } from 'react-redux';
-import { view as Init } from './Init';
+import Root from './root';
 import './common/font/iconfont.css';
+import { LocaleProvider } from 'antd';
+import { Provider } from 'react-redux';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import store from './store';
 
-const store = createStore(reducer);
+const App = () => ( 
+    <Provider store={store}>
+        <LocaleProvider locale={zhCN}>
+            <Root />
+        </LocaleProvider>
+    </Provider>
+);
 
 ReactDOM.render(
-    <Init />,
+    <App />,
     document.getElementById('root')
-)
+);
