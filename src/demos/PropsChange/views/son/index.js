@@ -6,7 +6,7 @@ class Son extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(this.props, nextProps);
+        //console.log(this.props, nextProps);
     }
 
     render() {

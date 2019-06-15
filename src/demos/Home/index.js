@@ -11,8 +11,9 @@ class Home extends Component {
                     <li><Link to="/g6demoone">G6DemoOne</Link></li>
                     <li><Link to="/init">Init</Link></li>
                     <li><Link to="/monacoTest">MonacoTest</Link></li>
-                    <li><Link to="/propschange">PropsChange</Link></li>
+                    <li><Link to="/propschange">测试用</Link></li>
                     <li><Link to="/counter">Counter</Link></li>
+                    <li><Link to="/g6editordemo">G6EditorDemo</Link></li>
                     {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
                 </ul>
             </Fragment>

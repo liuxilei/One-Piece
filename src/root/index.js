@@ -4,6 +4,7 @@ import Home from '../demos/Home';
 import G6Demo from '../demos/G6Demo';
 import G6DemoOne from '../demos/G6DemoOne';
 import MonacoTest from '../demos/MonacoTest';
+import G6EditorDemo from '../demos/G6EditorDemo';
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
 import { view as PropsChange } from '../demos/PropsChange';
@@ -19,6 +20,7 @@ const Routes = () => (
             <Route path="/monacoTest" component={MonacoTest} />
             <Route path="/propschange" component={PropsChange} />
             <Route path="/counter" component={Counter} />
+            <Route path="/g6editordemo" component={G6EditorDemo} />
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}
             {/* <Route path='/404' component={NotFound} />
             <Redirect from='*' to='/404' />  */}
