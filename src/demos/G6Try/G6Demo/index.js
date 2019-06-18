@@ -9,7 +9,6 @@ class G6Demo extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.location);
         const data = {
             //定义容器中节点
             nodes: [{
