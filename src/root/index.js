@@ -10,7 +10,7 @@ import G6Try from '../demos/G6Try';
 import G6DemoThree from '../demos/G6Try/G6DemoThree';
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
-import { view as PropsChange } from '../demos/PropsChange';
+import RoutingReference from '../demos/RoutingReference';
 import { view as Counter } from '../demos/Counter';
 
 const Routes = () => (
@@ -24,7 +24,7 @@ const Routes = () => (
             <Route path="/g6editordemo" component={G6EditorDemo} />
             <Route path="/init" component={Init} />
             <Route path="/monacoTest" component={MonacoTest} />
-            <Route path="/propschange" component={PropsChange} />
+            <Route path="/routingreference" component={RoutingReference} />
             <Route path="/counter" component={Counter} />
             <Route path="/refdemo" component={RefDemo} />
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}

@@ -9,6 +9,7 @@ class G6Demo extends Component {
     }
 
     componentDidMount() {
+        console.log('这里检测路由传过来的参数：', this.props.history.location);
         const data = {
             //定义容器中节点
             nodes: [{
