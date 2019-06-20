@@ -8,9 +8,12 @@ import G6DemoOne from '../demos/G6Try/G6DemoOne';
 import G6EditorDemo from '../demos/G6Try/G6EditorDemo';
 import G6Try from '../demos/G6Try';
 import G6DemoThree from '../demos/G6Try/G6DemoThree';
+import RoutingReference from '../demos/RoutingReference';
+import EchartsTest from "../demos/EchartsTest";
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
-import RoutingReference from '../demos/RoutingReference';
+
+
 import { view as Counter } from '../demos/Counter';
 
 const Routes = () => (
@@ -27,6 +30,7 @@ const Routes = () => (
             <Route path="/routingreference" component={RoutingReference} />
             <Route path="/counter" component={Counter} />
             <Route path="/refdemo" component={RefDemo} />
+            <Route path="/echartstest" component={EchartsTest} />
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}
             {/* <Route path='/404' component={NotFound} />
             <Redirect from='*' to='/404' />  */}
