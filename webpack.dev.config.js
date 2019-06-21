@@ -83,7 +83,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
-        new MonacoWebpackPlugin()
+        new MonacoWebpackPlugin({
+            languages:['sql','javascript','xml','python','java']
+        })
     ],
     devServer: {
         contentBase: path.join(__dirname, './release'), //跟目录

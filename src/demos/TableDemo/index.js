@@ -53,6 +53,38 @@ class TableDemo extends Component {
                     </div>
                 ),
             },
+            
+            {
+                title: 'xxx',
+                dataIndex: 'xxx',
+                width: 100,
+                //fixed: 'right',
+            },
+            {
+                title: 'xxx1',
+                dataIndex: 'xxx1',
+                width: 100,
+                //fixed: 'right',
+            },
+            {
+                title: 'xxx2',
+                dataIndex: 'xxx2',
+                width: 100,
+                //fixed: 'right',
+            },
+            {
+                title: 'xxx3',
+                dataIndex: 'xxx3',
+                width: 100,
+                //fixed: 'right',
+            },
+
+            {
+                title: 'xxx4',
+                dataIndex: 'xxx4',
+                width: 100,
+                //fixed: 'right',
+            },
             {
                 title: 'Action',
                 key: 'action',
@@ -69,27 +101,42 @@ class TableDemo extends Component {
     };
 
     data = [
-        // {
-        //     key: 0,
-        //     date: '2018-03-11',
-        //     amount: 256,
-        //     type: 'afadada',
-        //     note: 'ygfbbbbbbbbbdfggddddddddddddddddddddddddd',
-        // },
-        // {
-        //     key: 1,
-        //     date: '2018-03-11',
-        //     amount: 243,
-        //     type: 'incomevvvv',
-        //     note: 'transferbbbbbbbbbbbbbbbccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
-        // },
-        // {
-        //     key: 2,
-        //     date: '2018-04-11dddddddddddd',
-        //     amount: 98,
-        //     type: 'incometttttttttttttttttttttttttttttttttttttttttttttttttttttt',
-        //     note: 'transferccccccccccccccccccccccccccccccccccccc',
-        // },
+        {
+            key: 0,
+            date: '2018-03-11',
+            amount: 256,
+            type: 'afadada',
+            note: 'ygfbbbbbbbbbdfggddddddddddddddddddddddddd',
+            xxx: 12131,
+            xxx1: 12131,
+            xxx2: 12131,
+            xxx3: 12131,
+            xxx4: 12131
+        },
+        {
+            key: 1,
+            date: '2018-03-11',
+            amount: 243,
+            type: 'incomevvvv',
+            note: 'transferbbbbbbbbbbbbbbbccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+            xxx: 12131,
+            xxx1: 12131,
+            xxx2: 12131,
+            xxx3: 12131,
+            xxx4: 12131
+        },
+        {
+            key: 2,
+            date: '2018-04-11dddddddddddd',
+            amount: 98,
+            type: 'incometttttttttttttttttttttttttttttttttttttttttttttttttttttt',
+            note: 'transferccccccccccccccccccccccccccccccccccccc',
+            xxx: 12131,
+            xxx1: 12131,
+            xxx2: 12131,
+            xxx3: 12131,
+            xxx4: 12131
+        },
     ];
 
     handleResize = index => (e, { size }) => {
@@ -102,6 +149,20 @@ class TableDemo extends Component {
             return { columns: nextColumns };
         });
     };
+
+    getWidth = () => {
+        let thWidths = document.querySelectorAll('th');
+        console.log(thWidths)
+        let width = 0;
+        for (let i = 0;i < thWidths.length;i++) {
+            console.log(thWidths[i].width);
+            width += thWidths[i].width;
+        }
+        return {
+            x: width,
+            y: 300
+        }
+    }
 
     render() {
         const columns = this.state.columns.map((col, index) => ({
@@ -116,8 +177,8 @@ class TableDemo extends Component {
                 bordered
                 components={this.components}
                 columns={columns}
-                style={{ width: "300px" }}
-                scroll={{ x: 300, y: 300 }}
+                style={{ width: "500px" }}
+                scroll={{x: 'max-content', y:400}}
                 //columns={this.state.columns}
                 dataSource={this.data}
                 pagination={false}
