@@ -13,6 +13,8 @@ export default () => (
             <li><Link to="/refdemo">ref使用例子</Link></li>
             <li><Link to="/echartstest">echarts练习</Link></li>
             <li><Link to="/tabledemo">Table数据长度过长</Link></li>
+            <li><Link to="/demo">常规demo测试</Link></li>
+            <li><Link to="/motiondemo">动画尝试</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </Fragment>
