@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --host 10.10.3.26  --config ./webpack.dev.config.js --mode development",
-    "start": "npm run dev",
-    "build": "webpack -p"
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.12.1",
     "eslint-loader": "^2.1.1",
@@ -41,7 +41,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.9.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "@antv/g6": "^3.0.4",

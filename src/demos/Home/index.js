@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.scss';
 
 export default () => (
-    <Fragment>
+    <div className="home">
         <h1>demo-lists：</h1>
         <ul>
             <li><Link to="/g6try">G6的尝试练习</Link></li>
@@ -18,5 +19,5 @@ export default () => (
             <li><Link to="/automenu">动态菜单</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
-    </Fragment>
+    </div>
 )

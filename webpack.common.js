@@ -1,14 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: __dirname,
-        filename: './release/bundle.js'
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
-    devtool: "inline-source-map",
     module: {
         rules: [
             {
@@ -80,16 +80,12 @@ module.exports = {
     },
 
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
         new MonacoWebpackPlugin({
             languages:['sql','javascript','xml','python','java']
         })
-    ],
-    devServer: {
-        contentBase: path.join(__dirname, './release'), //跟目录
-        open: true, //自动打开浏览器
-        port: 1234, //端口
-    }
+    ]
 }
