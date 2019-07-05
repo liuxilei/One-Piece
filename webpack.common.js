@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: './src/index.js',
@@ -52,13 +53,12 @@ module.exports = {
             },
             {
                 test: /\.scss/,
-                use: [{
-                    loader: "style-loader" // 将 JS 字符串生成为 style 节点
-                }, {
-                    loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
-                }, {
-                    loader: "sass-loader" // 将 Sass 编译成 CSS
-                }]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+                ]
             },
             {
                 test: /\.json$/,
@@ -85,7 +85,11 @@ module.exports = {
             template: './index.html'
         }),
         new MonacoWebpackPlugin({
-            languages:['sql','javascript','xml','python','java']
+            languages: ['sql', 'javascript', 'xml', 'python', 'java']
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         })
     ]
 }
