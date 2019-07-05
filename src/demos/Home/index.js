@@ -16,6 +16,8 @@ export default () => (
             <li><Link to="/demo">常规demo测试</Link></li>
             <li><Link to="/motiondemo">动画尝试</Link></li>
             <li><Link to="/automenu">动态菜单</Link></li>
+            <li><Link to="/reacthookdemo">React Hook尝试</Link></li>
+            
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </Fragment>
