@@ -4,7 +4,7 @@ import G6 from '@antv/g6';
 class G6Demo extends Component {
     constructor(props) {
         super(props);
-        //this.node = createRef();
+        this.node = createRef();
         this.graph = null;
     }
 
@@ -73,7 +73,7 @@ class G6Demo extends Component {
         };
         //实例化容器，宽、高
         this.graph = new G6.Graph({
-            container: 'mountNode',
+            container: this.node.current,
             width: 1000,
             height: 800,
             modes: { // 支持的 behavior
@@ -104,9 +104,7 @@ class G6Demo extends Component {
     render() {
         return (
             <Fragment>
-                <div
-                    //ref={this.node} 
-                    id="mountNode"></div>
+                <div ref={this.node} ></div>
             </Fragment>
         )
     }
