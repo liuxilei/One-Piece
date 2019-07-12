@@ -15,3 +15,5 @@
 - [x] 动态import
 - [x] generator语法支持
 - [x] redux-saga支持
+- [x] css样式单独打包
+- [x] postcss添加css前缀
