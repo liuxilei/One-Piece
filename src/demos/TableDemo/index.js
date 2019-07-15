@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Resizable } from 'react-resizable';
-import { Table } from 'antd';
+import { Table, Modal } from 'antd';
 import "./index.scss";
 
 
@@ -53,7 +53,7 @@ class TableDemo extends Component {
                     </div>
                 ),
             },
-            
+
             {
                 title: 'xxx',
                 dataIndex: 'xxx',
@@ -150,19 +150,19 @@ class TableDemo extends Component {
         });
     };
 
-    getWidth = () => {
-        let thWidths = document.querySelectorAll('th');
-        console.log(thWidths)
-        let width = 0;
-        for (let i = 0;i < thWidths.length;i++) {
-            console.log(thWidths[i].width);
-            width += thWidths[i].width;
-        }
-        return {
-            x: width,
-            y: 300
-        }
+    componentDidMount() {
+        document.addEventListener("keydown", this.onKeyDown);
     }
+
+    //键盘按键
+    onKeyDown = e => {
+        if (e.keyCode === 119) {
+            console.log(1);
+        } else if (e.keyCode === 120) {
+            console.log(2);
+        }
+        console.log(e);
+    };
 
     render() {
         const columns = this.state.columns.map((col, index) => ({
@@ -173,17 +173,71 @@ class TableDemo extends Component {
             }),
         }));
         return (
-            <Table
-                bordered
-                components={this.components}
-                columns={columns}
-                style={{ width: "500px" }}
-                scroll={{x: 'max-content', y:400}}
-                //columns={this.state.columns}
-                dataSource={this.data}
-                pagination={false}
-            />
-
+            <Modal
+                visible={true}
+                width={600}
+                height={800}
+                style={{position:'relative'}}
+                >
+                    {/* <div
+                        style={{
+                            width: '200px',
+                            height: '150px',
+                            overflowY: 'auto'
+                        }}
+                        >
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                            <p>1111</p>
+                    </div> */}
+                <Table
+                    bordered
+                    components={this.components}
+                    columns={columns}
+                    style={{ width: "500px" }}
+                    scroll={{ x: 'max-content', y: 400 }}
+                    //columns={this.state.columns}
+                    dataSource={this.data}
+                    pagination={false}
+                />
+            </Modal>
         )
     }
 }
