@@ -56,6 +56,7 @@
     "react": "^16.8.6",
     "react-bodymovin": "^2.0.0",
     "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
     "react-motion": "^0.5.2",
     "react-redux": "^6.0.1",
     "react-resizable": "^1.8.0",
