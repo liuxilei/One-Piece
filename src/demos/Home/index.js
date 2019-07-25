@@ -18,7 +18,7 @@ export default () => (
             <li><Link to="/motiondemo">动画尝试</Link></li>
             <li><Link to="/automenu">动态菜单</Link></li>
             <li><Link to="/reacthookdemo">React Hook尝试</Link></li>
-            
+            <li><Link to="/splitpanel">拆分面板组件</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>

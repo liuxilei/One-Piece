@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --host 10.10.3.26 --open --config webpack.dev.js",
+    "start": "webpack-dev-server --host 10.10.3.26 --open --config webpack.dev.js  --color --progress",
     "build": "webpack --config webpack.prod.js --color --progress"
   },
   "keywords": [],
@@ -50,6 +50,7 @@
   "dependencies": {
     "@antv/g6": "^3.0.4",
     "@antv/g6-editor": "^1.2.0",
+    "@opuscapita/react-splitpane": "^1.0.3",
     "antd": "^3.16.3",
     "echarts": "^4.2.1",
     "monaco-editor": "^0.17.0",
