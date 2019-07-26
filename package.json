@@ -51,7 +51,7 @@
     "@antv/g6": "^3.0.4",
     "@antv/g6-editor": "^1.2.0",
     "@opuscapita/react-splitpane": "^1.0.3",
-    "antd": "^3.16.3",
+    "antd": "^3.20.7",
     "echarts": "^4.2.1",
     "monaco-editor": "^0.17.0",
     "react": "^16.8.6",
