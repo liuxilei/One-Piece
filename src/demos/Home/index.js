@@ -19,7 +19,9 @@ export default () => (
             <li><Link to="/automenu">动态菜单</Link></li>
             <li><Link to="/reacthookdemo">React Hook尝试</Link></li>
             <li><Link to="/splitpanel">拆分面板组件</Link></li>
+            <li><Link to="/meta">更改页面meta属性</Link></li>
             <li><Link to="/bigtree">虚拟树</Link></li>
+
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>

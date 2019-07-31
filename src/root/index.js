@@ -17,6 +17,7 @@ import AutoMenu from "../demos/autoMenu";
 import ReactHookDemo from "../demos/ReactHookDemo";
 import SplitPanel from "../demos/SplitPane";
 import BigTree from "../demos/BigTree";
+import Meta from "../demos/Meta";
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
 import { view as Counter } from '../demos/Counter';
@@ -43,6 +44,7 @@ const Routes = () => (
             <Route path="/reacthookdemo" component={ReactHookDemo} />
             <Route path="/splitpanel" component={SplitPanel} />
             <Route path="/bigtree" component={BigTree} />
+            <Route path="/meta" component={Meta} />
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}
             {/* <Route path='/404' component={NotFound} />
             <Redirect from='*' to='/404' />  */}

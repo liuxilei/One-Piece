@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --host 10.10.3.26 --open --config webpack.dev.js  --color --progress",
+    "start": "webpack-dev-server --host 10.10.3.223 --open --config webpack.dev.js  --color --progress",
     "build": "webpack --config webpack.prod.js --color --progress"
   },
   "keywords": [],
@@ -63,6 +63,7 @@
     "react-resizable": "^1.8.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-virtualized": "^9.21.1",
     "react-virtualized-tree": "^3.2.3",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2"

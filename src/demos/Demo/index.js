@@ -14,14 +14,8 @@ class Demo extends Component {
             <div>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>这是更改后的标题</title>
-                    <link rel="canonical" href="http://mysite.com/example" />
+                    <title>临时使用</title>
                 </Helmet>
-                {
-                    this.state.value.map(item => {
-                        return <div>{item.name}</div>
-                    })
-                }
             </div>
         )
     }
