@@ -1,0 +1,75 @@
+.home {
+  padding-left: 100px;
+  padding-top: 20px; }
+  .home h1 {
+    font-family: fantasy; }
+  .home ul li {
+    list-style: decimal-leading-zero;
+    text-indent: 10px; }
+
+#canvas_1 {
+  margin-left: 50px;
+  margin-top: 100px;
+  border: 1px solid #000; }
+
+.main {
+  width: 80%;
+  height: 600px; }
+
+.react-resizable {
+  position: relative; }
+
+.react-resizable-handle {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  bottom: 0;
+  right: -5px;
+  cursor: col-resize; }
+
+.default {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer; }
+
+.position {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+.content {
+  width: 400px;
+  margin: 0 auto; }
+  .content .operateContainer {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .content .operateContainer .operate {
+      font-size: 33px;
+      cursor: pointer; }
+  .content .score {
+    text-align: center;
+    font-size: 40px;
+    color: red; }
+  .content .special {
+    width: 140%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .content .special .operate {
+      font-size: 25px;
+      cursor: pointer; }
+
+
+/*# sourceMappingURL=main.css.map*/
