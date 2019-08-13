@@ -6,7 +6,8 @@ class MonacoTest extends Component {
         import('monaco-editor').then(monaco => {
             monaco.editor.create(document.getElementById('container'), {
                 value: 'console.log("Hello, world")',
-                language: 'javascript'
+                language: 'javascript',
+                readOnly: true,
             });
         })
         

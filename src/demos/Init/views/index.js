@@ -9,7 +9,7 @@ import {
     Row,
     Col,
 } from 'antd';
-import './index.less';
+// import './index.less';
 const Step = Steps.Step;
 const Option = Select.Option;
 

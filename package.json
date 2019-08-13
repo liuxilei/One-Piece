@@ -41,6 +41,7 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "svg-inline-loader": "^0.8.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.9.1",
     "webpack-cli": "^3.1.2",
@@ -54,6 +55,7 @@
     "antd": "^3.20.7",
     "axios": "^0.19.0",
     "echarts": "^4.2.1",
+    "lodash": "^4.17.15",
     "monaco-editor": "^0.17.0",
     "react": "^16.8.6",
     "react-bodymovin": "^2.0.0",
@@ -67,6 +69,7 @@
     "react-virtualized": "^9.21.1",
     "react-virtualized-tree": "^3.2.3",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "shortid": "^2.2.14"
   }
 }

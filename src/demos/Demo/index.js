@@ -9,6 +9,14 @@ class Demo extends Component {
         }
     }
 
+    componentDidMount() {
+        fetch("./api/data.json").then(res => {
+            return JSON.parse(res);
+        }).then(data => {
+            console.log(data);
+        })
+    }
+
     render() {
         return (
             <div>

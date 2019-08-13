@@ -1,72 +1,103 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Tree from 'react-virtualized-tree'
-import 'react-virtualized/styles.css'
-import 'react-virtualized-tree/lib/main.css'
-import 'material-icons/css/material-icons.css'
-import { constructTree } from './toolbelt';
-import { renderers } from 'react-virtualized-tree';
-const MIN_NUMBER_OF_PARENTS = 50;
-const MAX_NUMBER_OF_CHILDREN = 15;
-const MAX_DEEPNESS = 4;
+import React, { Component } from "react";
+import VirtualizedTree from "./VirtualizedTree";
 
-const { Deletable, Expandable, Favorite } = renderers;
+import folderIcon from './VirtualizedTree/folder.svg';
+const generateResponse = () => {
+    let result = [];
 
-const Nodes = constructTree(MAX_DEEPNESS, MAX_NUMBER_OF_CHILDREN ,MIN_NUMBER_OF_PARENTS);
-const getTotalNumberOfElements = (nodes, counter = 0) => {
-  return counter + nodes.length + nodes.reduce((acc, n) => getTotalNumberOfElements(n.children, acc) ,0)
-}
+    for (var i = 1; i <= 2000; i++) {
+        var node = {
+            label: 'Desktop' + i,
+            value: String(Math.random(1, 10000) + 1),
+            level: 1,
+            icon: folderIcon,
+            isLeaf: true,
+            checked: false,
+            disabled: false,
+            expanded: false,
+            children: []
+        };
 
-const totalNumberOfNodes = getTotalNumberOfElements(Nodes);
-
-class LargeCollection extends Component {
-  state = {
-    nodes: Nodes
-  }
-
-  // componentWillMount () {
-  //   this.setState({
-  //     nodes: Nodes
-  //   })
-  // }
-
-  // componentWillMount () {
-  //   axios.get('https://raw.githubusercontent.com/curran/data/gh-pages/un/placeHierarchy/countryHierarchy.json')
-  //   .then((response) => {
-  //     console.log('response ', response.data.children)
-  //     this.setState({
-  //       nodes: response.data.children
-  //     })
-  //   })
-  // }
-
-  handleChange = (nodes) => {
-    this.setState({ nodes })
-  }
-
-  render() {
-    // debugger
-    if (this.state.nodes){
-      console.log(this.state.nodes)
+        result.push(node);
     }
 
-    return (
-      <div style={{position:"absolute", height: "500px", width: "500px"}}>
-        <Tree nodes={this.state.nodes} onChange={this.handleChange}>
-          {
-            ({ node, ...rest }) =>
-              <Expandable node={node} {...rest}>
-                { node.name }
-                <Deletable node={node} {...rest}>
-                  <Favorite node={node} {...rest}/>
-                </Deletable>
-              </Expandable>
-          }
-        </Tree>
-      </div>
-        
-    );
-  }
+    return result;
 }
 
-export default LargeCollection;
+const nodes = [
+    {
+        label: 'Quick Configuration',
+        value: '0-0',
+        level: 0,
+        icon: folderIcon,
+        isLeaf: false,
+        checked: true,
+        disabled: false,
+        expanded: true,
+        children: generateResponse(),
+    },
+    {
+        label: 'My Computer',
+        value: '0-1',
+        level: 0,
+        icon: folderIcon,
+        isLeaf: false,
+        checked: false,
+        disabled: false,
+        expanded: true,
+        children: [
+            {
+                label: 'C:/',
+                value: '0-1-0',
+                level: 1,
+                icon: folderIcon,
+                isLeaf: false,
+                checked: false,
+                disabled: false,
+                expanded: false,
+                children: []
+            },
+            {
+                label: 'E:/',
+                value: '0-1-1',
+                level: 1,
+                icon: folderIcon,
+                isLeaf: false,
+                checked: false,
+                disabled: false,
+                expanded: false,
+                children: []
+            },
+        ]
+    },
+];
+
+class BigTree extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.log("节点信息", nodes);
+    }
+
+    onCheck = (checked, node) => {
+        console.log("选中", checked, node);
+        this.setState({ checked });
+    }
+
+    onExpand = (expanded, loading, node) => {
+        console.log("展开:", expanded, ":", loading, ":", node);
+        this.setState({ expanded });
+    }
+
+    render() {
+        return <VirtualizedTree
+            nodes={nodes}
+            onCheck={this.onCheck}
+            onExpand={this.onExpand}
+        />
+    }
+}
+
+export default BigTree;
