@@ -23,6 +23,7 @@ export default () => (
             <li><Link to="/mousetracker">猫猫跟踪鼠标位置（render props实践）</Link></li>
             <li><Link to="/bigtree">虚拟树</Link></li>
             <li><Link to="/longtable">table demo</Link></li>
+            <li><Link to="/reactdocument">react文档学习</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>
