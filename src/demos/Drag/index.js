@@ -32,7 +32,8 @@ class Drag extends Component {
                     style={{ width: "50px", height: "50px", background: "#000" }}
                     draggable
                     onDragStart={(e) => this.dragStart(e)}
-                    onDragEnd={(e) => this.dragEnd(e)}>
+                    onDragEnd={(e) => this.dragEnd(e)}
+                    >
                 </div>
                 <div  
                     onDragEnter={(e) => this.dragEnter(e)}
