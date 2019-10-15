@@ -125,8 +125,22 @@
                         radius: 2,
                     }
                 });
-
-
+                var groupDelete = group.addGroup({
+                    id: 'groupDelete'
+                });
+                //删除图形
+                groupDelete.addShape("image", {
+                    attrs: {
+                        x: 70,
+                        y: -8,
+                        width: 14,
+                        height: 14,
+                        img: "./删除.png",
+                        cursor: "pointer",
+                        id: "imageDelete"
+                    }
+                });
+                groupDelete.hide();
                 return rect;
             },
             getEvents() {
@@ -138,25 +152,13 @@
             setState: function setState(name, value, item) {
                 var group = item.getContainer();
                 var shape = group.get("children")[0]; // 顺序根据 draw 时确定
+                var groupDelete = group.findById("groupDelete");
                 if (name === "selected") {
-                    var deleteImg;
                     if (value) {
-                        //删除图形
-                        deleteImg = group.addShape("image", {
-                            attrs: {
-                                x: 70,
-                                y: -8,
-                                width: 14,
-                                height: 14,
-                                img: "./删除.png",
-                                cursor: "pointer",
-                                className: "imageDelete"
-                            }
-                        });
+                        groupDelete.show();
                         shape.attr("fill", "rgb(215,229,250,1)");
                     } else {
-                        console.log(deleteImg)
-                        group.removeChild(deleteImg);
+                        groupDelete.hide();
                         shape.attr("fill", "#fff");
                     }
                 }
