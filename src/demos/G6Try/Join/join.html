@@ -39,61 +39,96 @@
          * 
          */
 
-        var data = {
-            nodes: [{
-                id: "1",
-                label: "商品",
-            }, {
-                id: "2",
-                label: "商品小类",
-            }, {
-                id: "3",
-                label: "产地",
+        var connectType = {
+            left: "./left.png",
+            right: "./right.png",
+            in: "./inside.png",
+            all: "./all.png"
+        }
 
-            }, {
-                id: "4",
-                label: "供应商"
-            }, {
-                id: "5",
-                label: "商品大类"
-            }, {
-                id: "6",
-                label: "商品大类1"
-            }, {
-                id: "7",
-                label: "商品大类2"
-            }, {
-                id: "8",
-                label: "商品大类3"
-            }, {
-                id: "9",
-                label: "商品大类4"
-            }],
-            edges: [{
-                source: "1",
-                target: "2"
-            }, {
-                source: "1",
-                target: "3"
-            }, {
-                source: "1",
-                target: "4"
-            }, {
-                source: "2",
-                target: "5"
-            }, {
-                source: "4",
-                target: "6"
-            }, {
-                source: "4",
-                target: "7"
-            }, {
-                source: "4",
-                target: "8"
-            }, {
-                source: "3",
-                target: "9"
-            }]
+        // var data = {
+        //     nodes: [{
+        //         id: "1",
+        //         label: "商品",
+        //     }, {
+        //         id: "2",
+        //         label: "商品小类",
+        //     }, {
+        //         id: "3",
+        //         label: "产地",
+
+        //     }, {
+        //         id: "4",
+        //         label: "供应商"
+        //     }, {
+        //         id: "5",
+        //         label: "商品大类"
+        //     }, {
+        //         id: "6",
+        //         label: "商品大类1"
+        //     }, {
+        //         id: "7",
+        //         label: "商品大类2"
+        //     }, {
+        //         id: "8",
+        //         label: "商品大类3"
+        //     }, {
+        //         id: "9",
+        //         label: "商品大类4"
+        //     }],
+        //     edges: [{
+        //         source: "1",
+        //         target: "2"
+        //     }, {
+        //         source: "1",
+        //         target: "3"
+        //     }, {
+        //         source: "1",
+        //         target: "4"
+        //     }, {
+        //         source: "2",
+        //         target: "5"
+        //     }, {
+        //         source: "4",
+        //         target: "6"
+        //     }, {
+        //         source: "4",
+        //         target: "7"
+        //     }, {
+        //         source: "4",
+        //         target: "8"
+        //     }, {
+        //         source: "3",
+        //         target: "9"
+        //     }]
+        // };
+
+        var data = {
+            nodes: [
+                {
+                    id: "1",
+                    label: "表一",
+                },
+                {
+                    id: "2",
+                    label: "表二",
+                },
+                {
+                    id: "3",
+                    label: "表三",
+                },
+                {
+                    id: "4",
+                    label: "表四",
+                },
+            ],
+            edges: [
+                // {
+                //     source: "1",
+                //     target: "2",
+                //     imgSrc: connectType.left
+                // }
+            ]
         };
 
         /**
@@ -129,24 +164,22 @@
                     id: 'groupDelete'
                 });
                 //删除图形
-                groupDelete.addShape("image", {
+                var deleteIcon = groupDelete.addShape("image", {
                     attrs: {
-                        x: 70,
-                        y: -8,
-                        width: 14,
-                        height: 14,
-                        img: "./删除.png",
+                        x: 67,
+                        y: -16,
+                        width: 24,
+                        height: 32,
+                        img: "./deleteImg.png",
                         cursor: "pointer",
                         id: "imageDelete"
                     }
                 });
+                deleteIcon.on("click", (evt) => {
+                    console.log("听说你想删除我", evt);
+                });
                 groupDelete.hide();
                 return rect;
-            },
-            getEvents() {
-                return {
-                    'node:click': 'onNodeClick',
-                };
             },
             // 设置状态
             setState: function setState(name, value, item) {
@@ -163,25 +196,8 @@
                     }
                 }
             },
-
             getAnchorPoints: function getAnchorPoints() {
                 return [[0, 0.5], [1, 0.5]];
-            }
-        }, "single-shape");
-
-        /**
-         * 自定义 edge 中心关系节点
-         */
-        G6.registerNode("connect", {
-            drawShape: function drawShape(cfg, group) {
-                var image = group.addShape("image", {
-                    attrs: {
-                        x: cfg.x,
-                        y: cfg.y,
-                        img: "./内连接.png"
-                    }
-                });
-                return image;
             }
         }, "single-shape");
 
@@ -227,7 +243,7 @@
                         r: 6,
                         x: centerPoint.x,
                         y: endPoint.y - 12.5,
-                        img: "./内连接.png",
+                        img: cfg.imgSrc,
                         cursor: "pointer",
                     }
                 });
@@ -289,6 +305,20 @@
             }
         });
 
+        graph.on('node:click', function (evt) {
+            var target = evt.target;
+            var node = evt.item;
+            var type = target.get('type');
+            //当点击删除的图标，选中状态不变
+            if (type === 'image') {
+                graph.setItemState(node, 'selected', true);
+            }
+        });
+
+        var dragStart = null; //拖动的对象
+        var dragEnd = null; //拖动目标对象
+        var dragSet = [];
+
         function refreshDragedNodePosition(e) {
             const model = e.item.get('model');
             model.fx = e.x;
@@ -296,9 +326,21 @@
         }
 
         graph.on('node:dragstart', e => {
-            // 拖动节点时重新布局
-            // graph.layout();
-            // refreshDragedNodePosition(e);
+            dragStart = e.item.get("model");
+            //判断是否已经拖动过
+            console.log(dragStart);
+            // if (dragSet.includes(dragStart.id)) {
+            //     dragStart = null;
+            // }
+            console.log("拖动的对象", dragStart);
+        });
+
+        graph.on('node:dragenter', e => {
+            dragEnd = e.item.get("model");
+            // if (dragSet.includes(dragEnd.id)) {
+            //     dragEnd = null;
+            // }
+            console.log("目标对象", dragEnd);
         });
 
         graph.on('node:drag', e => {
@@ -308,11 +350,26 @@
         graph.on('node:dragend', e => {
             e.item.get('model').fx = null;
             e.item.get('model').fy = null;
-            setTimeout(() => {
+            //不存在拖动对象/目标对象，重置定位
+            if (!dragStart || !dragEnd) {
+                setTimeout(() => {
+                    graph.layout();
+                }, 500);
+            } else {
+                data.edges.push({
+                    source: dragEnd.id,
+                    target: dragStart.id,
+                    imgSrc: connectType.left
+                });
+                dragSet = dragSet.concat([dragEnd.id, dragStart.id])
+                dragStart = null; //拖动的对象
+                dragEnd = null; //拖动目标对象
+                console.log(dragSet);
+                graph.changeData(data);
+                graph.refresh()
                 graph.layout();
-            }, 500);
+            }
         });
-
 
     </script>
 </body>

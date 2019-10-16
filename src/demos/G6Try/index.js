@@ -5,6 +5,7 @@ export default () => (
     <Fragment>
         <h1>G6-demos：</h1>
         <ul>
+            <li><Link to="/join">实现表关联</Link></li>
             <li><Link to="/g6demo">demo1</Link></li>
             <li><Link to="/g6demoone">demo2</Link></li>
             <li><Link to="/g6editordemo">demo3</Link></li>

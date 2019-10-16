@@ -49,7 +49,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "@antv/g6": "^3.0.4",
+    "@antv/g6": "^3.1.1",
     "@antv/g6-editor": "^1.2.0",
     "@opuscapita/react-splitpane": "^1.0.3",
     "antd": "^3.20.7",
