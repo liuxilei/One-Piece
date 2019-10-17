@@ -48,6 +48,10 @@ class List {
     canChange(item1, item2) {
         return this.getLevel(item1) > this.getLevel(item2);
     }
+    //获取最后一项
+    getLast() {
+        return this.list[this.length - 1];
+    }
 }
 
 export default List;

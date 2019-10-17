@@ -79,42 +79,36 @@ export default () => {
     let graph = null;
     let dragStart = null;//拖动的对象(连接的右边))
     let dragEnd = null; //拖动目标对象(连接的左边)
+    let allList = []; //存放新产生的分组线
     let data = {
         nodes: [
             {
                 id: "1",
                 label: "表一",
-                level: 1,
             },
             {
                 id: "2",
                 label: "表二",
-                level: 1,
             },
             {
                 id: "3",
                 label: "表三",
-                level: 1,
             },
             {
                 id: "4",
                 label: "表四",
-                level: 1,
             },
             {
                 id: "5",
                 label: "表五",
-                level: 1,
             },
             {
                 id: "6",
                 label: "表六",
-                level: 1,
             },
             {
                 id: "7",
                 label: "表七",
-                level: 1,
             },
         ],
         edges: [
@@ -130,6 +124,37 @@ export default () => {
         const model = e.item.get('model');
         model.fx = e.x;
         model.fy = e.y;
+    }
+
+    //判断是否分组线已有，不然新增分组
+    const allListHasGroup = (allList, source, target) => {
+        const addList = () => {
+            let list = new List();
+            list.add(source);
+            list.add(target);
+            allList.push(list);
+            return list;
+        }
+        if (allList.length > 0) {
+            //判断已有分组是否有这条线，不然新建分组
+            let result = false;
+            let group;//想要找到的那条线
+            for (let i = 0;i < allList.length;i++) {
+                if (allList[i].getLast() === source) {
+                    result = true;
+                    group = allList[i];
+                    break;
+                }
+            }
+            //如果有这条线则返回这条线，没有则新建
+            if (result) {
+                return group;
+            } else {
+                return addList();
+            }
+        } else {
+            return addList();
+        }
     }
 
     const bindEvents = () => {
@@ -171,7 +196,12 @@ export default () => {
             e.item.get('model').fy = null;
             //存在拖动对象&&目标对象,否则重置定位
             if (dragStart && dragEnd) {
+                
+                let targetList = allListHasGroup(allList, dragEnd.id, dragStart.id);
                 //一条线的低等级不能换到高等级去
+                if (!targetList.canChange(dragEnd.id, dragStart.id)) {
+                    return;
+                }
                 //移动已经连接的左边
                 data.edges.map((item, index) => {
                     if (item.target === dragStart.id) {
@@ -205,11 +235,6 @@ export default () => {
 
 
     useEffect(() => {
-        let list1 = new List();
-        list1.add(1);
-        
-        list1.add(1);
-        list1.add(2);
         if (!graph) {
             graph = new G6.Graph({
                 container: ReactDOM.findDOMNode(ref.current),
