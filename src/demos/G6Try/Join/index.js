@@ -76,26 +76,44 @@ var connectType = {
 export default () => {
     const ref = useRef(null);
     let graph = null;
-    let dragStart = null;//拖动的对象
-    let dragEnd = null; //拖动目标对象
-    let dragSet = [];
+    let dragStart = null;//拖动的对象(连接的右边))
+    let dragEnd = null; //拖动目标对象(连接的左边)
     let data = {
         nodes: [
             {
                 id: "1",
                 label: "表一",
+                level: 1,
             },
             {
                 id: "2",
                 label: "表二",
+                level: 1,
             },
             {
                 id: "3",
                 label: "表三",
+                level: 1,
             },
             {
                 id: "4",
                 label: "表四",
+                level: 1,
+            },
+            {
+                id: "5",
+                label: "表五",
+                level: 1,
+            },
+            {
+                id: "6",
+                label: "表六",
+                level: 1,
+            },
+            {
+                id: "7",
+                label: "表七",
+                level: 1,
             },
         ],
         edges: [
@@ -135,18 +153,11 @@ export default () => {
         });
         graph.on('node:dragstart', e => {
             dragStart = e.item.get("model");
-            //判断是否已经拖动过
-            // if (dragSet.includes(dragStart.id)) {
-            //     dragStart = null;
-            // }
             console.log("拖动的对象", dragStart);
         });
 
         graph.on('node:dragenter', e => {
             dragEnd = e.item.get("model");
-            // if (dragSet.includes(dragEnd.id)) {
-            //     dragEnd = null;
-            // }
             console.log("目标对象", dragEnd);
         });
 
@@ -157,27 +168,37 @@ export default () => {
         graph.on('node:dragend', e => {
             e.item.get('model').fx = null;
             e.item.get('model').fy = null;
-            //不存在拖动对象/目标对象，重置定位
-            if (!dragStart || !dragEnd) {
-                setTimeout(() => {
-                    graph.layout();
-                }, 500);
-            } else {
+            //存在拖动对象&&目标对象,否则重置定位
+            if (dragStart && dragEnd) {
+                //一条线的低等级不能换到高等级去
+                //移动已经连接的左边
+                data.edges.map((item, index) => {
+                    if (item.target === dragStart.id) {
+                        data.edges.splice(index, 1);
+                    }
+                });
+                
                 data.edges.push({
                     source: dragEnd.id,
                     target: dragStart.id,
                     imgSrc: connectType.left
                 });
-                dragSet = dragSet.concat([dragEnd.id, dragStart.id]);
                 dragStart = null;
                 dragEnd = null;
-                console.log(dragSet);
-
-                graph.changeData(data);
-                graph.refresh()
-                graph.layout();
+                refreshGraph(data);
+            } else {
+                setTimeout(() => {
+                    graph.layout();
+                }, 500);
             }
         });
+    }
+
+    //刷新布局
+    const refreshGraph = (data) => {
+        graph.changeData(data);
+        graph.refresh()
+        graph.layout();
     }
 
 

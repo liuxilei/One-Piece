@@ -1,10 +1,13 @@
 module.exports = {
     // 指定解析器
-    // 'parse': 'babel-eslint',
+    'parse': 'babel-eslint',
     // 指定解析器选项
+    "plugins": [
+        "react-hooks"
+    ],
     'parserOptions': {
         // 启用ES8语法支持
-        'ecmaVersion': 2017,    
+        'ecmaVersion': 2017,
         // module表示ECMAScript模块
         'sourceType': 'module',
         // 使用额外的语言特性
@@ -25,14 +28,6 @@ module.exports = {
     },
     // 别人可以直接使用你配置好的ESLint
     'root': true,
-    // 脚本在执行期间访问的额外的全局变量
-    'globals': {
-        'OnlySVG': true,
-        'monitor': true,
-        'CanvasRender': true,
-        'Vue': true,
-        'VueRouter': true
-    },
     // 启用的规则及其各自的错误级别
     'rules': {
         // 箭头函数的书写规则
@@ -54,7 +49,7 @@ module.exports = {
         // 变量名必须使用驼峰式
         // @off 暂不限制
         'camelcase': 0,
-        
+
         // 对象的最后一项后面是否写逗号
         // @off 此项目不关心
         // @fixable 对于 PC 项目考虑兼容性时需要设置
@@ -87,6 +82,9 @@ module.exports = {
         // jsx 语法中，属性的值必须使用双引号
         'jsx-quotes': [2, 'prefer-double'],
 
-        'linebreak-style': ["error", "windows"]
+        'linebreak-style': ["error", "windows"],
+
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     }
 };
