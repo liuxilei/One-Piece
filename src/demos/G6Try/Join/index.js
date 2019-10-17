@@ -6,6 +6,7 @@ import right from "./right.png";
 import all from "./all.png";
 import inside from "./inside.png";
 import "./registerShape";
+import List from "./list";
 
 var connectType = {
     left,
@@ -204,6 +205,11 @@ export default () => {
 
 
     useEffect(() => {
+        let list1 = new List();
+        list1.add(1);
+        
+        list1.add(1);
+        list1.add(2);
         if (!graph) {
             graph = new G6.Graph({
                 container: ReactDOM.findDOMNode(ref.current),
