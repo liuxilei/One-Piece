@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --host 192.168.199.219 --open --config webpack.dev.js  --color --progress",
+    "start": "webpack-dev-server --host 10.10.3.61 --open --config webpack.dev.js  --color --progress",
     "build": "webpack --config webpack.prod.js --color --progress"
   },
   "keywords": [],

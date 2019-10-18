@@ -72,8 +72,6 @@ var connectType = {
 //     }]
 // };
 
-
-
 export default () => {
     const ref = useRef(null);
     let graph = null;
@@ -126,34 +124,92 @@ export default () => {
         model.fy = e.y;
     }
 
-    //判断是否分组线已有，不然新增分组
-    const allListHasGroup = (allList, source, target) => {
-        const addList = () => {
+    const getString = (target) => {
+        return JSON.stringify(target);
+    }
+
+    //一条线的低等级不能换到高等级去
+    // if (!isNewCreate && !group.canChange(dragEnd.id, dragStart.id)) {
+    //     return;
+    // }
+
+    //分组逻辑(一条线的低等级不能换到高等级去),产生多个分组线的逻辑
+    const allListHandle = (allList, source, target) => {
+        const addList = (allList) => {
             let list = new List();
             list.add(source);
             list.add(target);
             allList.push(list);
+            console.log(getString(allList));
             return list;
         }
         if (allList.length > 0) {
             //判断已有分组是否有这条线，不然新建分组
-            let result = false;
-            let group;//想要找到的那条线
-            for (let i = 0;i < allList.length;i++) {
+            //新连接的左边是否已存在线
+            let isSourceHaveLine = false;
+            //新连接的右边是否已存在线
+            let isTargetHaveLine = false;
+            let sourceGroup; //已存在的左边线
+            let targetGroup; //已存在的右边线
+            let sourceIndex;
+            let targetIndex;
+            for (let i = 0; i < allList.length; i++) {
+                //判定一条线
+                if (allList[i].has(source) && allList[i].has(target)) {
+                    //低等级不能换到高等级去
+                    if (allList[i].getLevel(target) < allList[i].getLevel(source)) {
+                        return null;
+                    }
+                    //相差为1也不能换
+                    if (Math.abs(allList[i].getLevel(target) - allList[i].getLevel(source)) === 1) {
+                        return null;
+                    }
+                }
+                //判断要连点的左交点是否已存在线
                 if (allList[i].getLast() === source) {
-                    result = true;
-                    group = allList[i];
-                    break;
+                    isSourceHaveLine = true;
+                    sourceGroup = allList[i];
+                    sourceIndex = i;
+                }
+                //判断要连点的右交点是否已存在线
+                if (allList[i].getFirst() === target) {
+                    isTargetHaveLine = true;
+                    targetGroup = allList[i];
+                    targetIndex = i;
                 }
             }
-            //如果有这条线则返回这条线，没有则新建
-            if (result) {
-                return group;
+            //如果有这条线,那么就把新的节点续在这条线上
+            if (isSourceHaveLine || isTargetHaveLine) {
+                //左焦点和右焦点都存在连接线，要把这两条数据合起来
+                if (isSourceHaveLine && isTargetHaveLine) {
+                    allList.splice(sourceIndex, 1);
+                    allList.splice(targetIndex - 1, 1);
+                    let newList = new List();
+                    let newArr = [...sourceGroup.list, ...targetGroup.list];
+                    newArr.map(item => {
+                        newList.add(item);
+                    });
+                    allList.push(newList);
+                    console.log("左焦点存在线且右焦点存在线", getString(allList));
+                    return newList;
+                }
+                //左焦点存在线且右焦点不存在线，给左焦点已存在的线续上一个点
+                if (isSourceHaveLine && !isTargetHaveLine) {
+                    sourceGroup.add(target);
+                    console.log("左焦点存在线且右焦点不存在线", getString(allList));
+                    return sourceGroup;
+                }
+                //右焦点存在线且左焦点不存在线，给右焦点已存在的线最前面连上一个点
+                if (isTargetHaveLine && !isSourceHaveLine) {
+                    targetGroup.addFirst(source);
+                    console.log("右焦点存在线且左焦点不存在线", getString(allList));
+                    return targetGroup;
+                }
             } else {
-                return addList();
+                return addList(allList);
             }
         } else {
-            return addList();
+            return addList(allList);
         }
     }
 
@@ -179,12 +235,12 @@ export default () => {
         });
         graph.on('node:dragstart', e => {
             dragStart = e.item.get("model");
-            console.log("拖动的对象", dragStart);
+            //console.log("拖动的对象", dragStart);
         });
 
         graph.on('node:dragenter', e => {
             dragEnd = e.item.get("model");
-            console.log("目标对象", dragEnd);
+            //console.log("目标对象", dragEnd);
         });
 
         graph.on('node:drag', e => {
@@ -196,10 +252,11 @@ export default () => {
             e.item.get('model').fy = null;
             //存在拖动对象&&目标对象,否则重置定位
             if (dragStart && dragEnd) {
-                
-                let targetList = allListHasGroup(allList, dragEnd.id, dragStart.id);
-                //一条线的低等级不能换到高等级去
-                if (!targetList.canChange(dragEnd.id, dragStart.id)) {
+                //返回这条连接的线
+                let group = allListHandle(allList, dragEnd.id, dragStart.id);
+                //如果没有说明不能连
+                if (!group) {
+                    graph.layout();
                     return;
                 }
                 //移动已经连接的左边
@@ -208,7 +265,7 @@ export default () => {
                         data.edges.splice(index, 1);
                     }
                 });
-                
+
                 data.edges.push({
                     source: dragEnd.id,
                     target: dragStart.id,
