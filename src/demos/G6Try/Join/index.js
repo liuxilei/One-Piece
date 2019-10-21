@@ -87,7 +87,7 @@ export default ({ data, setData }) => {
             if (allList && allList.length > 0) {
                 for (let i = allList.length - 1; i >= 0; i--) {
                     if (allList[i].getMax() === 1) {
-                        console.log(12121, allList[i])
+                        console.log("删除分组线只有一个的元素，该分组为：", allList[i])
                         allList.splice(i, 1);
                     }
                 }
@@ -114,7 +114,7 @@ export default ({ data, setData }) => {
             list.add(source);
             list.add(target);
             allList.push(list);
-            onlyOneDelete();
+            onlyOneDelete(allList);
             console.log(getString(allList));
             return true;
         }
@@ -314,11 +314,7 @@ export default ({ data, setData }) => {
 
             graph.read(data);
             bindEvents();
-        }
-    }, []);
-
-    useEffect(() => {
-        if (graph) {
+        } else {
             refreshGraph(data);
         }
     });
