@@ -1,6 +1,6 @@
 class List {
-    constructor() {
-        this.list = [];
+    constructor(list) {
+        this.list = list || [];
         this.length = 0;
     }
     //向尾部添加元素

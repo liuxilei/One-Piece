@@ -5,8 +5,8 @@ import left from "./left.png";
 import right from "./right.png";
 import all from "./all.png";
 import inside from "./inside.png";
-import "./registerShape";
 import List from "./list";
+import "./registerShape";
 
 var connectType = {
     left,
@@ -15,108 +15,55 @@ var connectType = {
     all
 }
 
-// var data = {
-//     nodes: [{
-//         id: "1",
-//         label: "商品",
-//     }, {
-//         id: "2",
-//         label: "商品小类",
-//     }, {
-//         id: "3",
-//         label: "产地",
+const objCopy = (obj) => {
+    return JSON.parse(JSON.stringify(obj))
+}
 
-//     }, {
-//         id: "4",
-//         label: "供应商"
-//     }, {
-//         id: "5",
-//         label: "商品大类"
-//     }, {
-//         id: "6",
-//         label: "商品大类1"
-//     }, {
-//         id: "7",
-//         label: "商品大类2"
-//     }, {
-//         id: "8",
-//         label: "商品大类3"
-//     }, {
-//         id: "9",
-//         label: "商品大类4"
-//     }],
-//     edges: [{
-//         source: "1",
-//         target: "2"
-//     }, {
-//         source: "1",
-//         target: "3"
-//     }, {
-//         source: "1",
-//         target: "4"
-//     }, {
-//         source: "2",
-//         target: "5"
-//     }, {
-//         source: "4",
-//         target: "6"
-//     }, {
-//         source: "4",
-//         target: "7"
-//     }, {
-//         source: "4",
-//         target: "8"
-//     }, {
-//         source: "3",
-//         target: "9"
-//     }]
-// };
-
-export default () => {
+let graph = null;
+let dragStart = null;//拖动的对象(连接的右边))
+let dragEnd = null; //拖动目标对象(连接的左边)
+let allList = []; //存放新产生的分组线
+export default ({ data, setData }) => {
     const ref = useRef(null);
-    let graph = null;
-    let dragStart = null;//拖动的对象(连接的右边))
-    let dragEnd = null; //拖动目标对象(连接的左边)
-    let allList = []; //存放新产生的分组线
-    let data = {
-        nodes: [
-            {
-                id: "1",
-                label: "表一",
-            },
-            {
-                id: "2",
-                label: "表二",
-            },
-            {
-                id: "3",
-                label: "表三",
-            },
-            {
-                id: "4",
-                label: "表四",
-            },
-            {
-                id: "5",
-                label: "表五",
-            },
-            {
-                id: "6",
-                label: "表六",
-            },
-            {
-                id: "7",
-                label: "表七",
-            },
-        ],
-        edges: [
-            // {
-            //     source: "1",
-            //     target: "2",
-            //     imgSrc: connectType.left
-            // }
-        ]
-    }
+    // data = {
+    //     nodes: [
+    //         {
+    //             id: "1",
+    //             label: "表一",
+    //         },
+    //         {
+    //             id: "2",
+    //             label: "表二",
+    //         },
+    //         {
+    //             id: "3",
+    //             label: "表三",
+    //         },
+    //         {
+    //             id: "4",
+    //             label: "表四",
+    //         },
+    //         {
+    //             id: "5",
+    //             label: "表五",
+    //         },
+    //         {
+    //             id: "6",
+    //             label: "表六",
+    //         },
+    //         {
+    //             id: "7",
+    //             label: "表七",
+    //         },
+    //     ],
+    //     edges: [
+    //         // {
+    //         //     source: "1",
+    //         //     target: "2",
+    //         //     imgSrc: connectType.left
+    //         // }
+    //     ]
+    // }
 
     const refreshDragedNodePosition = (e) => {
         const model = e.item.get('model');
@@ -138,12 +85,12 @@ export default () => {
         //分组线内存在一个元素的分组干掉它
         const onlyOneDelete = (allList) => {
             if (allList && allList.length > 0) {
-                for (let i = allList.length - 1;i >= 0;i--) {
+                for (let i = allList.length - 1; i >= 0; i--) {
                     if (allList[i].getMax() === 1) {
                         console.log(12121, allList[i])
                         allList.splice(i, 1);
                     }
-                } 
+                }
             }
         }
         //拥有右焦点的线,在移动时，要把拥有这个点的线的右边都截取掉
@@ -282,13 +229,12 @@ export default () => {
             e.item.get('model').fy = null;
             //存在拖动对象&&目标对象,否则重置定位
             if (dragStart && dragEnd) {
-                //返回这条连接的线
-                let group = allListHandle(allList, dragEnd.id, dragStart.id);
-                //如果没有说明不能连
-                if (!group) {
+                let handleOk = allListHandle(allList, dragEnd.id, dragStart.id);
+                if (!handleOk) {
                     graph.layout();
                     return;
                 }
+                let data = graph.save();
                 //移动已经连接的左边
                 data.edges.map((item, index) => {
                     if (item.target === dragStart.id) {
@@ -301,8 +247,10 @@ export default () => {
                     target: dragStart.id,
                     imgSrc: connectType.left
                 });
+
                 dragStart = null;
                 dragEnd = null;
+                setData(data);
                 refreshGraph(data);
             } else {
                 setTimeout(() => {
@@ -315,7 +263,7 @@ export default () => {
     //刷新布局
     const refreshGraph = (data) => {
         graph.changeData(data);
-        graph.refresh()
+        graph.refresh();
         graph.layout();
     }
 
@@ -364,11 +312,16 @@ export default () => {
                 }
             });
 
-            graph.data(data);
-            graph.render();
+            graph.read(data);
             bindEvents();
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (graph) {
+            refreshGraph(data);
+        }
+    });
 
     return (
         <div ref={ref}></div>
