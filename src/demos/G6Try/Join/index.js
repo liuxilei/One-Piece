@@ -135,13 +135,41 @@ export default () => {
 
     //分组逻辑(一条线的低等级不能换到高等级去),产生多个分组线的逻辑
     const allListHandle = (allList, source, target) => {
+        //分组线内存在一个元素的分组干掉它
+        const onlyOneDelete = (allList) => {
+            if (allList && allList.length > 0) {
+                for (let i = allList.length - 1;i >= 0;i--) {
+                    if (allList[i].getMax() === 1) {
+                        console.log(12121, allList[i])
+                        allList.splice(i, 1);
+                    }
+                } 
+            }
+        }
+        //拥有右焦点的线,在移动时，要把拥有这个点的线的右边都截取掉
+        const spliceTargetRight = (allList) => {
+            let targetList = [];
+            allList.map(item => {
+                if (item.has(target)) {
+                    targetList.push(item);
+                }
+            });
+            targetList.map(item => {
+                item.slice(target);
+            });
+        }
         const addList = (allList) => {
+            if (target === source) {
+                return false;
+            }
+            spliceTargetRight(allList);
             let list = new List();
             list.add(source);
             list.add(target);
             allList.push(list);
+            onlyOneDelete();
             console.log(getString(allList));
-            return list;
+            return true;
         }
         if (allList.length > 0) {
             //判断已有分组是否有这条线，不然新建分组
@@ -151,18 +179,18 @@ export default () => {
             let isTargetHaveLine = false;
             let sourceGroup; //已存在的左边线
             let targetGroup; //已存在的右边线
-            let sourceIndex;
-            let targetIndex;
+            let sourceIndex; //左边线存在位置
+            let targetIndex; //右边线存在位置
             for (let i = 0; i < allList.length; i++) {
                 //判定一条线
                 if (allList[i].has(source) && allList[i].has(target)) {
                     //低等级不能换到高等级去
                     if (allList[i].getLevel(target) < allList[i].getLevel(source)) {
-                        return null;
+                        return false;
                     }
                     //相差为1也不能换
                     if (Math.abs(allList[i].getLevel(target) - allList[i].getLevel(source)) === 1) {
-                        return null;
+                        return false;
                     }
                 }
                 //判断要连点的左交点是否已存在线
@@ -191,19 +219,21 @@ export default () => {
                     });
                     allList.push(newList);
                     console.log("左焦点存在线且右焦点存在线", getString(allList));
-                    return newList;
+                    return true;
                 }
                 //左焦点存在线且右焦点不存在线，给左焦点已存在的线续上一个点
                 if (isSourceHaveLine && !isTargetHaveLine) {
+                    spliceTargetRight(allList);
                     sourceGroup.add(target);
+                    onlyOneDelete(allList);
                     console.log("左焦点存在线且右焦点不存在线", getString(allList));
-                    return sourceGroup;
+                    return true;
                 }
                 //右焦点存在线且左焦点不存在线，给右焦点已存在的线最前面连上一个点
                 if (isTargetHaveLine && !isSourceHaveLine) {
                     targetGroup.addFirst(source);
                     console.log("右焦点存在线且左焦点不存在线", getString(allList));
-                    return targetGroup;
+                    return true;
                 }
             } else {
                 return addList(allList);

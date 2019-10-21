@@ -23,15 +23,20 @@ class List {
         }
         return result;
     }
+    findIndex(item) {
+        let index;
+        for (let i = 0;i < this.length;i++) {
+            if (this.list[i] === item) {
+                index = i;
+            }
+        }
+        return index;
+    }
     //获取元素的级别
     getLevel(item) {
         let level = 1;
-        if (this.has) {
-            for (let i = 0;i < this.length;i++) {
-                if (this.list[i] === item) {
-                    level = i + 1;
-                }
-            }
+        if (this.has(item)) {
+            level = this.findIndex(item) + 1;
             return level;
         } else {
             return false;
@@ -63,6 +68,11 @@ class List {
     //获取第一项
     getFirst() {
         return this.list[0];
+    }
+    slice(item) {
+        let index = this.findIndex(item);
+        this.list.splice(index, this.length - index);
+        this.length = this.length - (this.length - index);
     }
 }
 
