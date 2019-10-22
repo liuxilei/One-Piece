@@ -24,6 +24,7 @@ import ReactDocument from "../demos/ReactDocument";
 import Drag from "../demos/Drag";
 import Join from "../demos/G6Try/Join";
 import JoinInstance from "../demos/G6Try/JoinInstance";
+import HandsontableTry from "../demos/HandsontableTry";
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
 import { view as Counter } from '../demos/Counter';
@@ -58,6 +59,7 @@ const Routes = () => (
             <Route path="/drag" component={Drag} />
             <Route path="/join" component={Join} />
             <Route path="/joininstance" component={JoinInstance} />
+            <Route path="/handsontableTry" component={HandsontableTry} />
             <Route path='/404' component={NotFind} />
             <Redirect from='*' to='/404' /> 
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}

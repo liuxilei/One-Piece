@@ -314,11 +314,7 @@ export default ({ data, setData }) => {
 
             graph.read(data);
             bindEvents();
-        }
-    }, []);
-
-    useEffect(() => {
-        if (graph) {
+        } else {
             refreshGraph(data);
         }
     });

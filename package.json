@@ -50,12 +50,14 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "@antv/g6": "^3.1.1",
+    "@antv/g6": "3.1.1",
     "@antv/g6-editor": "^1.2.0",
+    "@handsontable/react": "^3.0.0",
     "@opuscapita/react-splitpane": "^1.0.3",
     "antd": "^3.20.7",
     "axios": "^0.19.0",
     "echarts": "^4.2.1",
+    "handsontable": "^7.2.1",
     "lodash": "^4.17.15",
     "monaco-editor": "^0.17.0",
     "react": "^16.8.6",

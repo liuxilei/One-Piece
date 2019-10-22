@@ -25,6 +25,7 @@ export default () => (
             <li><Link to="/longtable">table demo</Link></li>
             <li><Link to="/reactdocument">react文档学习</Link></li>
             <li><Link to="/drag">拖动</Link></li>
+            <li><Link to="/handsontableTry">handsontable尝试</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>
