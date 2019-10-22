@@ -23,7 +23,14 @@ let graph = null;
 let dragStart = null;//拖动的对象(连接的右边))
 let dragEnd = null; //拖动目标对象(连接的左边)
 let allList = []; //存放新产生的分组线
-export default ({ data, setData }) => {
+/**
+ * @param {object} data 节点数据
+ * @param {func} setData 设置节点数据
+ * @param {object} history 路由
+ * @param {string} width 布局宽度
+ * @param {string} height 布局高度
+ */
+export default ({ data, setData, history, width, height }) => {
     const ref = useRef(null);
     // data = {
     //     nodes: [
@@ -212,12 +219,12 @@ export default ({ data, setData }) => {
         });
         graph.on('node:dragstart', e => {
             dragStart = e.item.get("model");
-            //console.log("拖动的对象", dragStart);
+            console.log("拖动的对象", dragStart);
         });
 
         graph.on('node:dragenter', e => {
             dragEnd = e.item.get("model");
-            //console.log("目标对象", dragEnd);
+            console.log("目标对象", dragEnd);
         });
 
         graph.on('node:drag', e => {
@@ -273,8 +280,8 @@ export default ({ data, setData }) => {
         if (!graph) {
             graph = new G6.Graph({
                 container: ReactDOM.findDOMNode(ref.current),
-                width: 1600,
-                height: 800,
+                width: width,
+                height: height,
                 layout: {
                     type: 'dagre',
                     rankdir: 'LR',
@@ -311,13 +318,24 @@ export default ({ data, setData }) => {
                     }
                 }
             });
-
             graph.read(data);
             bindEvents();
         } else {
             refreshGraph(data);
         }
+        return componentWillUnmount;
     });
+
+    const componentWillUnmount = () => {
+        const nextRoutePathName = history.location.pathname;
+        // 判断路由是哪个地址，如果不是当前的路由地址说明是销毁了，那就执行事件，如果是那就不执行
+        if (!String.prototype.startsWith.call(nextRoutePathName, '/joininstance')) {
+            graph = null;
+            dragStart = null;
+            dragEnd = null;
+            allList = [];
+        }
+    }
 
     return (
         <div ref={ref}></div>
