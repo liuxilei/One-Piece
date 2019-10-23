@@ -50,6 +50,9 @@ class JoinInstance extends Component {
                 <Join
                     data={data}
                     setData={this.setData}
+                    history={this.props.history}
+                    width={1600}
+                    height={800}
                 />
             </div>
         )
