@@ -1,7 +1,7 @@
 class List {
     constructor(list) {
         this.list = list || [];
-        this.length = 0;
+        this.length = list ? list.length : 0;
     }
     //向尾部添加元素
     add(item) {

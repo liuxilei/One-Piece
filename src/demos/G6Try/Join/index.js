@@ -121,20 +121,11 @@ export default ({ data, setData, history, width, height }) => {
             let sliceResults = spliceTargetRight(allList);
             if (sliceResults && sliceResults.length > 0) {
                 sliceResults.map(item => {
-                    let list = new List();
-                    list.add(source);
-                    item.map(value => {
-                        list.add(value);
-                    });
-                    allList.push(list);
+                    allList.push(new List([source, ...item]));
                 });
             } else {
-                let list = new List();
-                list.add(source);
-                list.add(target);
-                allList.push(list);
+                allList.push(new List([source, target]));
             }
-            
             onlyOneDelete(allList);
             console.log(getString(allList));
             return true;
