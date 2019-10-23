@@ -103,24 +103,38 @@ export default ({ data, setData, history, width, height }) => {
         //拥有右焦点的线,在移动时，要把拥有这个点的线的右边都截取掉
         const spliceTargetRight = (allList) => {
             let targetList = [];
+            let sliceResults = [];
             allList.map(item => {
                 if (item.has(target)) {
                     targetList.push(item);
                 }
             });
             targetList.map(item => {
-                item.slice(target);
+                sliceResults.push(item.slice(target));
             });
+            return sliceResults;
         }
         const addList = (allList) => {
             if (target === source) {
                 return false;
             }
-            spliceTargetRight(allList);
-            let list = new List();
-            list.add(source);
-            list.add(target);
-            allList.push(list);
+            let sliceResults = spliceTargetRight(allList);
+            if (sliceResults && sliceResults.length > 0) {
+                sliceResults.map(item => {
+                    let list = new List();
+                    list.add(source);
+                    item.map(value => {
+                        list.add(value);
+                    });
+                    allList.push(list);
+                });
+            } else {
+                let list = new List();
+                list.add(source);
+                list.add(target);
+                allList.push(list);
+            }
+            
             onlyOneDelete(allList);
             console.log(getString(allList));
             return true;

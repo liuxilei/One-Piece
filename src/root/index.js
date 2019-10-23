@@ -22,7 +22,6 @@ import MouseTracker from "../demos/MouseTracker";
 import LongTable from "../demos/LongTable";
 import ReactDocument from "../demos/ReactDocument";
 import Drag from "../demos/Drag";
-import Join from "../demos/G6Try/Join";
 import JoinInstance from "../demos/G6Try/JoinInstance";
 import HandsontableTry from "../demos/HandsontableTry";
 import HandsontableDemo1 from "../demos/HandsontableTry/demo1";
@@ -60,7 +59,6 @@ const Routes = () => (
             <Route path="/longtable" component={LongTable} />
             <Route path="/reactdocument" component={ReactDocument} />
             <Route path="/drag" component={Drag} />
-            <Route path="/join" component={Join} />
             <Route path="/joininstance" component={JoinInstance} />
             <Route path="/handsontableTry" component={HandsontableTry} />
             <Route path="/handsontable-demo1" component={HandsontableDemo1} />

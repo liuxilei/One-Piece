@@ -69,10 +69,13 @@ class List {
     getFirst() {
         return this.list[0];
     }
+    //截取元素组中某项之后的
     slice(item) {
+        let sliceValue;
         let index = this.findIndex(item);
-        this.list.splice(index, this.length - index);
+        sliceValue = this.list.splice(index, this.length - index);
         this.length = this.length - (this.length - index);
+        return sliceValue;
     }
 }
 
