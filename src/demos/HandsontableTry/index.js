@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import 'handsontable/dist/handsontable.full.css';
-import { HotTable } from '@handsontable/react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
-let data = [
-    ['', 'Tesla', 'Mercedes', 'Toyota', 'Volvo'],
-    ['2019', 10, 11, 12, 13],
-    ['2020', 20, 11, 14, 13],
-    ['2021', 30, 15, 12, 13]
-];
-
-export default () => {
-    return (<HotTable data={data} colHeaders={true} rowHeaders={true} width="600" height="300" licenseKey="non-commercial-and-evaluation" />);
-}
+export default () => (
+    <Fragment>
+        <h1>Handsontable-demos：</h1>
+        <ul>
+            <li><Link to="/handsontable-demo1">handsontable-demo1</Link></li>
+            <li><Link to="/handsontable-demo2">handsontable-demo2</Link></li>
+            <li><Link to="/handsontable-demo3">handsontable-demo3</Link></li>
+            {/* <li><Link to="/handsontable-demo4">demo3</Link></li>
+            <li><Link to="/handsontable-demo5">demo4</Link></li>
+            <li><Link to="/handsontable-demo6">表关联组件调用</Link></li> */}
+        </ul>
+    </Fragment>
+);
