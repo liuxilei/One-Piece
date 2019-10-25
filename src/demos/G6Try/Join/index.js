@@ -94,7 +94,7 @@ export default ({ data, setData, history, width, height }) => {
             if (allList && allList.length > 0) {
                 for (let i = allList.length - 1; i >= 0; i--) {
                     if (allList[i].getMax() === 1) {
-                        console.log("删除分组线只有一个的元素，该分组为：", allList[i])
+                        console.log("删除分组线只有一个的元素，该分组为：", allList[i]);
                         allList.splice(i, 1);
                     }
                 }
