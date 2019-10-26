@@ -69,12 +69,19 @@ class List {
     getFirst() {
         return this.list[0];
     }
-    //截取元素组中某项之后的
+    //截取元素组中某项之后的(包括该元素)
     slice(item) {
         let sliceValue;
         let index = this.findIndex(item);
-        sliceValue = this.list.splice(index, this.length - index);
+        sliceValue = this.list.splice(index, this.length - index); //删除数据本身
         this.length = this.length - (this.length - index);
+        return sliceValue;
+    }
+    //截取元素之前的(包括该元素)
+    sliceLeft(item) {
+        let sliceValue;
+        let index = this.findIndex(item);
+        sliceValue = this.list.slice(0, index + 1); //不操作数据本身
         return sliceValue;
     }
 }

@@ -100,6 +100,22 @@ export default ({ data, setData, history, width, height }) => {
                 }
             }
         }
+        //如果分组线中有分组线被另外一个分组线包含的话，那么删除，因为重复了
+        const startsWithedDelete = (allList) => {
+            let index;
+            let newAllList = [];
+            allList.map(item => {
+                newAllList.push(item.list.join(","));
+            });
+            newAllList.map((item, i) => {
+                newAllList.map(k => {
+                    if (item !== k && k.startsWith(item)) {
+                        index = i;
+                    }
+                })
+            });
+            allList.splice(index, 1);
+        }
         //拥有右焦点的线,在移动时，要把拥有这个点的线的右边都截取掉
         const spliceTargetRight = (allList) => {
             let targetList = [];
@@ -114,15 +130,32 @@ export default ({ data, setData, history, width, height }) => {
             });
             return sliceResults;
         }
+        //拥有左焦点的线,在移动时，要把拥有这个点的线的左边都截取掉
+        const spliceTargetLeft = (allList) => {
+            let targetLine; //我觉得左边只有一条线
+            let sliceLine = "";
+            allList.map(item => {
+                if (item.has(source)) {
+                    targetLine = item;
+                }
+            });
+            if (targetLine) {
+                sliceLine = targetLine.sliceLeft(source);
+            }
+            return sliceLine;
+        }
         const addList = (allList) => {
             if (target === source) {
                 return false;
             }
             let sliceResults = spliceTargetRight(allList);
+            let sliceLine = spliceTargetLeft(allList);
             if (sliceResults && sliceResults.length > 0) {
                 sliceResults.map(item => {
                     allList.push(new List([source, ...item]));
                 });
+            } else if (sliceLine) {
+                allList.push(new List([...sliceLine, target]));
             } else {
                 allList.push(new List([source, target]));
             }
@@ -182,15 +215,31 @@ export default ({ data, setData, history, width, height }) => {
                 }
                 //左焦点存在线且右焦点不存在线，给左焦点已存在的线续上一个点
                 if (isSourceHaveLine && !isTargetHaveLine) {
-                    spliceTargetRight(allList);
-                    sourceGroup.add(target);
+                    let sliceResults = spliceTargetRight(allList);
+                    //右焦点不存在线，但是右焦点处于某些线上，那么就要把线上右焦点右侧的数据切下来
+                    if (sliceResults && sliceResults.length > 0) {
+                        //删除左焦点那条线
+                        allList.splice(sourceIndex, 1);
+                        sliceResults.map(item => {
+                            allList.push(new List([...sourceGroup.list, ...item]));
+                        });
+                    } else {
+                        sourceGroup.add(target);
+                    }
                     onlyOneDelete(allList);
                     console.log("左焦点存在线且右焦点不存在线", getString(allList));
                     return true;
                 }
                 //右焦点存在线且左焦点不存在线，给右焦点已存在的线最前面连上一个点
                 if (isTargetHaveLine && !isSourceHaveLine) {
-                    targetGroup.addFirst(source);
+                    let sliceLine = spliceTargetLeft(allList);
+                    if (sliceLine) {
+                        allList.splice(targetIndex, 1);
+                        allList.push(new List([...sliceLine, ...targetGroup.list]));
+                    } else {
+                        targetGroup.addFirst(source);
+                    }
+                    // startsWithedDelete(allList);
                     console.log("右焦点存在线且左焦点不存在线", getString(allList));
                     return true;
                 }
