@@ -45,7 +45,14 @@ module.exports = {
                     }
                 }]
             },
-
+            //eslint配置
+            {
+                test: /\.js|jsx$/,
+                enforce: 'pre',
+                include: path.resolve(__dirname, 'src'),
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
+            },
             {
                 test: /\.js|jsx?$/,
                 exclude: /(node_modules)/,
@@ -68,18 +75,6 @@ module.exports = {
                 test: /\.svg$/,
                 loader: 'svg-inline-loader'
             },
-            //eslint配置
-            // {
-            //     test: /\.js|jsx$/,
-            //     enforce: 'pre',
-            //     include: path.resolve(__dirname, 'src'),
-            //     exclude: /node_modules/,
-            //     use: [
-            //         {
-            //             loader: require.resolve('eslint-loader')
-            //         }
-            //     ]
-            // }
         ]
     },
 
