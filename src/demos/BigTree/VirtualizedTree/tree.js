@@ -70,7 +70,7 @@ class Tree extends React.Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         const treeContainer = this.treeContainer,
             numberOfNodesToRender = Math.floor(treeContainer.clientHeight / this.props.childHeight) + 2,
             startNodeIndex = 0,
