@@ -78,16 +78,16 @@ class BigTree extends Component {
     }
 
     componentDidMount() {
-        console.log("节点信息", nodes);
+        //console.log("节点信息", nodes);
     }
 
     onCheck = (checked, node) => {
-        console.log("选中", checked, node);
+        //console.log("选中", checked, node);
         this.setState({ checked });
     }
 
     onExpand = (expanded, loading, node) => {
-        console.log("展开:", expanded, ":", loading, ":", node);
+        //console.log("展开:", expanded, ":", loading, ":", node);
         this.setState({ expanded });
     }
 

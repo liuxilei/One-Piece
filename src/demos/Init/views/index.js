@@ -50,7 +50,7 @@ class Init extends Component {
         return (
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                 {
-                    current == 0 && <Fragment>
+                    current === 0 && <Fragment>
                         <Form.Item label="数据库类型">
                             {getFieldDecorator('xxx', {
                                 rules: [
@@ -156,7 +156,7 @@ class Init extends Component {
                     </Fragment>
                 }
                 {
-                    current == 1 && <Fragment>
+                    current === 1 && <Fragment>
                         <Form.Item label="组织名称">
                             {getFieldDecorator('eeee', {
                                 rules: [
@@ -175,7 +175,7 @@ class Init extends Component {
                     </Fragment>
                 }
                 {
-                    current == 2 && <Fragment>
+                    current === 2 && <Fragment>
                         <Form.Item label="管理员账户">
                             {getFieldDecorator('email', {
                                 rules: [
@@ -291,7 +291,7 @@ class Init extends Component {
                     footer={
                         <Button type="primary" onClick={this.handleSubmit}>
                             {
-                                current != 2 ? '下一步' : '完成'
+                                current !== 2 ? '下一步' : '完成'
                             }
                         </Button>
                     }

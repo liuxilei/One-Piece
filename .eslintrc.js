@@ -1,4 +1,5 @@
 module.exports = {
+    "parser": "babel-eslint",
     // 指定解析器选项
     "parserOptions": {
         // 启用ES8语法支持
@@ -22,6 +23,7 @@ module.exports = {
         "jest": true
     },
     "plugins": [
+        "react",
         "react-hooks"
     ],
     // 别人可以直接使用你配置好的ESLint
@@ -81,7 +83,7 @@ module.exports = {
         "no-proto": 2,
 
         // 强制数组方法的回调函数中有 return 语句
-        "array-callback-return": 2,
+        "array-callback-return": 0,
 
         //强制把变量的使用限制在其定义的作用域范围内
         "block-scoped-var": 2,
@@ -104,7 +106,10 @@ module.exports = {
         //强制使用一致的换行风格
         "linebreak-style": [2, "windows"],
 
+        "react/jsx-uses-react": 2,
+
         "react-hooks/rules-of-hooks": 2,
+        
         "react-hooks/exhaustive-deps": 1
     }
 };

@@ -157,11 +157,11 @@ class TableDemo extends Component {
     //键盘按键
     onKeyDown = e => {
         if (e.keyCode === 119) {
-            console.log(1);
+            //console.log(1);
         } else if (e.keyCode === 120) {
-            console.log(2);
+            //console.log(2);
         }
-        console.log(e);
+        //console.log(e);
     };
 
     render() {

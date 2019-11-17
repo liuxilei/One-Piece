@@ -9,7 +9,7 @@ class Counter extends Component {
     }
 
     oddIncrement = () => {
-        if (this.props.value % 2 == 0) {
+        if (this.props.value % 2 === 0) {
             this.props.onIncrement();
         }
     }
