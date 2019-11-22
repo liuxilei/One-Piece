@@ -30,6 +30,7 @@ import HandsontableDemo3 from "../demos/HandsontableTry/demo3";
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
 import { view as Counter } from '../demos/Counter';
+import PureOrMemoTest from "../demos/PureOrMemoTest";
 import NotFind from '../demos/NotFind';
 
 const Routes = () => (
@@ -64,6 +65,7 @@ const Routes = () => (
             <Route path="/handsontable-demo1" component={HandsontableDemo1} />
             <Route path="/handsontable-demo2" component={HandsontableDemo2} />
             <Route path="/handsontable-demo3" component={HandsontableDemo3} />
+            <Route path="/pureOrMemoTest" component={PureOrMemoTest} />
             <Route path='/404' component={NotFind} />
             <Redirect from='*' to='/404' /> 
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}

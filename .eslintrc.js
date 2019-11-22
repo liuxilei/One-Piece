@@ -36,21 +36,21 @@ module.exports = {
     // 每个规则对应的0，1，2分别表示off, warning, error三个错误级别
     "rules": {
         // 定义了变量却没有在代码中使用，这是防止产生多余没用的变量
-        "no-unused-vars": 1,
+        "no-unused-vars": 0,
 
         // 禁用 console
-        "no-console": 1,
+        "no-console": 0,
 
         // 禁用未声明的变量
-        "no-undef": 1,
+        "no-undef": 0,
 
-        "react/no-deprecated": 1,
+        "react/no-deprecated": 0,
 
-        "react/no-find-dom-node": 1,
+        "react/no-find-dom-node": 0,
 
-        "react/display-name": 1,
+        "react/display-name": 0,
 
-        "react/prop-types": 1,
+        "react/prop-types": 0,
 
         "react-hooks/rules-of-hooks": 2,
 
