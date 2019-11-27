@@ -1,11 +1,13 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import { reducer as counterReducer } from './demos/Counter';
+import { reducer as expressReducer } from "./demos/G6Try/RelationalExpression";
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
-    counterState: counterReducer
+    Counter: counterReducer,
+    Express: expressReducer
 });
 
 const win = window;

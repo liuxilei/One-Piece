@@ -40,8 +40,8 @@ class Counter extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    value: state.counterState.value
+const mapStateToProps = ({ Counter }) => ({
+    value: Counter.value
 });
 
 const mapDispatchToProps = (dispatch) => {

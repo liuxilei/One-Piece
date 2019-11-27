@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest, delay } from 'redux-saga/effects';
-import { ASYNCINCREMENT } from './demos/Counter/actionTypes';
+import { COUNTER_ASYNCINCREMENT } from './demos/Counter/actionTypes';
 import { actions as CounterActions } from './demos/Counter';
 import { message } from 'antd';
 import { createHashHistory as createHistory } from 'history';
@@ -11,5 +11,5 @@ function* asyncIncrement() {
 }
 
 export default function* rootSaga() {
-    yield takeEvery(ASYNCINCREMENT, asyncIncrement);
+    yield takeEvery(COUNTER_ASYNCINCREMENT, asyncIncrement);
 }

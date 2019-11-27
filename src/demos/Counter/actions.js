@@ -1,13 +1,13 @@
-import { INCREMENT, DECREMENT, ASYNCINCREMENT } from './actionTypes';
+import { COUNTER_INCREMENT, COUNTER_DECREMENT, COUNTER_ASYNCINCREMENT } from './actionTypes';
 
 export const increment = () => ({
-    type: INCREMENT
+    type: COUNTER_INCREMENT
 });
 
 export const decrement = () => ({
-    type: DECREMENT
+    type: COUNTER_DECREMENT
 });
 
 export const asyncIncrement = () => ({
-    type: ASYNCINCREMENT
+    type: COUNTER_ASYNCINCREMENT
 });

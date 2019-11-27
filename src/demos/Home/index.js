@@ -6,7 +6,7 @@ export default () => (
     <div className="home">
         <h1>demo-lists：</h1>
         <ul>
-            <li><Link to="/g6try">G6的尝试练习</Link></li>
+            <li><Link to="/g6try">g6的demo</Link></li>
             <li><Link to="/init">Init</Link></li>
             <li><Link to="/monacoTest">MonacoTest</Link></li>
             <li><Link to="/routingreference">路由传参</Link></li>

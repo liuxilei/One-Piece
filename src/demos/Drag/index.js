@@ -48,7 +48,7 @@ class Drag extends Component {
                     >
                 </div>
                 <div  
-                draggable
+                    draggable
                     onDragStart={(e) => this.dragStart(e)}
                     onDragEnter={(e) => this.dragEnter(e)}
                     onDragLeave={e => this.dragLeave(e)}

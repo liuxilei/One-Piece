@@ -44,6 +44,8 @@ module.exports = {
         // 禁用未声明的变量
         "no-undef": 0,
 
+        "no-useless-escape": 0,
+
         "react/no-deprecated": 0,
 
         "react/no-find-dom-node": 0,
