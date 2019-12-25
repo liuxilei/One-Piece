@@ -33,6 +33,7 @@ import { view as Counter } from '../demos/Counter';
 import PureOrMemoTest from "../demos/PureOrMemoTest";
 import { view as RelationalExpression } from "../demos/G6Try/RelationalExpression";
 import NotFind from '../demos/NotFind';
+import DynamicTab from "../demos/DynamicTab";
 
 const Routes = () => (
     <Router>
@@ -68,6 +69,7 @@ const Routes = () => (
             <Route path="/handsontable-demo3" component={HandsontableDemo3} />
             <Route path="/pureOrMemoTest" component={PureOrMemoTest} />
             <Route path="/relationalExpression" component={RelationalExpression} />
+            <Route path="/dynamictab" component={DynamicTab} />
             <Route path='/404' component={NotFind} />
             <Redirect from='*' to='/404' /> 
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}

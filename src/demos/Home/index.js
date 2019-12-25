@@ -27,6 +27,7 @@ export default () => (
             <li><Link to="/drag">拖动</Link></li>
             <li><Link to="/handsontableTry">handsontable尝试</Link></li>
             <li><Link to="/pureOrMemoTest">PureComponent和memo功能尝试</Link></li>
+            <li><Link to="/dynamictab">动态多tab页面</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>
