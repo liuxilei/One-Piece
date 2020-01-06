@@ -1,43 +1,37 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import { increment, decrement, asyncIncrement } from '../actions';
 import { connect } from 'react-redux';
 import './index.scss';
 
-class Counter extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    oddIncrement = () => {
-        if (this.props.value % 2 === 0) {
-            this.props.onIncrement();
+function Counter(props) {
+    const oddIncrement = () => {
+        if (props.value % 2 === 0) {
+            props.onIncrement();
         }
     }
 
-    asyncIncrement = () => {
-        this.props.asyncIncrement();
+    const asyncIncrement = () => {
+        props.asyncIncrement();
     }
 
-    render() {
-        const { 
-            value, 
-            onIncrement, 
-            onDecrement 
-        } = this.props;
-        return (
-            <div className="content">
-                <div className="special">
-                    <div className="operate" onClick={this.oddIncrement}>Increment if odd</div>
-                    <div className="operate" onClick={this.asyncIncrement}>Increment async</div>
-                </div>
-                <div className="operateContainer">
-                    <div className="operate" onClick={onDecrement}>-</div>
-                    <div className="operate" onClick={onIncrement}>+</div>
-                </div>
-                <div className="score">{value}</div>
+    const {
+        value,
+        onIncrement,
+        onDecrement
+    } = props;
+    return (
+        <div className="content">
+            <div className="special">
+                <div className="operate" onClick={oddIncrement}>Increment if odd</div>
+                <div className="operate" onClick={asyncIncrement}>Increment async</div>
             </div>
-        )
-    }
+            <div className="operateContainer">
+                <div className="operate" onClick={onDecrement}>-</div>
+                <div className="operate" onClick={onIncrement}>+</div>
+            </div>
+            <div className="score">{value}</div>
+        </div>
+    )
 }
 
 const mapStateToProps = ({ Counter }) => ({
@@ -58,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Counter));
