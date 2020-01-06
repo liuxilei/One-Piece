@@ -52,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(Counter));
+export default memo(connect(mapStateToProps, mapDispatchToProps)(Counter));
