@@ -1,15 +1,34 @@
-.dynamicTab {
-    width: 1200px;
-    height: 600px;
+.dynamicTabWrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
-    .list {
-        width: 300px;
-        border: 1px solid #000;
-        height: 100%;
+    align-items: center;
+    justify-content: center;
+    button {
+        cursor: pointer;
     }
-    .contaner {
+    .dynamicTab {
         width: 1200px;
-        border: 1px solid #000;
-        height: 100%;
+        height: 600px;
+        display: flex;
+
+        .list {
+            width: 300px;
+            border: 1px solid #000;
+            height: 100%;
+            border-right: none;
+            div {
+                cursor: pointer;
+            }
+            div:hover {
+                color: blue;
+            }
+        }
+        .contaner {
+            width: 1200px;
+            border: 1px solid #000;
+            height: 100%;
+        }
     }
 }

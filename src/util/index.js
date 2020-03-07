@@ -18,7 +18,7 @@ const utils = {
             if (source.hasOwnProperty(keys)) {
                 if (source[keys] && typeof source[keys] === 'object') { // 如果值是对象，就递归一下
                     targetObj[keys] = source[keys].constructor === Array ? [] : {};
-                    targetObj[keys] = func.deepClone(source[keys]);
+                    targetObj[keys] = utils.deepClone(source[keys]);
                 } else { // 如果不是，就直接赋值
                     targetObj[keys] = source[keys];
                 }
