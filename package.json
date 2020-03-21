@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --host 192.168.0.115 --open --config webpack.dev.js  --color --progress",
-    "build": "webpack --config webpack.prod.js --color --progress",
+    "dev": "webpack-dev-server --host 192.168.0.115 --open --config build/webpack.dev.js  --color --progress",
+    "start": "npm run dev",
+    "build": "webpack --config build/webpack.prod.js --color --progress",
     "commit": "git-cz"
   },
   "keywords": [],
