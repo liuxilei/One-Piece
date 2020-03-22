@@ -1,20 +1,43 @@
-import React, { useState, useCallback } from "react";
-import Child from './Child';
+import React, { Component, Fragment } from "react";
+import MemoTest from "./MemoTest";
+import PureTest from "./PureTest";
 
-export default () => {
-    const [title, setTitle] = useState("这是一个 title")
-
-    const callback = () => {
-        setTitle("标题改变了");
-    };
-
-    const memoizedCallback = useCallback(callback, [])
-
-    return (
-        <div className="App">
-            <h1>{title}</h1>
-            <button onClick={() => setTitle("title 已经改变")}>改名字</button>
-            <Child callback={memoizedCallback}></Child>
-        </div>
-    );
+const a = {
+    name: "lxl"
 }
+
+
+//
+
+class PureOrMemoTest extends Component {
+    state = {
+        like: a,
+    }
+
+    setLike = () => {
+        //!!!!!!!浅比较只比较父组件传递的this.props对象属性的第一层!!!!!
+
+        //pure和memo未更新
+        // a.name = "xadad"
+        // this.setState({
+        //     like: a
+        // });
+
+        //pure和memo更新
+        this.setState({
+            like: ""
+        });
+    }
+
+    render() {
+        console.log("父组件渲染")
+        return (
+            <Fragment>
+                <span onClick={this.setLike}>更改state {this.state.like.name}</span>
+                <MemoTest a={this.state.like} />
+                <PureTest a={this.state.like} />
+            </Fragment>
+        )
+    }
+}
+export default PureOrMemoTest;
