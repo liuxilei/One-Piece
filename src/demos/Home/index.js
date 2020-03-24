@@ -7,7 +7,8 @@ export default () => (
         <h1>demo-lists：</h1>
         <ul>
             <li><Link to="/g6try">g6的demo</Link></li>
-            <li><Link to="/init">Init</Link></li>
+            {/* 涉及ui泄露 */}
+            {/* <li><Link to="/init">Init</Link></li> */}
             <li><Link to="/monacoTest">MonacoTest</Link></li>
             <li><Link to="/routingreference">路由传参</Link></li>
             <li><Link to="/counter">Counter</Link></li>
@@ -28,6 +29,7 @@ export default () => (
             <li><Link to="/handsontableTry">handsontable尝试</Link></li>
             <li><Link to="/pureOrMemoTest">PureComponent和memo功能尝试</Link></li>
             <li><Link to="/dynamictab">动态多tab页面</Link></li>
+            <li><Link to="/reactTransitionGroup">reactTransitionGroup使用示例</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>

@@ -34,6 +34,7 @@ import PureOrMemoTest from "../demos/PureOrMemoTest";
 import { view as RelationalExpression } from "../demos/G6Try/RelationalExpression";
 import NotFind from '../demos/NotFind';
 import DynamicTab from "../demos/DynamicTab";
+import ReactTransitionGroup from "../demos/ReactTransitionGroup";
 
 const Routes = () => (
     <Router>
@@ -70,6 +71,7 @@ const Routes = () => (
             <Route path="/pureOrMemoTest" component={PureOrMemoTest} />
             <Route path="/relationalExpression" component={RelationalExpression} />
             <Route path="/dynamictab" component={DynamicTab} />
+            <Route path="/reactTransitionGroup" component={ReactTransitionGroup} />
             <Route path='/404' component={NotFind} />
             <Redirect from='*' to='/404' /> 
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}
