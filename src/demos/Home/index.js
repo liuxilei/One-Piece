@@ -30,6 +30,8 @@ export default () => (
             <li><Link to="/pureOrMemoTest">PureComponent和memo功能尝试</Link></li>
             <li><Link to="/dynamictab">动态多tab页面</Link></li>
             <li><Link to="/reactTransitionGroup">reactTransitionGroup使用示例</Link></li>
+            <li><Link to="/todolist">todolist</Link></li>
+            <li><Link to="/SvgAnimal">SvgAnimal</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>
