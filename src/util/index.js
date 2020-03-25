@@ -1,3 +1,25 @@
+/**
+ * 检测变量类型
+ * @param type
+ */
+function isType(type) {
+    return function(value) {
+        return Object.prototype.toString.call(value) === `[object ${type}]`;
+    };
+}
+
+export const variableTypeDetection = {
+    isNumber: isType('Number'),
+    isString: isType('String'),
+    isBoolean: isType('Boolean'),
+    isNull: isType('Null'),
+    isUndefined: isType('Undefined'),
+    isSymbol: isType('Symbol'),
+    isFunction: isType('Function'),
+    isObject: isType('Object'),
+    isArray: isType('Array'),
+};
+
 const utils = {
     /**
     * 对象copy(属性)

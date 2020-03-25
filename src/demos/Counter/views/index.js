@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { increment, decrement, asyncIncrement } from '../actions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 import './index.scss';
 
 function Counter(props) {
@@ -38,18 +39,10 @@ const mapStateToProps = ({ Counter }) => ({
     value: Counter.value
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onIncrement: () => {
-            dispatch(increment());
-        },
-        onDecrement: () => {
-            dispatch(decrement());
-        },
-        asyncIncrement: () => {
-            dispatch(asyncIncrement());
-        }
-    }
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    onIncrement: increment,
+    onDecrement: decrement,
+    asyncIncrement: asyncIncrement
+}, dispatch)
 
 export default memo(connect(mapStateToProps, mapDispatchToProps)(Counter));

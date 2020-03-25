@@ -9,5 +9,10 @@ module.exports = merge(common, {
         contentBase: path.join(__dirname, './release'), //跟目录
         open: true, //自动打开浏览器
         port: 6789, //端口
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:1234'
+            }
+        }
     }
 });

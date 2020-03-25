@@ -35,7 +35,7 @@ import { view as RelationalExpression } from "../demos/G6Try/RelationalExpressio
 import NotFind from '../demos/NotFind';
 import DynamicTab from "../demos/DynamicTab";
 import ReactTransitionGroup from "../demos/ReactTransitionGroup";
-import TodoList from "../demos/TodoList";
+import { view as TodoList } from "../demos/TodoList";
 import SvgAnimal from "../demos/SvgAnimal";
 
 const Routes = () => (
