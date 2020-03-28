@@ -3,45 +3,37 @@ import {
     TODOLIST_ADDTODOITEM,
     TODOLIST_DELETETODOITEM,
     TODOLIST_INITLIST,
-} from "./actionsTypes";
-import utils from "../../util";
+} from "./actionTypes";
+import { fromJS } from "immutable";
 
-const defaultState = {
+const defaultState = fromJS({
     inputValue: "",
     list: []
-}
+})
 
 export default (state = defaultState, action) => {
     switch(action.type) {
         case TODOLIST_SETINPUTVALUE: {
-            return {
-                ...state,
-                inputValue: action.inputValue
-            }
+            return state.set("inputValue", action.inputValue)
         }
         case TODOLIST_ADDTODOITEM: {
-            return {
-                ...state,
-                list: [
-                    ...state.list,
-                    ...state.inputValue
-                ],
+            let copyList = state.get("list").toJS();
+            copyList = [
+                ...copyList,
+                state.get("inputValue")
+            ]
+            return state.merge({
+                list: fromJS(copyList),
                 inputValue: ""
-            }
+            });
         }
         case TODOLIST_DELETETODOITEM: {
-            let copyList = utils.objCopy(state.list);
+            let copyList = state.get("list").toJS();
             copyList.splice(action.index, 1);
-            return {
-                ...state,
-                list: copyList
-            }
+            return state.set("list", fromJS(copyList));
         }
         case TODOLIST_INITLIST: {
-            return {
-                ...state,
-                list: action.list
-            }
+            return state.set("list", action.list);
         }
         default: return state;
     }

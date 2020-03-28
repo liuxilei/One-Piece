@@ -14,7 +14,7 @@ import {
     exchangeFlowEditor,
     canvasInsertFlowEditor,
 } from "../actions";
-import utils from "../../../../util";
+import utils from "../../../../utils";
 import "./index.scss";
 
 let key = 0;
@@ -176,6 +176,16 @@ class Demo extends Component {
     }
 }
 
+
+// const mapStateToProps = (state) => ({
+//     components: state.getIn(["Express", "components"]),
+//     flowEditor: state.getIn(["Express", "flowEditor"]),
+//     currentTarget: state.getIn(["Express", "currentTarget"]),
+//     isDragEnter: state.getIn(["Express","isDragEnter"]),
+//     replacedIndex: state.getIn(["Express","replacedIndex"]),
+//     insertIndex: state.getIn(["Express", "insertIndex"]),
+//     flowDragIndex: state.getIn(["Express", "flowDragIndex"])
+// });
 
 const mapStateToProps = ({ Express }) => ({
     components: Express.components,

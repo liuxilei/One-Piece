@@ -35,8 +35,12 @@ function Counter(props) {
     )
 }
 
+// const mapStateToProps = (state) => ({
+//     value: state.getIn(["Counter", "value"])
+// });
+
 const mapStateToProps = ({ Counter }) => ({
-    value: Counter.value
+    value: Counter.get("value")
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

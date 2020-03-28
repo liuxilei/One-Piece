@@ -14,3 +14,11 @@
 
 ##### Usage:
     http-server -p 1234(public目录下起一个1234端口服务)
+
+##### issue(待解决):
+
+- public下api文件下的资源请求不到
+- favicon.icon 请求不到
+- 重新搭建项目
+- 添加测试用例
+- 全面转换为typescript

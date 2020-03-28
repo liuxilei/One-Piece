@@ -36,6 +36,7 @@ import NotFind from '../demos/NotFind';
 import DynamicTab from "../demos/DynamicTab";
 import ReactTransitionGroup from "../demos/ReactTransitionGroup";
 import { view as TodoList } from "../demos/TodoList";
+import { view as ShortBook } from "../demos/ShortBook";
 import SvgAnimal from "../demos/SvgAnimal";
 
 const Routes = () => (
@@ -76,7 +77,7 @@ const Routes = () => (
             <Route path="/reactTransitionGroup" component={ReactTransitionGroup} />
             <Route path="/todolist" component={TodoList} />
             <Route path="/SvgAnimal" component={SvgAnimal} />
-            
+            <Route path="/ShortBook" component={ShortBook} />
             <Route path='/404' component={NotFind} />
             <Redirect from='*' to='/404' /> 
             {/* <Route path="/svganimation" component={SvgAnimation} /> */}

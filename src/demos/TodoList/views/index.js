@@ -54,9 +54,14 @@ const TodoList = (props) => {
     )
 }
 
+// const mapStateToProps = (state) => ({
+//     inputValue: state.getIn(["Todolist", "inputValue"]),
+//     list: Todolist.list
+// });
+
 const mapStateToProps = ({ Todolist }) => ({
-    inputValue: Todolist.inputValue,
-    list: Todolist.list
+    inputValue: Todolist.get("inputValue"),
+    list: Todolist.get("list")
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

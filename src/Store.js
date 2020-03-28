@@ -1,18 +1,22 @@
-import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+import { createStore, compose, applyMiddleware, combineReducers  } from 'redux';
+// import { combineReducers } from "redux-immutable";
 import { reducer as counterReducer } from './demos/Counter';
 import { reducer as expressReducer } from "./demos/G6Try/RelationalExpression";
 import { reducer as todolistReducer } from "./demos/TodoList";
+import { reducer as shortBookReducer } from "./demos/ShortBook";
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'
 import { sagas as counterSaga } from './demos/Counter';
 import { sagas as todoSaga } from "./demos/TodoList";
+import { sagas as shortBookSaga } from "./demos/ShortBook";
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
     Counter: counterReducer,
     Express: expressReducer,
-    Todolist: todolistReducer
+    Todolist: todolistReducer,
+    ShortBook: shortBookReducer
 });
 
 const win = window;
@@ -29,5 +33,6 @@ const storeEnhancers = compose(
 const store = createStore(reducer, {}, storeEnhancers);
 sagaMiddleware.run(counterSaga);
 sagaMiddleware.run(todoSaga);
+sagaMiddleware.run(shortBookSaga);
 
 export default store;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SubPage from "./SubPage";
-import utils from "../../util";
+import utils from "../../utils";
 import "./index.scss";
 
 const pagesParam = [

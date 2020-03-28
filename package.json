@@ -61,12 +61,15 @@
     "axios": "^0.19.0",
     "echarts": "^4.2.1",
     "handsontable": "^7.2.2",
+    "history": "^4.10.1",
+    "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
     "monaco-editor": "^0.17.0",
     "react": "^16.8.6",
     "react-bodymovin": "^2.0.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-loadable": "^5.5.0",
     "react-motion": "^0.5.2",
     "react-redux": "^6.0.1",
     "react-resizable": "^1.8.0",
@@ -76,10 +79,12 @@
     "react-virtualized": "^9.21.1",
     "react-virtualized-tree": "^3.2.3",
     "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "styled-components": "^5.0.1"
   },
   "config": {
     "commitizen": {

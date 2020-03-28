@@ -4,8 +4,9 @@ import {
     TODOLIST_DELETETODOITEM,
     TODOLIST_INITLIST,
     TODOLIST_GETINITLIST,
-} from "./actionsTypes";
+} from "./actionTypes";
 import axios from "axios";
+import { fromJS } from "immutable";
 
 export const setInputValue = (inputValue) => ({
     type: TODOLIST_SETINPUTVALUE,
@@ -23,7 +24,7 @@ export const deleteTodoItem = (index) => ({
 
 export const initList = (list) => ({
     type: TODOLIST_INITLIST,
-    list
+    list: fromJS(list)
 });
 
 //redux-thunk使用示例

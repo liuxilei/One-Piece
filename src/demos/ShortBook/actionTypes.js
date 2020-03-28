@@ -1,0 +1,16 @@
+export const SHORTBOOK_SETNAVSEARCHFOCUS = "shortBook/setNavSearchFocus";
+export const SHORTBOOK_GETLIST = "shortBook/getList";
+export const SHORTBOOK_SETLIST = "shortBook/setList";
+export const SHORTBOOK_MOUSEENTER = "shortBook/mouseEnter";
+export const SHORTBOOK_MOUSELEAVE = "shortBook/mouseLeave";
+export const SHORTBOOK_CHANGEPAGE = "shortBook/changePage";
+export const SHORTBOOK_GETHOMEINFO = "shortBook/getHomeInfo";
+export const SHORTBOOK_SETHOMEINFO = "shortBook/setHomeInfo";
+export const SHORTBOOK_GETMORELIST = "shortBook/getMoreList";
+export const SHORTBOOK_ADDMORELIST = "shortBook/addMoreList";
+export const SHORTBOOK_CHANGESHOWSCROLL = "shortBook/changeShowScroll";
+export const SHORTBOOK_GETDETAILINFO = "shortBook/getDetailInfo";
+export const SHORTBOOK_SETDETAILINFO = "shortBook/setDetailInfo";
+export const SHORTBOOK_LOGIN = "shortBook/login";
+export const SHORTBOOK_LOGINSUCCESS = "shortBook/loginSuccess";
+export const SHORTBOOK_LOGINOUT = "shortBook/loginOut";
