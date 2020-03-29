@@ -33,6 +33,7 @@ export default () => (
             <li><Link to="/todolist">todolist</Link></li>
             <li><Link to="/SvgAnimal">SvgAnimal</Link></li>
             <li><Link to="/ShortBook">ShortBook</Link></li>
+            <li><Link to="/BookKeeping">记账</Link></li>
             {/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
         </ul>
     </div>
