@@ -140,24 +140,23 @@ class Content extends PureComponent {
                             financialManagement.value += parseFloat(item.get("money"));
                         }
                     });
-                    this.setOption(this.incomeChart, "本月收入", [
-                        wage,
-                        partTime,
-                        financialManagement,
-                    ]);
-                    this.setOption(this.expenditureChart, "本月支出", [
-                        food,
-                        electron,
-                        shopping,
-                        traffic,
-                        housing,
-                        home,
-                        dailyNecessities,
-                        study,
-                        apparel,
-                    ])
-
                 }
+                this.setOption(this.incomeChart, "本月收入", [
+                    wage,
+                    partTime,
+                    financialManagement,
+                ]);
+                this.setOption(this.expenditureChart, "本月支出", [
+                    food,
+                    electron,
+                    shopping,
+                    traffic,
+                    housing,
+                    home,
+                    dailyNecessities,
+                    study,
+                    apparel,
+                ])
             }
         });
     }
@@ -234,7 +233,7 @@ class Content extends PureComponent {
                                     </BookKeepingRecordItem>
                                 )
                             }) :
-                                <Empty style={{ marginTop: "50px" }} />
+                            <Empty style={{ marginTop: "50px" }} />
                         }
                     </BookKeepingRecord>
                 }
