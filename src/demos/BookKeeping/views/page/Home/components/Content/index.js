@@ -10,7 +10,7 @@ import {
     Ball,
 } from "./style";
 import { Link } from "react-router-dom";
-import { Empty, message } from "antd";
+import { Empty } from "antd";
 import { withRouter } from "react-router-dom";
 
 const nameToIcon = {
