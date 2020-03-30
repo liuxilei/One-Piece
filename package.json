@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "webpack-dev-server --host 192.168.0.115 --open --config build/webpack.dev.js  --color --progress",
     "start": "npm run dev",
-    "build": "webpack --config build/webpack.prod.js --color --progress",
+    "build": "webpack --config build/webpack.prod.js --color --progress --max-old-space-size=8192",
     "commit": "git-cz"
   },
   "keywords": [],
@@ -39,7 +39,6 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "monaco-editor-webpack-plugin": "^1.7.0",
     "node-sass": "^4.11.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
@@ -48,6 +47,7 @@
     "svg-inline-loader": "^0.8.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.9.1",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.2.1"
@@ -63,8 +63,6 @@
     "handsontable": "^7.2.2",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.15",
-    "monaco-editor": "^0.17.0",
     "react": "^16.8.6",
     "react-bodymovin": "^2.0.0",
     "react-dom": "^16.8.6",

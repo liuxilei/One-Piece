@@ -1,13 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../demos/Home';
-import MonacoTest from '../demos/MonacoTest';
 import RefDemo from '../demos/RefDemo';
-import G6Demo from '../demos/G6Try/G6Demo';
-import G6DemoOne from '../demos/G6Try/G6DemoOne';
-import G6EditorDemo from '../demos/G6Try/G6EditorDemo';
+import G6Demo from '../demos/G6Try/G6Demo/loadable';
+import G6DemoOne from '../demos/G6Try/G6DemoOne/loadable';
+import G6EditorDemo from '../demos/G6Try/G6EditorDemo/loadable';
 import G6Try from '../demos/G6Try';
-import G6DemoThree from '../demos/G6Try/G6DemoThree';
+import G6DemoThree from '../demos/G6Try/G6DemoThree/loadable';
 import RoutingReference from '../demos/RoutingReference';
 import EchartsTest from "../demos/EchartsTest";
 import TableDemo from "../demos/TableDemo";
@@ -16,7 +15,6 @@ import MotionDemo from "../demos/Motion";
 import AutoMenu from "../demos/autoMenu";
 import ReactHookDemo from "../demos/ReactHookDemo";
 import SplitPanel from "../demos/SplitPane";
-import BigTree from "../demos/BigTree";
 import Meta from "../demos/Meta";
 import MouseTracker from "../demos/MouseTracker";
 import LongTable from "../demos/LongTable";
@@ -24,9 +22,9 @@ import ReactDocument from "../demos/ReactDocument";
 import Drag from "../demos/Drag";
 import JoinInstance from "../demos/G6Try/JoinInstance";
 import HandsontableTry from "../demos/HandsontableTry";
-import HandsontableDemo1 from "../demos/HandsontableTry/demo1";
-import HandsontableDemo2 from "../demos/HandsontableTry/demo2";
-import HandsontableDemo3 from "../demos/HandsontableTry/demo3";
+import HandsontableDemo1 from "../demos/HandsontableTry/demo1/loadable";
+import HandsontableDemo2 from "../demos/HandsontableTry/demo2/loadable";
+import HandsontableDemo3 from "../demos/HandsontableTry/demo3/loadable";
 // import SvgAnimation from '../demos/SvgAnimation';
 import { view as Init } from '../demos/Init';
 import { view as Counter } from '../demos/Counter';
@@ -50,7 +48,6 @@ const Routes = () => (
             <Route path="/g6demo3" component={G6DemoThree} />
             <Route path="/g6editordemo" component={G6EditorDemo} />
             <Route path="/init" component={Init} />
-            <Route path="/monacoTest" component={MonacoTest} />
             <Route path="/routingreference" component={RoutingReference} />
             <Route path="/counter" component={Counter} />
             <Route path="/refdemo" component={RefDemo} />
@@ -61,7 +58,6 @@ const Routes = () => (
             <Route path="/automenu" component={AutoMenu} />
             <Route path="/reacthookdemo" component={ReactHookDemo} />
             <Route path="/splitpanel" component={SplitPanel} />
-            <Route path="/bigtree" component={BigTree} />
             <Route path="/meta" component={Meta} />
             <Route path="/mousetracker" component={MouseTracker} />
             <Route path="/longtable" component={LongTable} />

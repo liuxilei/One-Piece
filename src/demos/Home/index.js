@@ -9,7 +9,6 @@ export default () => (
             <li><Link to="/g6try">g6的demo</Link></li>
             {/* 涉及ui泄露 */}
             {/* <li><Link to="/init">Init</Link></li> */}
-            <li><Link to="/monacoTest">MonacoTest</Link></li>
             <li><Link to="/routingreference">路由传参</Link></li>
             <li><Link to="/counter">Counter</Link></li>
             <li><Link to="/refdemo">ref使用例子</Link></li>
@@ -22,7 +21,6 @@ export default () => (
             <li><Link to="/splitpanel">拆分面板组件</Link></li>
             <li><Link to="/meta">更改页面meta属性</Link></li>
             <li><Link to="/mousetracker">猫猫跟踪鼠标位置（render props实践）</Link></li>
-            <li><Link to="/bigtree">虚拟树</Link></li>
             <li><Link to="/longtable">table demo</Link></li>
             <li><Link to="/reactdocument">react文档学习</Link></li>
             <li><Link to="/drag">拖动</Link></li>
