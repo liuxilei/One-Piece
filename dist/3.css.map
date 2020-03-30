@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/demos/G6Try/G6EditorDemo/index.scss"],"names":[],"mappings":"AAAA;AACA;AACA,gBAAgB","file":"3.css","sourcesContent":[".main {\n  width: 80%;\n  height: 600px; }\n"],"sourceRoot":""}
