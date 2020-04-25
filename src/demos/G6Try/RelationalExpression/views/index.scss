@@ -29,9 +29,6 @@
                 line-height: 50px;
                 margin-top: 40px;
                 cursor: pointer;
-                -webkit-user-select:none;
-                -moz-user-select:none;
-                -ms-user-select:none;
                 user-select:none;
             }
         }
@@ -55,10 +52,6 @@
                 line-height: 46px;
                 color: #000;
                 border: 1px dotted #000;
-                // -webkit-user-select:none;
-                // -moz-user-select:none;
-                // -ms-user-select:none;
-                // user-select:none;
                 cursor: pointer;
                 margin-top: 40px;
                 min-width: 60px;

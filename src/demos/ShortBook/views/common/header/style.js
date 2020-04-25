@@ -89,9 +89,6 @@ export const SearchInfoSwitch = styled.span`
     float: right;
     font-size: 13px;
     cursor: pointer;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
     user-select:none;
     .spin {
         display: block;

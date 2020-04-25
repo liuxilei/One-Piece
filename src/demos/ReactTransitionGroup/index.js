@@ -42,7 +42,7 @@ export default () => {
                 }
             </TransitionGroup>
             <button onClick={() => setList([...list, "item"])}>list添加</button>
-            <p className="address"><a href="https://github.com/reactjs/react-transition-group" target="_blank">官方地址</a></p>
+            <p className="address"><a href="https://github.com/reactjs/react-transition-group" target="_blank" rel="noopener noreferrer">官方地址</a></p>
 
         </Fragment>
     )

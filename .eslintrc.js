@@ -58,6 +58,8 @@ module.exports = {
 
         "react-hooks/exhaustive-deps": 1,
         
-        "react/jsx-key": 1
+        "react/jsx-key": 1,
+
+        "no-case-declarations": 1
     }
 };

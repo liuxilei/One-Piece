@@ -4,8 +4,9 @@ const path = require('path');
 
 module.exports = merge(common, {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
     devServer: {
+        overlay: true,
         contentBase: path.join(__dirname, './release'), //跟目录
         open: true, //自动打开浏览器
         port: 6789, //端口

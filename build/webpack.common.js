@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: './src/index.js',
@@ -12,6 +11,12 @@ module.exports = {
     },
     optimization: {
         concatenateModules: false,
+    },
+    resolve: {
+        alias: {
+            '@': path.join(__dirname, '../src')
+        },
+        extensions: [".js", ".jsx"]
     },
     module: {
         rules: [
@@ -37,41 +42,40 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /(node_modules)/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: "less-loader", options: {
-                        strictMath: true,
-                        noIeCompat: true
-                    }
-                }]
-            },
-            {
-                test: /\.js|jsx?$/,
-                exclude: /(node_modules)/,
-                loader: 'babel-loader'
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            strictMath: true,
+                            noIeCompat: true
+                        }
+                    },
+                    "postcss-loader",
+                ]
             },
             {
                 test: /\.scss/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
+                    "sass-loader",
                     "postcss-loader",
-                    "sass-loader"
                 ]
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                use: ["babel-loader", "eslint-loader"]
             },
             {
                 test: /\.svg$/,
                 loader: 'svg-inline-loader'
-            },
-            //eslint配置
-            {
-                test: /\.js|jsx$/,
-                include: path.resolve(__dirname, 'src'),
-                exclude: /node_modules/,
-                loader: 'eslint-loader'
             },
         ]
     },
@@ -85,17 +89,5 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'server',
-            analyzerHost: '127.0.0.1',
-            analyzerPort: 8888,
-            reportFilename: 'report.html',
-            defaultSizes: 'parsed',
-            openAnalyzer: true,
-            generateStatsFile: false,
-            statsFilename: 'stats.json',
-            statsOptions: null,
-            logLevel: 'info'
-        })
     ]
 }

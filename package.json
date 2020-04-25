@@ -2,18 +2,20 @@
   "name": "demos",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --host 192.168.0.115 --open --config build/webpack.dev.js  --color --progress",
     "start": "npm run dev",
-    "build": "webpack --config build/webpack.prod.js --color --progress --max-old-space-size=8192",
+    "build": "webpack --config build/webpack.prod.js --color --progress",
     "commit": "git-cz"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^9.7.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
@@ -88,5 +90,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie <= 8",
+    "last 2 versions",
+    "> 1%"
+  ]
 }
