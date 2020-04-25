@@ -33,6 +33,12 @@ module.exports = {
                 ]
             },
             {
+                test: /\.ico$/,
+                use: [
+                    'url-loader'
+                ]
+            },
+            {
                 test: /\.css$/,
                 use: [
                     'style-loader',
@@ -83,7 +89,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './index.html',
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
