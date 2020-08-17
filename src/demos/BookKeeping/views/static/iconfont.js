@@ -18,6 +18,3 @@ export const GlobalBookKeepingIconfontStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `;
-
-
-

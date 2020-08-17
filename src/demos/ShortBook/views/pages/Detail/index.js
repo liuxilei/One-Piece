@@ -6,29 +6,35 @@ import { connect } from "react-redux";
 import { getDetailInfo } from "../../../actions";
 
 const Detail = memo((props) => {
-    const {
-        getDetailInfo,
-        detailInfo,
-    } = props;
-    console.log(props);
-    useEffect(() => {
-        getDetailInfo(props.match.params.id);
-    }, []);
+	const { getDetailInfo, detailInfo } = props;
+	console.log(props);
+	useEffect(() => {
+		getDetailInfo(props.match.params.id);
+	}, []);
 
-    return (
-        <DetailWrapper>
-            <Header>{detailInfo.get("title")}</Header>
-            <Content dangerouslySetInnerHTML={{__html: detailInfo.get("content")}} />
-        </DetailWrapper>
-    )
-})
-
-const mapStatetToProps = ({ ShortBook }) => ({
-    detailInfo: ShortBook.get("detailInfo")
+	return (
+		<DetailWrapper>
+			<Header>{detailInfo.get("title")}</Header>
+			<Content
+				dangerouslySetInnerHTML={{ __html: detailInfo.get("content") }}
+			/>
+		</DetailWrapper>
+	);
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(({
-    getDetailInfo
-}), dispatch);
+const mapStatetToProps = ({ ShortBook }) => ({
+	detailInfo: ShortBook.get("detailInfo"),
+});
 
-export default connect(mapStatetToProps, mapDispatchToProps)(withRouter(Detail));
+const mapDispatchToProps = (dispatch) =>
+	bindActionCreators(
+		{
+			getDetailInfo,
+		},
+		dispatch,
+	);
+
+export default connect(
+	mapStatetToProps,
+	mapDispatchToProps,
+)(withRouter(Detail));

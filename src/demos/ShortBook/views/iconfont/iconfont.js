@@ -10,8 +10,3 @@ export const GlobalIconfontStyle = createGlobalStyle`
     url('./iconfont.svg?t=1585281063569#iconfont') format('svg'); /* iOS 4.1- */
   }
 `;
-
-
-
-
-

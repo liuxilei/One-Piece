@@ -6,13 +6,13 @@ import { BookKeepingWrap } from "./style";
 import { GlobalBookKeepingIconfontStyle } from "./static/iconfont";
 
 export default () => {
-    return (
-        <BookKeepingWrap>
-            <GlobalBookKeepingIconfontStyle />
-            <HashRouter>
-                <Route path="/BookKeeping" exact component={BookKeeping} />
-                <Route path="/BookKeeping/edit" exact component={Edit} />
-            </HashRouter>
-        </BookKeepingWrap>
-    )
-}
+	return (
+		<BookKeepingWrap>
+			<GlobalBookKeepingIconfontStyle />
+			<HashRouter>
+				<Route path="/BookKeeping" exact component={BookKeeping} />
+				<Route path="/BookKeeping/edit" exact component={Edit} />
+			</HashRouter>
+		</BookKeepingWrap>
+	);
+};
