@@ -2,89 +2,157 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
 
+const titleLinks = [
+	{
+		url: "/g6try",
+		name: "g6的demo",
+		visible: true,
+	},
+	{
+		url: "/init",
+		name: "Init",
+		visible: false,
+		describe: "涉及ui泄露",
+	},
+	{
+		url: "/routingreference",
+		name: "路由传参",
+		visible: true,
+	},
+	{
+		url: "/counter",
+		name: "计数器",
+		visible: true,
+	},
+	{
+		url: "/refdemo",
+		name: "ref使用例子",
+		visible: true,
+	},
+	{
+		url: "/echartstest",
+		name: "echarts练习",
+		visible: true,
+	},
+	{
+		url: "/tabledemo",
+		name: "Table数据长度过长(bug重现)",
+		visible: true,
+	},
+	{
+		url: "/demo",
+		name: "常规demo测试",
+		visible: true,
+	},
+	{
+		url: "/motiondemo",
+		name: "动画尝试",
+		visible: true,
+	},
+	{
+		url: "/automenu",
+		name: "动态菜单",
+		visible: true,
+	},
+	{
+		url: "/reacthookdemo",
+		name: "React Hook尝试",
+		visible: true,
+	},
+	{
+		url: "/splitpanel",
+		name: "拆分面板组件",
+		visible: true,
+	},
+	{
+		url: "/meta",
+		name: "更改页面meta属性",
+		visible: true,
+	},
+	{
+		url: "/mousetracker",
+		name: "猫猫跟踪鼠标位置（render props实践）",
+		visible: true,
+	},
+	{
+		url: "/longtable",
+		name: "table demo",
+		visible: true,
+	},
+	{
+		url: "/reactdocument",
+		name: "react文档学习",
+		visible: true,
+	},
+	{
+		url: "/drag",
+		name: "拖动",
+		visible: true,
+	},
+	{
+		url: "/handsontableTry",
+		name: "handsontable尝试",
+		visible: true,
+	},
+	{
+		url: "/pureOrMemoTest",
+		name: "PureComponent和memo功能尝试",
+		visible: true,
+	},
+	{
+		url: "/dynamictab",
+		name: "动态多tab页面",
+		visible: true,
+	},
+	{
+		url: "/reactTransitionGroup",
+		name: "reactTransitionGroup使用示例",
+		visible: true,
+	},
+	{
+		url: "/todolist",
+		name: "todolist",
+		visible: true,
+	},
+	{
+		url: "/SvgAnimal",
+		name: "SvgAnimal",
+		visible: true,
+	},
+	{
+		url: "/ShortBook",
+		name: "ShortBook",
+		visible: true,
+	},
+	{
+		url: "/BookKeeping",
+		name: "记账",
+		visible: true,
+	},
+	{
+		url: "/ReactDnDStudy",
+		name: "ReactDnD学习",
+		visible: true,
+	},
+	{
+		url: "/TabsContext",
+		name: "右键tabs组件",
+		visible: true,
+	},
+];
 export default () => (
 	<div className="home">
 		<h1>demo-lists：</h1>
 		<ul>
-			<li>
-				<Link to="/g6try">g6的demo</Link>
-			</li>
-			{/* 涉及ui泄露 */}
-			{/* <li><Link to="/init">Init</Link></li> */}
-			<li>
-				<Link to="/routingreference">路由传参</Link>
-			</li>
-			<li>
-				<Link to="/counter">Counter</Link>
-			</li>
-			<li>
-				<Link to="/refdemo">ref使用例子</Link>
-			</li>
-			<li>
-				<Link to="/echartstest">echarts练习</Link>
-			</li>
-			<li>
-				<Link to="/tabledemo">Table数据长度过长</Link>
-			</li>
-			<li>
-				<Link to="/demo">常规demo测试</Link>
-			</li>
-			<li>
-				<Link to="/motiondemo">动画尝试</Link>
-			</li>
-			<li>
-				<Link to="/automenu">动态菜单</Link>
-			</li>
-			<li>
-				<Link to="/reacthookdemo">React Hook尝试</Link>
-			</li>
-			<li>
-				<Link to="/splitpanel">拆分面板组件</Link>
-			</li>
-			<li>
-				<Link to="/meta">更改页面meta属性</Link>
-			</li>
-			<li>
-				<Link to="/mousetracker">
-					猫猫跟踪鼠标位置（render props实践）
-				</Link>
-			</li>
-			<li>
-				<Link to="/longtable">table demo</Link>
-			</li>
-			<li>
-				<Link to="/reactdocument">react文档学习</Link>
-			</li>
-			<li>
-				<Link to="/drag">拖动</Link>
-			</li>
-			<li>
-				<Link to="/handsontableTry">handsontable尝试</Link>
-			</li>
-			<li>
-				<Link to="/pureOrMemoTest">PureComponent和memo功能尝试</Link>
-			</li>
-			<li>
-				<Link to="/dynamictab">动态多tab页面</Link>
-			</li>
-			<li>
-				<Link to="/reactTransitionGroup">
-					reactTransitionGroup使用示例
-				</Link>
-			</li>
-			<li>
-				<Link to="/todolist">todolist</Link>
-			</li>
-			<li>
-				<Link to="/SvgAnimal">SvgAnimal</Link>
-			</li>
-			<li>
-				<Link to="/ShortBook">ShortBook</Link>
-			</li>
-			<li>
-				<Link to="/BookKeeping">记账</Link>
-			</li>
-			{/* <li><Link to="/svganimation">SvgAnimation</Link></li> */}
+			{titleLinks.map((item) => {
+				if (item.visible) {
+					return (
+						<li key={item.url}>
+							<Link to={item.url}>{item.name}</Link>
+						</li>
+					);
+				}
+			})}
 		</ul>
 	</div>
 );

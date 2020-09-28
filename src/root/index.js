@@ -42,54 +42,217 @@ import { view as TodoList } from "../demos/TodoList";
 import { view as ShortBook } from "../demos/ShortBook";
 import { view as BookKeeping } from "../demos/BookKeeping";
 import SvgAnimal from "../demos/SvgAnimal";
+import ReactDnDStudy from "../demos/ReactDnDStudy";
+import TabsContext from "../demos/TabsContext";
+
+//路由配置项
+const RoutingConfigs = [
+	{
+		path: "/",
+		component: Home,
+		exact: true,
+	},
+	{
+		path: "/g6try",
+		component: G6Try,
+		exact: false,
+	},
+	{
+		path: "/g6demo",
+		component: G6Demo,
+		exact: false,
+	},
+	{
+		path: "/g6demoone",
+		component: G6DemoOne,
+		exact: false,
+	},
+	{
+		path: "/g6demo3",
+		component: G6DemoThree,
+		exact: false,
+	},
+	{
+		path: "/g6editordemo",
+		component: G6EditorDemo,
+		exact: false,
+	},
+	{
+		path: "/init",
+		component: Init,
+		exact: false,
+	},
+	{
+		path: "/routingreference",
+		component: RoutingReference,
+		exact: false,
+	},
+	{
+		path: "/counter",
+		component: Counter,
+		exact: false,
+	},
+	{
+		path: "/refdemo",
+		component: RefDemo,
+		exact: false,
+	},
+	{
+		path: "/echartstest",
+		component: EchartsTest,
+		exact: false,
+	},
+	{
+		path: "/tabledemo",
+		component: TableDemo,
+		exact: false,
+	},
+	{
+		path: "/demo",
+		component: Demo,
+		exact: false,
+	},
+	{
+		path: "/motiondemo",
+		component: MotionDemo,
+		exact: false,
+	},
+	{
+		path: "/automenu",
+		component: AutoMenu,
+		exact: false,
+	},
+	{
+		path: "/reacthookdemo",
+		component: ReactHookDemo,
+		exact: false,
+	},
+	{
+		path: "/splitpanel",
+		component: SplitPanel,
+		exact: false,
+	},
+	{
+		path: "/meta",
+		component: Meta,
+		exact: false,
+	},
+	{
+		path: "/mousetracker",
+		component: MouseTracker,
+		exact: false,
+	},
+	{
+		path: "/longtable",
+		component: LongTable,
+		exact: false,
+	},
+	{
+		path: "/reactdocument",
+		component: ReactDocument,
+		exact: false,
+	},
+	{
+		path: "/drag",
+		component: Drag,
+		exact: false,
+	},
+	{
+		path: "/joininstance",
+		component: JoinInstance,
+		exact: false,
+	},
+	{
+		path: "/handsontableTry",
+		component: HandsontableTry,
+		exact: false,
+	},
+	{
+		path: "/handsontable-demo1",
+		component: HandsontableDemo1,
+		exact: false,
+	},
+	{
+		path: "/handsontable-demo2",
+		component: HandsontableDemo2,
+		exact: false,
+	},
+	{
+		path: "/handsontable-demo3",
+		component: HandsontableDemo3,
+		exact: false,
+	},
+	{
+		path: "/pureOrMemoTest",
+		component: PureOrMemoTest,
+		exact: false,
+	},
+	{
+		path: "/relationalExpression",
+		component: RelationalExpression,
+		exact: false,
+	},
+	{
+		path: "/dynamictab",
+		component: DynamicTab,
+		exact: false,
+	},
+	{
+		path: "/reactTransitionGroup",
+		component: ReactTransitionGroup,
+		exact: false,
+	},
+	{
+		path: "/todolist",
+		component: TodoList,
+		exact: false,
+	},
+	{
+		path: "/SvgAnimal",
+		component: SvgAnimal,
+		exact: false,
+	},
+	{
+		path: "/ShortBook",
+		component: ShortBook,
+		exact: false,
+	},
+	{
+		path: "/BookKeeping",
+		component: BookKeeping,
+		exact: false,
+	},
+	{
+		path: "/ReactDnDStudy",
+		component: ReactDnDStudy,
+		exact: false,
+	},
+	{
+		path: "/TabsContext",
+		component: TabsContext,
+		exact: false,
+	},
+	{
+		path: "/404",
+		component: NotFind,
+		exact: false,
+	},
+];
 
 const Routes = () => (
 	<Router>
 		<Switch>
-			<Route path="/" exact component={Home} />
-			<Route path="/g6try" component={G6Try} />
-			<Route path="/g6demo" component={G6Demo} />
-			<Route path="/g6demoone" component={G6DemoOne} />
-			<Route path="/g6demo3" component={G6DemoThree} />
-			<Route path="/g6editordemo" component={G6EditorDemo} />
-			<Route path="/init" component={Init} />
-			<Route path="/routingreference" component={RoutingReference} />
-			<Route path="/counter" component={Counter} />
-			<Route path="/refdemo" component={RefDemo} />
-			<Route path="/echartstest" component={EchartsTest} />
-			<Route path="/tabledemo" component={TableDemo} />
-			<Route path="/demo" component={Demo} />
-			<Route path="/motiondemo" component={MotionDemo} />
-			<Route path="/automenu" component={AutoMenu} />
-			<Route path="/reacthookdemo" component={ReactHookDemo} />
-			<Route path="/splitpanel" component={SplitPanel} />
-			<Route path="/meta" component={Meta} />
-			<Route path="/mousetracker" component={MouseTracker} />
-			<Route path="/longtable" component={LongTable} />
-			<Route path="/reactdocument" component={ReactDocument} />
-			<Route path="/drag" component={Drag} />
-			<Route path="/joininstance" component={JoinInstance} />
-			<Route path="/handsontableTry" component={HandsontableTry} />
-			<Route path="/handsontable-demo1" component={HandsontableDemo1} />
-			<Route path="/handsontable-demo2" component={HandsontableDemo2} />
-			<Route path="/handsontable-demo3" component={HandsontableDemo3} />
-			<Route path="/pureOrMemoTest" component={PureOrMemoTest} />
-			<Route
-				path="/relationalExpression"
-				component={RelationalExpression}
-			/>
-			<Route path="/dynamictab" component={DynamicTab} />
-			<Route
-				path="/reactTransitionGroup"
-				component={ReactTransitionGroup}
-			/>
-			<Route path="/todolist" component={TodoList} />
-			<Route path="/SvgAnimal" component={SvgAnimal} />
-			<Route path="/ShortBook" component={ShortBook} />
-			<Route path="/BookKeeping" component={BookKeeping} />
-			<Route path="/404" component={NotFind} />
+			{RoutingConfigs.map((item) => {
+				return (
+					<Route
+						key={item.path}
+						path={item.path}
+						exact={item.exact}
+						component={item.component}
+					/>
+				);
+			})}
 			<Redirect from="*" to="/404" />
-			{/* <Route path="/svganimation" component={SvgAnimation} /> */}
 		</Switch>
 	</Router>
 );
