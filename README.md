@@ -16,7 +16,7 @@
 ##### Usage:
     http-server -p 1234(public目录下起一个1234端口服务)
 
-##### issue(待解决):
+##### todo:
 
 - public下api文件下的资源请求不到
 - favicon.icon 请求不到
