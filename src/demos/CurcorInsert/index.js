@@ -1,4 +1,6 @@
 import React, { Component, Fragment, createRef } from "react";
+import { Input } from "antd";
+const { TextArea } = Input;
 
 class CurcorInsert extends Component {
 	constructor(props) {
@@ -14,6 +16,7 @@ class CurcorInsert extends Component {
 	};
 
 	insertAtCursor(myField, myValue) {
+		console.log(myField);
 		//IE 浏览器
 		if (document.selection) {
 			myField.focus();
@@ -49,7 +52,12 @@ class CurcorInsert extends Component {
 	}
 
 	click = () => {
-		this.insertAtCursor(this.textarea.current, "test");
+		console.log(this.textarea.current.resizableTextArea.textArea);
+		// return;
+		this.insertAtCursor(
+			this.textarea.current.resizableTextArea.textArea,
+			"test",
+		);
 	};
 
 	render() {
@@ -58,11 +66,11 @@ class CurcorInsert extends Component {
 				<div onClick={this.click} style={{ cursor: "pointer" }}>
 					插入文字
 				</div>
-				<textarea
+				<TextArea
 					ref={this.textarea}
 					value={this.state.text}
 					onChange={(e) => this.textChange(e.target.value)}
-				></textarea>
+				/>
 			</Fragment>
 		);
 	}
