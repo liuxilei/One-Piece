@@ -44,6 +44,7 @@ import { view as BookKeeping } from "../demos/BookKeeping";
 import SvgAnimal from "../demos/SvgAnimal";
 import ReactDnDStudy from "../demos/ReactDnDStudy";
 import TabsContext from "../demos/TabsContext";
+import CurcorInsert from "../demos/CurcorInsert";
 
 //路由配置项
 const RoutingConfigs = [
@@ -230,6 +231,11 @@ const RoutingConfigs = [
 	{
 		path: "/TabsContext",
 		component: TabsContext,
+		exact: false,
+	},
+	{
+		path: "/CurcorInsert",
+		component: CurcorInsert,
 		exact: false,
 	},
 	{

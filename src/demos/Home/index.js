@@ -139,6 +139,11 @@ const titleLinks = [
 		name: "右键tabs组件",
 		visible: true,
 	},
+	{
+		url: "/CurcorInsert",
+		name: "光标插入",
+		visible: true,
+	},
 ];
 export default () => (
 	<div className="home">
