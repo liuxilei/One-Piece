@@ -45,6 +45,7 @@ import SvgAnimal from "../demos/SvgAnimal";
 import ReactDnDStudy from "../demos/ReactDnDStudy";
 import TabsContext from "../demos/TabsContext";
 import CurcorInsert from "../demos/CurcorInsert";
+import IframeMesaage from "../demos/IframeMesaage";
 
 //路由配置项
 const RoutingConfigs = [
@@ -236,6 +237,11 @@ const RoutingConfigs = [
 	{
 		path: "/CurcorInsert",
 		component: CurcorInsert,
+		exact: false,
+	},
+	{
+		path: "/IframeMesaage",
+		component: IframeMesaage,
 		exact: false,
 	},
 	{

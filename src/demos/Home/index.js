@@ -144,6 +144,11 @@ const titleLinks = [
 		name: "光标插入",
 		visible: true,
 	},
+	{
+		url: "/IframeMesaage",
+		name: "react与iframe通讯",
+		visible: true,
+	},
 ];
 export default () => (
 	<div className="home">

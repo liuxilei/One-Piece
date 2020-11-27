@@ -20,6 +20,48 @@ export const variableTypeDetection = {
 	isArray: isType("Array"),
 };
 
+/**
+ * 获取当前页面滚动位置
+ * @return eg:{x: 0, y: 200}
+ */
+export const getScrollPosition = (el = window) => ({
+	x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+	y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop,
+});
+
+/**
+ * 平滑的滚动到页面顶部
+ */
+export const scrollToTop = () => {
+	const c = document.documentElement.scrollTop || document.body.scrollTop;
+	if (c > 0) {
+		window.requestAnimationFrame(scrollToTop);
+		window.scrollTo(0, c - c / 8);
+	}
+};
+
+/**
+ * 判断当前元素在当前视图能够被看见
+ * @param {HTMLElement} el
+ */
+export const elementIsVisibleInViewport = (el) => {
+	const { top, left, bottom, right } = el.getBoundingClientRect();
+	const { innerHeight, innerWidth } = window;
+	return (
+		top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
+	);
+};
+
+/**
+ * 判断当前环境是手机和pc电脑环境
+ */
+export const detectDeviceType = () =>
+	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+		navigator.userAgent,
+	)
+		? "Mobile"
+		: "Desktop";
+
 const utils = {
 	/**
 	 * 对象copy(属性)
