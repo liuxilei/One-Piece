@@ -10,7 +10,7 @@ const Detail = memo((props) => {
 	console.log(props);
 	useEffect(() => {
 		getDetailInfo(props.match.params.id);
-	}, []);
+	}, [getDetailInfo, props.match.params.id]);
 
 	return (
 		<DetailWrapper>

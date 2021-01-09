@@ -27,7 +27,7 @@ const TodoList = (props) => {
 
 		//redux-saga的方式
 		getInitList();
-	}, []);
+	}, [getInitList]);
 
 	return (
 		<div style={{ marginTop: "10px", marginLeft: "10px" }}>

@@ -6,17 +6,17 @@ import createSagaMiddleware from "redux-saga";
 import {
 	reducer as counterReducer,
 	sagas as counterSaga,
-} from "./demos/Counter";
-import { reducer as expressReducer } from "./demos/G6Try/RelationalExpression";
+} from "@/pages/Counter";
+import { reducer as expressReducer } from "@/pages/G6Try/RelationalExpression";
 import {
 	reducer as todolistReducer,
 	sagas as todoSaga,
-} from "./demos/TodoList";
+} from "@/pages/TodoList";
 import {
 	reducer as shortBookReducer,
 	sagas as shortBookSaga,
-} from "./demos/ShortBook";
-import { reducer as BookKeepingReducer } from "./demos/BookKeeping";
+} from "@/pages/ShortBook";
+import { reducer as BookKeepingReducer } from "@/pages/BookKeeping";
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({

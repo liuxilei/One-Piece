@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import styles from "./index.less";
 
 class Drag extends Component {
 	state = {
@@ -41,29 +42,19 @@ class Drag extends Component {
 		return (
 			<Fragment>
 				<div
-					style={{
-						width: "50px",
-						height: "50px",
-						background: "#000",
-					}}
+					className={styles.dragStart}
 					draggable
-					onDragStart={(e) => this.dragStart(e)}
-					onDragEnd={(e) => this.dragEnd(e)}
+					onDragStart={this.dragStart}
+					onDragEnd={this.dragEnd}
 				></div>
 				<div
 					draggable
-					onDragStart={(e) => this.dragStart(e)}
-					onDragEnter={(e) => this.dragEnter(e)}
-					onDragLeave={(e) => this.dragLeave(e)}
-					onDragOver={(e) => this.dragOver(e)}
-					onDrag={(e) => this.drag(e)}
-					style={{
-						width: "50px",
-						height: "50px",
-						background: "red",
-						marginLeft: "200px",
-						marginTop: "50px",
-					}}
+					onDragStart={this.dragStart}
+					onDragEnter={this.dragEnter}
+					onDragLeave={this.dragLeave}
+					onDragOver={this.dragOver}
+					onDrag={this.drag}
+					className={styles.dragEnd}
 				></div>
 			</Fragment>
 		);
