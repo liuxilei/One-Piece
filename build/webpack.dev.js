@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = merge(common, {
 	mode: "development",
-	devtool: "cheap-module-eval-source-map",
+	devtool: "source-map",
 	devServer: {
 		compress: true, //为每个静态文件开启 gzip compression
 		overlay: true, //出现编译器错误或警告时，在浏览器中显示全屏覆盖。 如果只想显示编译器错误

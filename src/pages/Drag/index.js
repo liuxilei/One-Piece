@@ -1,64 +1,73 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, memo } from "react";
 import styles from "./index.less";
 
-class Drag extends Component {
-	state = {
-		dragStart: null,
-		dragEnd: null,
-	};
-	dragStart = (e) => {
-		this.setState({
-			dragStart: e.target,
-		});
-		//console.log("拖动前", e.target);
-	};
+//source: 拖动源
+//dragstart：刚开始拖动时触发
+//drag： 拖动源拖动中持续触发
+//dragend： 拖动停止
 
-	dragEnd = (e) => {
-		//console.log("拖动后", e.target);
-	};
-
-	dragEnter = (e) => {
-		e.preventDefault();
-		console.log(this.state.dragStart);
-		this.setState({
-			dragEnd: e.target,
-		});
-		//console.log("有人把东西拖动进入我这里了，但拖动还不一定结束，也可能继续拖动出我这里", e.target)
-	};
-
-	dragLeave = (e) => {
-		//console.log("有人把东西拖动我这里又拖出去了");
-	};
-
-	dragOver = (e) => {
-		//console.log("被拖动的元素还在放置目标的范围内移动时", e.target)
-	};
-
-	drag = (e) => {
-		//console.log("如果元素被放到放置目标中触发")
-	};
-
-	render() {
-		return (
-			<Fragment>
-				<div
-					className={styles.dragStart}
-					draggable
-					onDragStart={this.dragStart}
-					onDragEnd={this.dragEnd}
-				></div>
-				<div
-					draggable
-					onDragStart={this.dragStart}
-					onDragEnter={this.dragEnter}
-					onDragLeave={this.dragLeave}
-					onDragOver={this.dragOver}
-					onDrag={this.drag}
-					className={styles.dragEnd}
-				></div>
-			</Fragment>
+//target: 放置源
+//dragenter： 进入到放置源
+//dragover： 在放置源内持续拖动触发
+//dragleave或drop： dragleave拖动源进入放置源并离开时触发，drop:拖动结束，并最终进入到放置源内
+export default memo(() => {
+	const dragStart = (e) => {
+		e.dataTransfer.setData(
+			"text",
+			JSON.stringify({
+				message: "设置拖动时传递的数据",
+			}),
 		);
-	}
-}
+		console.log("刚开始拖动时触发");
+	};
 
-export default Drag;
+	const drag = (e) => {
+		//console.log("拖动源拖动中持续触发");
+	};
+
+	const dragEnd = (e) => {
+		console.log("拖动停止");
+	};
+
+	const dragEnter = (e) => {
+		//设置有效的放置源
+		e.preventDefault();
+		console.log("进入到放置源");
+	};
+
+	const dragOver = (e) => {
+		//设置有效的放置源
+		e.preventDefault();
+		//console.log("在放置源内持续拖动触发");
+	};
+
+	const dragLeave = (e) => {
+		console.log("拖动源进入放置源并离开时触发");
+	};
+
+	const drop = (e) => {
+		//防止打开默认到url
+		e.preventDefault();
+		console.log(JSON.parse(e.dataTransfer.getData("Text")));
+		console.log("拖动结束，并最终进入到放置源内");
+	};
+
+	return (
+		<Fragment>
+			<div
+				draggable
+				className={styles.dragStart}
+				onDragStart={dragStart}
+				onDragEnd={dragEnd}
+				onDrag={drag}
+			></div>
+			<div
+				className={styles.dragEnd}
+				onDragEnter={dragEnter}
+				onDragLeave={dragLeave}
+				onDragOver={dragOver}
+				onDrop={drop}
+			></div>
+		</Fragment>
+	);
+});

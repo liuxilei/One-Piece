@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import styles from "./index.less";
 
 const titleLinks = [
 	{
@@ -86,7 +86,7 @@ const titleLinks = [
 	},
 	{
 		url: "/drag",
-		name: "拖动",
+		name: "拖动相关api的示范",
 		visible: true,
 	},
 	{
@@ -151,7 +151,7 @@ const titleLinks = [
 	},
 ];
 export default () => (
-	<div className="home">
+	<div className={styles.home}>
 		<h1>demo-lists：</h1>
 		<ul>
 			{titleLinks.map((item) => {
