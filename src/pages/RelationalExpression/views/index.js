@@ -15,10 +15,10 @@ import {
 	canvasInsertFlowEditor,
 } from "../actions";
 import utils from "@/utils";
-import "./index.scss";
+import styles from "./index.less";
 
 let key = 0;
-class Demo extends Component {
+class Express extends Component {
 	clearData = () => {
 		this.props.dragEnter(false);
 	};
@@ -93,7 +93,7 @@ class Demo extends Component {
 	render() {
 		const { components, flowEditor } = this.props;
 		return (
-			<div className="demo-express">
+			<div className={styles.express}>
 				<div className="title">最终公式:</div>
 				<div className="content">
 					<div className="operate">
@@ -223,13 +223,7 @@ class Demo extends Component {
 // });
 
 const mapStateToProps = ({ Express }) => ({
-	components: Express.components,
-	flowEditor: Express.flowEditor,
-	currentTarget: Express.currentTarget,
-	isDragEnter: Express.isDragEnter,
-	replacedIndex: Express.replacedIndex,
-	insertIndex: Express.insertIndex,
-	flowDragIndex: Express.flowDragIndex,
+	...Express,
 });
 
 const mapDispatchToProps = (dispatch) =>
@@ -250,4 +244,4 @@ const mapDispatchToProps = (dispatch) =>
 		dispatch,
 	);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Demo);
+export default connect(mapStateToProps, mapDispatchToProps)(Express);

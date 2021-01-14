@@ -1,0 +1,83 @@
+.express {
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	:global {
+		.title {
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			text-align: left;
+			border: 1px solid #000;
+			text-indent: 10px;
+		}
+		.content {
+			width: 100%;
+			display: flex;
+			height: 700px;
+			.operate {
+				width: 200px;
+				border: 1px solid #000;
+				border-top: none;
+				height: 100%;
+	
+				div {
+					width: 100px;
+					height: 50px;
+					margin: 0 auto;
+					border: 1px solid #000;
+					text-align: center;
+					line-height: 50px;
+					margin-top: 40px;
+					cursor: pointer;
+					user-select: none;
+				}
+			}
+			.main {
+				padding: 30px 10px;
+				width: calc(100% - 200px);
+				border: 1px solid #000;
+				border-top: none;
+				height: 100%;
+				border-left: none;
+				background: url(../../../common/images/flow.png);
+				display: flex;
+				flex-wrap: wrap;
+				align-content: flex-start;
+				div {
+					padding: 0px 15px;
+					font-size: 18px;
+					font-weight: 500;
+					text-align: center;
+					height: 46px;
+					line-height: 46px;
+					color: #000;
+					border: 1px dotted #000;
+					cursor: pointer;
+					margin-top: 40px;
+					min-width: 60px;
+					width: 100px;
+					input {
+						width: 100%;
+						border: none;
+						padding: 0px 15px;
+						height: 46px;
+					}
+				}
+				.black {
+					width: 50px;
+					height: 46px;
+					border-color: transparent;
+					background: transparent;
+				}
+				.formula {
+					min-width: 40px;
+					width: auto;
+				}
+				.nopadding {
+					padding: 0px;
+				}
+			}
+		}
+	}
+}
