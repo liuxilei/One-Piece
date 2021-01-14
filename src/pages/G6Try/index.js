@@ -10,9 +10,6 @@ export default () => (
 				<Link to="/joininstance">join组件实例</Link>
 			</li>
 			<li>
-				<Link to="/relationalExpression">关系表达式</Link>
-			</li>
-			<li>
 				<Link to="/g6demo">demo1</Link>
 			</li>
 			<li>

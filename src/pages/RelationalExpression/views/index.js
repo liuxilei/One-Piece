@@ -14,7 +14,7 @@ import {
 	exchangeFlowEditor,
 	canvasInsertFlowEditor,
 } from "../actions";
-import utils from "../../../../utils";
+import utils from "@/utils";
 import "./index.scss";
 
 let key = 0;

@@ -7,7 +7,7 @@ import {
 	reducer as counterReducer,
 	sagas as counterSaga,
 } from "@/pages/Counter";
-import { reducer as expressReducer } from "@/pages/G6Try/RelationalExpression";
+import { reducer as expressReducer } from "@/pages/RelationalExpression";
 import {
 	reducer as todolistReducer,
 	sagas as todoSaga,

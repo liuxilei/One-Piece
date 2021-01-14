@@ -11,7 +11,7 @@ import {
 	EXPRESS_EXCHANGEFLOWEDITOR,
 	EXPRESS_CANVASINSERTFLOWEDITOR,
 } from "./actionTypes";
-import utils from "../../../utils";
+import utils from "@/utils";
 
 const defaultState = {
 	components: [
