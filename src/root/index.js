@@ -34,7 +34,7 @@ import HandsontableDemo3 from "@/pages/HandsontableTry/demo3/loadable";
 import { view as Init } from "@/pages/Init";
 import { view as Counter } from "@/pages/Counter";
 import PureOrMemoTest from "@/pages/PureOrMemoTest";
-import { view as RelationalExpression } from "@/pages/G6Try/RelationalExpression";
+import { view as RelationalExpression } from "@/pages/RelationalExpression";
 import NotFind from "@/pages/NotFind";
 import DynamicTab from "@/pages/DynamicTab";
 import ReactTransitionGroup from "@/pages/ReactTransitionGroup";
