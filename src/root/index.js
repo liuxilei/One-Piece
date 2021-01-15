@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import {
 	HashRouter as Router,
 	Switch,
@@ -46,6 +46,9 @@ import ReactDnDStudy from "@/pages/ReactDnDStudy";
 import TabsContext from "@/pages/TabsContext";
 import CurcorInsert from "@/pages/CurcorInsert";
 import IframeMesaage from "@/pages/IframeMesaage";
+import { ErrorBoundary, Loading } from "@/components";
+
+// const G6Demo = lazy(() => import("@/pages/G6Try/G6Demo/"));
 
 //路由配置项
 const RoutingConfigs = [
@@ -253,19 +256,21 @@ const RoutingConfigs = [
 
 const Routes = () => (
 	<Router>
-		<Switch>
-			{RoutingConfigs.map((item) => {
-				return (
-					<Route
-						key={item.path}
-						path={item.path}
-						exact={item.exact}
-						component={item.component}
-					/>
-				);
-			})}
-			<Redirect from="*" to="/404" />
-		</Switch>
+		<ErrorBoundary>
+			<Switch>
+				{RoutingConfigs.map((item) => {
+					return (
+						<Route
+							key={item.path}
+							path={item.path}
+							exact={item.exact}
+							component={item.component}
+						/>
+					);
+				})}
+				<Redirect from="*" to="/404" />
+			</Switch>
+		</ErrorBoundary>
 	</Router>
 );
 

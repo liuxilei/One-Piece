@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Modal, Button, Steps, Form, Input, Select, Row, Col } from "antd";
-import "./index.less";
+import styles from "./index.less";
 const Step = Steps.Step;
 const Option = Select.Option;
 
@@ -35,234 +35,224 @@ class Init extends Component {
 		};
 	}
 
+	formRef = React.createRef();
+
 	step = () => {
 		const { current } = this.state;
-		const { getFieldDecorator } = this.props.form;
 		return (
-			<Form {...formItemLayout} onSubmit={this.handleSubmit}>
+			<Form {...formItemLayout} ref={this.formRef}>
 				{current === 0 && (
 					<Fragment>
-						<Form.Item label="数据库类型">
-							{getFieldDecorator("xxx", {
-								rules: [
-									{
-										required: true,
-										message: "请选择数据库类型!",
-									},
-								],
-							})(
-								<Select
-									style={{
-										width: "100%",
-										fontSize: "12px",
-									}}
-									dropdownClassName="init-select"
-									placeholder="请选择数据库类型"
-								>
-									<Option value="jack">数据库一</Option>
-									<Option value="lucy">数据库二</Option>
-									<Option value="Yiminghe">数据库三</Option>
-								</Select>,
-							)}
-						</Form.Item>
-						<Form.Item label="主机">
-							{getFieldDecorator("a", {
-								rules: [
-									{
-										required: true,
-										message: "请输入!",
-									},
-								],
-							})(
-								<Input
-									placeholder="请输入"
-									style={{
-										fontSize: "12px",
-									}}
-								/>,
-							)}
-						</Form.Item>
-						<Form.Item label="端口">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入!",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
-						</Form.Item>
-						<Form.Item label="数据库名称">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入!",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
-						</Form.Item>
-						<Form.Item label="用户名">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
-						</Form.Item>
-						<Form.Item label="密码">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
-						</Form.Item>
-						<Row className="init-row">
-							<Col
-								push={8}
-								span={16}
-								type="flex"
-								justify="space-between"
+						<Form.Item
+							label="数据库类型"
+							name="xxx"
+							rules={[
+								{
+									required: true,
+									message: "请选择数据库类型!",
+								},
+							]}
+						>
+							<Select
+								style={{
+									width: "100%",
+									fontSize: "12px",
+								}}
+								dropdownClassName={styles.initSelect}
+								placeholder="请选择数据库类型"
 							>
-								<Col span={12} className="init-text">
-									<span className="iconfont icon-lianjie init-connect"></span>{" "}
-									测试连接
-								</Col>
-								<Col
-									span={12}
-									className="init-text"
-									align="right"
-								>
-									<span className="iconfont icon-chuangjian init-create"></span>{" "}
-									创建并初始化数据库
-								</Col>
+								<Option value="jack">数据库一</Option>
+								<Option value="lucy">数据库二</Option>
+								<Option value="Yiminghe">数据库三</Option>
+							</Select>
+						</Form.Item>
+						<Form.Item
+							name="a"
+							label="主机"
+							rules={[
+								{
+									required: true,
+									message: "请输入!",
+								},
+							]}
+						>
+							<Input
+								placeholder="请输入"
+								style={{
+									fontSize: "12px",
+								}}
+							/>
+						</Form.Item>
+						<Form.Item
+							name="email"
+							label="端口"
+							rules={[
+								{
+									required: true,
+									message: "请输入!",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
+						</Form.Item>
+						<Form.Item
+							name="databaseName"
+							label="数据库名称"
+							rules={[
+								{
+									required: true,
+									message: "请输入!",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
+						</Form.Item>
+						<Form.Item
+							name="username"
+							label="用户名"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
+						</Form.Item>
+						<Form.Item
+							name="password"
+							label="密码"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
+						</Form.Item>
+						<Row className="init-row" type="flex">
+							<Col span={12} className="init-text" push={8}>
+								<span className="iconfont icon-lianjie init-connect"></span>{" "}
+								测试连接
+							</Col>
+							<Col span={12} className="init-text" align="right">
+								<span className="iconfont icon-chuangjian init-create"></span>{" "}
+								创建并初始化数据库
 							</Col>
 						</Row>
 					</Fragment>
 				)}
 				{current === 1 && (
 					<Fragment>
-						<Form.Item label="组织名称">
-							{getFieldDecorator("eeee", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
+						<Form.Item
+							name="eeee"
+							label="组织名称"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
 						</Form.Item>
 					</Fragment>
 				)}
 				{current === 2 && (
 					<Fragment>
-						<Form.Item label="管理员账户">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
+						<Form.Item
+							name="account"
+							label="管理员账户"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
 						</Form.Item>
-						<Form.Item label="用户名">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
+						<Form.Item
+							name="username"
+							label="用户名"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
 						</Form.Item>
-						<Form.Item label="密码">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
+						<Form.Item
+							name="password"
+							label="密码"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
 						</Form.Item>
-						<Form.Item label="确认密码">
-							{getFieldDecorator("email", {
-								rules: [
-									{
-										required: true,
-										message: "请输入",
-									},
-								],
-							})(
-								<Input
-									style={{
-										fontSize: "12px",
-									}}
-									placeholder="请输入"
-								/>,
-							)}
+						<Form.Item
+							name="resure"
+							label="确认密码"
+							rules={[
+								{
+									required: true,
+									message: "请输入",
+								},
+							]}
+						>
+							<Input
+								style={{
+									fontSize: "12px",
+								}}
+								placeholder="请输入"
+							/>
 						</Form.Item>
 					</Fragment>
 				)}
@@ -276,24 +266,21 @@ class Init extends Component {
 		}));
 	};
 
-	handleSubmit = (e) => {
-		const {
-			form: { validateFields },
-		} = this.props;
-		e.preventDefault();
-		validateFields(["xxx", "a"], (err, values) => {
-			if (err) {
-				return;
-			} else {
+	handleSubmit = () => {
+		this.formRef.current
+			.validateFields(["xxx", "a"])
+			.then((values) => {
 				this.next();
-			}
-		});
+			})
+			.catch((errInfo) => {
+				console.error(errInfo);
+			});
 	};
 
 	render() {
 		const { current } = this.state;
 		return (
-			<div className="init">
+			<div className={styles.init}>
 				<div className="init-header">
 					<div className="init-title">
 						在进入大数据管理平台前，将引导您进行以下初始化设置
@@ -316,7 +303,7 @@ class Init extends Component {
 						minWidth: 800,
 					}}
 					width={800}
-					wrapClassName="init-modal"
+					wrapClassName={styles.initModal}
 					footer={
 						<Button type="primary" onClick={this.handleSubmit}>
 							{current !== 2 ? "下一步" : "完成"}
@@ -334,4 +321,4 @@ class Init extends Component {
 		);
 	}
 }
-export default Form.create({})(Init);
+export default Init;
