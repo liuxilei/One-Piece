@@ -1,5 +1,6 @@
 import React, { Component, Fragment, createRef } from "react";
 import G6 from "@antv/g6";
+import { withRouter } from "react-router";
 
 class G6Demo extends Component {
 	constructor(props) {
@@ -118,4 +119,4 @@ class G6Demo extends Component {
 	}
 }
 
-export default G6Demo;
+export default withRouter(G6Demo);
