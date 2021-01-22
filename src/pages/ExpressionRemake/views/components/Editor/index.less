@@ -1,0 +1,56 @@
+.editor {
+    height: 100%;
+    width: calc(100% - 200px);
+    background: url(~@/common/images/editor.png) repeat;
+    display: flex;
+    padding: 30px 35px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    :global {
+        div {
+            height: 32px;
+            line-height: 27px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #666666;
+            text-align: center;
+            background: #ffffff;
+            border: 1px solid #e4e6e8;
+            border-radius: 4px 2px 2px 4px;
+            
+            margin-top: 40px;
+        }
+
+        .assist {
+            width: 22px;
+            margin-left: 4px;
+            margin-right: 4px;
+            border-color: transparent;
+            background: transparent;
+        }
+
+        .text {
+            width: 60px;
+            cursor: pointer;
+            background: #f1efef;
+        }
+
+        .index {
+            width: 150px;
+            border-left: 4px solid #387ee8;
+            cursor: pointer;
+            position: relative;
+        }
+        .index.selected {
+            background: #d7e5fa;
+        }
+        .text.selected {
+            background: #ddd;
+        }
+    }
+}

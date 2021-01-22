@@ -1,67 +1,3 @@
-/**
- * 检测变量类型
- * @param type
- */
-function isType(type) {
-	return function (value) {
-		return Object.prototype.toString.call(value) === `[object ${type}]`;
-	};
-}
-
-export const variableTypeDetection = {
-	isNumber: isType("Number"),
-	isString: isType("String"),
-	isBoolean: isType("Boolean"),
-	isNull: isType("Null"),
-	isUndefined: isType("Undefined"),
-	isSymbol: isType("Symbol"),
-	isFunction: isType("Function"),
-	isObject: isType("Object"),
-	isArray: isType("Array"),
-};
-
-/**
- * 获取当前页面滚动位置
- * @return eg:{x: 0, y: 200}
- */
-export const getScrollPosition = (el = window) => ({
-	x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
-	y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop,
-});
-
-/**
- * 平滑的滚动到页面顶部
- */
-export const scrollToTop = () => {
-	const c = document.documentElement.scrollTop || document.body.scrollTop;
-	if (c > 0) {
-		window.requestAnimationFrame(scrollToTop);
-		window.scrollTo(0, c - c / 8);
-	}
-};
-
-/**
- * 判断当前元素在当前视图能够被看见
- * @param {HTMLElement} el
- */
-export const elementIsVisibleInViewport = (el) => {
-	const { top, left, bottom, right } = el.getBoundingClientRect();
-	const { innerHeight, innerWidth } = window;
-	return (
-		top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
-	);
-};
-
-/**
- * 判断当前环境是手机和pc电脑环境
- */
-export const detectDeviceType = () =>
-	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-		navigator.userAgent,
-	)
-		? "Mobile"
-		: "Desktop";
-
 const utils = {
 	/**
 	 * 对象copy(属性)
@@ -279,6 +215,89 @@ const utils = {
 			}
 		}
 		return fmt;
+	},
+	/**
+	 * 获取当前页面滚动位置
+	 * @return eg:{x: 0, y: 200}
+	 */
+	getScrollPosition: (el = window) => ({
+		x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+		y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop,
+	}),
+	/**
+	 * 平滑的滚动到页面顶部
+	 */
+	scrollToTop: () => {
+		const c = document.documentElement.scrollTop || document.body.scrollTop;
+		if (c > 0) {
+			window.requestAnimationFrame(scrollToTop);
+			window.scrollTo(0, c - c / 8);
+		}
+	},
+	/**
+	 * 判断当前元素在当前视图能够被看见
+	 * @param {HTMLElement} el
+	 */
+	elementIsVisibleInViewport: (el) => {
+		const { top, left, bottom, right } = el.getBoundingClientRect();
+		const { innerHeight, innerWidth } = window;
+		return (
+			top >= 0 &&
+			left >= 0 &&
+			bottom <= innerHeight &&
+			right <= innerWidth
+		);
+	},
+
+	/**
+	 * 判断当前环境是手机和pc电脑环境
+	 */
+	detectDeviceType: () =>
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent,
+		)
+			? "Mobile"
+			: "Desktop",
+	/**
+	 * 复制文本到剪切板
+	 */
+	copyToClipboard: (data) => {
+		const _tempInput = document.createElement("input");
+		_tempInput.value = data.value;
+		document.body.appendChild(_tempInput);
+		_tempInput.select();
+		document.execCommand("Copy");
+		document.body.removeChild(_tempInput);
+	},
+	/**
+	 * 通用唯一标识符
+	 * UUID就是Universal Unique IDentifier的缩写，它是一个128位，16字节的值，并确保在时间和空间上唯一。
+	 * 它是把硬件地址、时间以及随机数结合在一起，它保证对在同一时空中的所有机器都是唯一的
+	 */
+	uuid: () => {
+		let s = [];
+		let hexDigits = "0123456789abcdef";
+		for (let i = 0; i < 36; i++) {
+			s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+		}
+		s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+		s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+		s[8] = s[13] = s[18] = s[23] = "-";
+		const uuid = s.join("");
+		return uuid;
+	},
+	/**
+	 * 生成guid（全局唯一标识符）
+	 */
+	guid: () => {
+		return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+			/[xy]/g,
+			function (c) {
+				let r = (Math.random() * 16) | 0,
+					v = c == "x" ? r : (r & 0x3) | 0x8;
+				return v.toString(16);
+			},
+		);
 	},
 };
 

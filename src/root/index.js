@@ -35,6 +35,7 @@ import { view as Init } from "@/pages/Init";
 import { view as Counter } from "@/pages/Counter";
 import PureOrMemoTest from "@/pages/PureOrMemoTest";
 import { view as RelationalExpression } from "@/pages/RelationalExpression";
+import { view as ExpressionRemake } from "@/pages/ExpressionRemake";
 import NotFind from "@/pages/NotFind";
 import DynamicTab from "@/pages/DynamicTab";
 import ReactTransitionGroup from "@/pages/ReactTransitionGroup";
@@ -198,6 +199,11 @@ const RoutingConfigs = [
 		exact: false,
 	},
 	{
+		path: "/ExpressionRemake",
+		component: ExpressionRemake,
+		exact: false,
+	},
+	{
 		path: "/dynamictab",
 		component: DynamicTab,
 		exact: false,
@@ -256,21 +262,19 @@ const RoutingConfigs = [
 
 const Routes = () => (
 	<Router>
-		<ErrorBoundary>
-			<Switch>
-				{RoutingConfigs.map((item) => {
-					return (
-						<Route
-							key={item.path}
-							path={item.path}
-							exact={item.exact}
-							component={item.component}
-						/>
-					);
-				})}
-				<Redirect from="*" to="/404" />
-			</Switch>
-		</ErrorBoundary>
+		<Switch>
+			{RoutingConfigs.map((item) => {
+				return (
+					<Route
+						key={item.path}
+						path={item.path}
+						exact={item.exact}
+						component={item.component}
+					/>
+				);
+			})}
+			<Redirect from="*" to="/404" />
+		</Switch>
 	</Router>
 );
 

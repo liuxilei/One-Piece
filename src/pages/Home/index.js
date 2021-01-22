@@ -14,6 +14,11 @@ const titleLinks = [
 		visible: true,
 	},
 	{
+		url: "/ExpressionRemake",
+		name: "表达式重置版（react-dnd）",
+		visible: true,
+	},
+	{
 		url: "/init",
 		name: "Init",
 		visible: false,

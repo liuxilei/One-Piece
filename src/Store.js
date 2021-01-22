@@ -17,6 +17,7 @@ import {
 	sagas as shortBookSaga,
 } from "@/pages/ShortBook";
 import { reducer as BookKeepingReducer } from "@/pages/BookKeeping";
+import { reducer as Express2Reducer } from "@/pages/ExpressionRemake";
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
@@ -25,6 +26,7 @@ const reducer = combineReducers({
 	Todolist: todolistReducer,
 	ShortBook: shortBookReducer,
 	BookKeeping: BookKeepingReducer,
+	Express2: Express2Reducer,
 });
 
 const win = window;

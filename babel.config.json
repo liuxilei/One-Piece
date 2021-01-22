@@ -9,7 +9,7 @@
                         "ie >= 11"
                     ]
                 },
-                "useBuiltIns": true
+                "useBuiltIns": false
             }
         ],
         "@babel/react"
