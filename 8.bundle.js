@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{1704:function(e,a,o){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var t,n=o(0),d=(t=n)&&t.__esModule?t:{default:t};o(1864);var l=o(1865);var r=[["","Tesla","Mercedes","Toyota","Volvo"],["2019",10,11,12,13],["2020",20,11,14,13],["2021",30,15,12,13]];a.default=function(){return d.default.createElement(l.HotTable,{data:r,colHeaders:!0,rowHeaders:!0,width:"600",height:"300",licenseKey:"non-commercial-and-evaluation"})}}}]);
-//# sourceMappingURL=8.bundle.js.map
