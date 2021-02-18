@@ -54,10 +54,11 @@ const TitleWrap = ({ titleInfo, addIndex, replaceIndex }) => {
 	const [, drag] = useDrag({
 		item: { name: titleInfo.title, type: "index", key: titleInfo.key },
 		end: (item, monitor) => {
-			console.log(monitor);
+			console.log(item, monitor);
 			const dropResult = monitor.getDropResult();
 			if (item && dropResult) {
 				//单纯的移入编辑器
+				console.log(dropResult);
 				if (dropResult.type === "Editor") {
 					addIndex(titleInfo);
 					//替换掉已存在的指标

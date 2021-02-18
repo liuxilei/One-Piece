@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useDrop } from "react-dnd";
-import classnames from "classnames";
+import cls from "classnames";
 import styles from "./index.less";
 
 const DropIndex = ({ elementInfo, setSelected, selected }) => {
@@ -11,7 +11,7 @@ const DropIndex = ({ elementInfo, setSelected, selected }) => {
 	});
 	return (
 		<div
-			className={classnames({
+			className={cls({
 				[`${elementInfo.type}`]: true,
 				selected: selected.id === elementInfo.id,
 			})}

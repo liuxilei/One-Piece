@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.less";
+import BgChange from "@/pages/BgChange";
 
 const titleLinks = [
 	{
@@ -163,6 +164,7 @@ const titleLinks = [
 export default () => (
 	<div className={styles.home}>
 		<h1>demo-lists：</h1>
+		<BgChange />
 		<ul>
 			{titleLinks.map((item) => {
 				if (item.visible) {
