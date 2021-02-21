@@ -1,22 +1,30 @@
-import React from "react";
+import React, { Component, ErrorInfo, ReactNode } from "react";
 import { Result } from "antd";
 
-export default class ErrorBoundary extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { hasError: false };
+type Props = {
+	children: ReactNode
+}
+
+type State = {
+	hasError: boolean
+}
+
+
+class ErrorBoundary extends Component<Props, State> {
+	state: State = {
+		hasError: false
 	}
 
-	static getDerivedStateFromError(error) {
+	static getDerivedStateFromError(_: Error): State {
 		// 更新 state 使下一次渲染能够显示降级后的 UI
 		return { hasError: true };
 	}
 
-	componentDidCatch(error, errorInfo) {
+	componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
 		console.error(error, errorInfo);
 	}
 
-	render() {
+	render(): ReactNode {
 		if (this.state.hasError) {
 			// 你可以自定义降级后的 UI 并渲染
 			return (
@@ -31,3 +39,5 @@ export default class ErrorBoundary extends React.Component {
 		return this.props.children;
 	}
 }
+
+export default ErrorBoundary;

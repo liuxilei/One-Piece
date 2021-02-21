@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest, delay } from "redux-saga/effects";
-import { COUNTER_ASYNCINCREMENT } from "./actionTypes";
+import { COUNTER_ASYNCINCREMENT } from "./types";
 import { increment } from "./actions";
 
 function* asyncIncrement() {

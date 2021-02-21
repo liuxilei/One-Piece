@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackBar = require("webpackbar");
 
 module.exports = {
+	entry: "./src/index.tsx",
 	output: {
 		filename: "bundle.js",
 	},
@@ -12,10 +13,15 @@ module.exports = {
 		alias: {
 			"@": path.join(__dirname, "../src"),
 		},
-		extensions: [".js", ".jsx"],
+		extensions: [".ts", ".tsx", ".jsx", ".js"],
 	},
 	module: {
 		rules: [
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
 			{
 				test: /\.(png|jpg|gif)$/i,
 				use: [

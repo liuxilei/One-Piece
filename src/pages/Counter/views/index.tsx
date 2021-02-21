@@ -1,10 +1,19 @@
-import React, { memo } from "react";
+import React, { memo, FC } from "react";
 import { increment, decrement, asyncIncrement } from "../actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import "./index.scss";
+import styles from "./index.scss";
+import { CounterState } from "../types";
 
-function Counter(props) {
+type Props = {
+	onIncrement: () => void;
+	asyncIncrement: () => void;
+	onDecrement: () => any;
+	value: number;
+	children: React.ReactNode;
+}
+
+const Counter: FC<Props> = (props) => {
 	const oddIncrement = () => {
 		if (props.value % 2 === 0) {
 			props.onIncrement();
@@ -17,7 +26,7 @@ function Counter(props) {
 
 	const { value, onIncrement, onDecrement } = props;
 	return (
-		<div className="content">
+		<div className={styles.content}>
 			<div className="special">
 				<div className="operate" onClick={oddIncrement}>
 					Increment if odd
@@ -39,12 +48,8 @@ function Counter(props) {
 	);
 }
 
-// const mapStateToProps = (state) => ({
-//     value: state.getIn(["Counter", "value"])
-// });
-
-const mapStateToProps = ({ Counter }) => ({
-	value: Counter.get("value"),
+const mapStateToProps = ({ Counter: CounterState  }) => ({
+	value: Counter.value
 });
 
 const mapDispatchToProps = (dispatch) =>
