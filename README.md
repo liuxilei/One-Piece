@@ -1,16 +1,16 @@
-### demo
+## DEMOS
 
 > 实践用 demo
 
 基于 webpack 搭建 react 开发环境，后续可能单独弄成`cli`
 
-### Preview
+## Preview
 
 在线预览：https://liuxilei.github.io/demos/#/
 
 源代码： https://github.com/liuxilei/demos
 
-### Technology
+## Technology
 
 主要用到的技术：
 
@@ -26,7 +26,7 @@
 -   G6: 图可视化引擎
 -   handsontable: 电子表格功能和外观的数据网格
 
-### Start
+## Start
 
 ```bash
 # clone with Git Bash
@@ -48,7 +48,7 @@ $ npm run build
 $ npm run test
 ```
 
-### others
+## others
 
 ```bash
 # 本地 mock 数据
@@ -61,7 +61,7 @@ $ webpack devServer配置代理 /api/*
 $ http-server -p 1234
 ```
 
-##### TODO:
+## TODOS:
 
 -   public 下 api 文件下的资源请求不到
 -   favicon.icon 请求不到
@@ -69,7 +69,7 @@ $ http-server -p 1234
 -   添加测试用例
 -   全面转换为 typescript
 
-### License
+## License
 
 [MIT](https://github.com/liuxilei/demos/blob/master/LICENSE)
 
