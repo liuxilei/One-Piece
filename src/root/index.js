@@ -47,7 +47,6 @@ import ReactDnDStudy from "@/pages/ReactDnDStudy";
 import TabsContext from "@/pages/TabsContext";
 import CurcorInsert from "@/pages/CurcorInsert";
 import IframeMesaage from "@/pages/IframeMesaage";
-import { ErrorBoundary, Loading } from "@/components";
 
 // const G6Demo = lazy(() => import("@/pages/G6Try/G6Demo/"));
 

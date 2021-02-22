@@ -5,7 +5,6 @@ import createSagaMiddleware from "redux-saga";
 // import { combineReducers } from "redux-immutable";
 import rootReducer from './root-reducer';
 import {
-	reducer as counterReducer,
 	sagas as counterSaga,
 } from "@/pages/Counter";
 import { isDev } from "@/utils";
@@ -31,7 +30,6 @@ const sagaMiddleware = createSagaMiddleware();
 // 	Express2: Express2Reducer,
 // });
 
-const win = window;
 let middlewares = [];
 middlewares.push(sagaMiddleware);
 middlewares.push(thunk);
@@ -44,8 +42,7 @@ const storeEnhancers = compose(
 	applyMiddleware(...middlewares),
 	(window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
- 
-// rehydrate state on app start
+
 const initialState = {};
 
 const store = createStore(rootReducer, initialState, storeEnhancers);
