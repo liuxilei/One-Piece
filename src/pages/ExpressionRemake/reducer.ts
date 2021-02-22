@@ -2,16 +2,21 @@ import {
 	EXPRESS2_SETSELECTED,
 	EXPRESS2_SETELEMENTS,
 	EXPRESS2_REPLACEINDEX,
-} from "./actionTypes";
+	State,
+	ExpressionRemakeAction,
+} from "./types";
 import utils from "@/utils";
-import { actions } from "../BookKeeping";
 
-const defaultState = {
+const defaultState: State = {
 	selected: {},
 	elements: [],
 };
 
-export default (state = defaultState, action) => {
+interface hasKeyObject {
+	key: any
+}
+
+export default (state = defaultState, action: ExpressionRemakeAction) => {
 	switch (action.type) {
 		case EXPRESS2_SETSELECTED: {
 			return {
@@ -26,11 +31,11 @@ export default (state = defaultState, action) => {
 			};
 		}
 		case EXPRESS2_REPLACEINDEX: {
-			const copyElements = utils.objCopy(state.elements);
+			const copyElements: Array<hasKeyObject> = utils.objCopy(state.elements);
 			const index = copyElements.findIndex(
-				(item) => item.key === action.newElement.key,
+				(item) => item.key === (action.newElement as hasKeyObject).key,
 			);
-			copyElements.splice(index, 1, action.newElement);
+			copyElements.splice(index, 1, (action.newElement as hasKeyObject));
 			return {
 				...state,
 				elements: copyElements,

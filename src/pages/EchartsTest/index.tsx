@@ -2,11 +2,8 @@ import React, { Component, createRef, Fragment } from "react";
 import echarts from "echarts";
 
 class EchartsTest extends Component {
-	constructor(props) {
-		super(props);
-		this.echartDom = createRef();
-		this.myChart = null;
-	}
+	echartDom = createRef<HTMLDivElement>();
+	myChart: any = null;
 
 	componentDidMount() {
 		this.myChart = echarts.init(this.echartDom.current);
@@ -49,8 +46,8 @@ class EchartsTest extends Component {
 				//type: 'plain',
 				bottom: 0,
 				left: "center",
-				formatter: function (name) {
-					return echarts.format.truncateText(
+				formatter: function (name: string) {
+					return (echarts as any).format.truncateText(
 						name,
 						20,
 						"14px Microsoft Yahei",

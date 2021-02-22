@@ -1,10 +1,12 @@
+import { InputHTMLAttributes } from "react";
+
 export const isDev = process.env.NODE_ENV === "development";
 
 const utils = {
 	/**
 	 * 对象copy(属性)
 	 */
-	objCopy: (source) => {
+	objCopy: (source: any) => {
 		if (typeof source == "object") {
 			return JSON.parse(JSON.stringify(source));
 		} else {
@@ -14,8 +16,8 @@ const utils = {
 	/**
 	 * 对象copy(可拷贝方法))
 	 */
-	deepClone: (source) => {
-		const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+	deepClone: (source: any) => {
+		const targetObj: any = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
 		for (let keys in source) {
 			// 遍历目标
 			if (source.hasOwnProperty(keys)) {
@@ -35,25 +37,25 @@ const utils = {
 	/**
 	 * 判断是否是手机号
 	 */
-	isPhone: (s) => {
+	isPhone: (s: string) => {
 		return /^[1][3,4,5,6,7,8][0-9]{9}$/.test(s);
 	},
 	/**
 	 * 身份证号验证
 	 */
-	isIdentity: (s) => {
+	isIdentity: (s: string) => {
 		return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(s);
 	},
 	/**
 	 * 数字验证
 	 */
-	isNumber: (number) => {
+	isNumber: (number: any) => {
 		return Object.prototype.toString.call(number) === "[object Number]";
 	},
 	/**
 	 * 特殊符号检测
 	 */
-	isSpecial: (str) => {
+	isSpecial: (str: string) => {
 		var patrn = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]/im;
 		var pattern = /^\s+|\s+$/g;
 		return patrn.test(str) || pattern.test(str);
@@ -61,20 +63,20 @@ const utils = {
 	/**
 	 * 字母检测
 	 */
-	isLetter: (str) => {
+	isLetter: (str: string) => {
 		return /[a-zA-Z]/.test(str);
 	},
 	/**
 	 * 电话处理
 	 */
-	phone2Pwd: (phone) => {
+	phone2Pwd: (phone: any) => {
 		phone = phone + "" || "";
 		return phone.substring(0, 3) + "****" + phone.substring(7, 11);
 	},
 	/**
 	 * 时间转换秒数
 	 */
-	formatTime: (timeTemp) => {
+	formatTime: (timeTemp: number) => {
 		let m = Math.floor(timeTemp / 60);
 		let s = Math.floor(timeTemp % 60);
 		return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
@@ -83,7 +85,7 @@ const utils = {
 	/**
 	 * 时间戳转时间格式
 	 */
-	getLocalTime: (nS) => {
+	getLocalTime: (nS: any) => {
 		return new Date(parseInt(nS) * 1000)
 			.toLocaleString("chinese", { hour12: false })
 			.replace(/\//g, "-");
@@ -92,41 +94,14 @@ const utils = {
 	/**
 	 * 数组去重
 	 */
-	unique: (arr) => {
+	unique: (arr: number[]) => {
 		return Array.from(new Set(arr));
 	},
 
 	/**
-	 * 小数点舍值默认2位
-	 */
-	toFixed: (num, number) => {
-		if (
-			(num && typeof num == "number") ||
-			(num && typeof num == "string" && !isNaN(num))
-		) {
-			let dot = "";
-			let cnum = num + "";
-			if (
-				cnum.substr(cnum.length - 1) == "." &&
-				cnum.split(".").length - 1 <= 1
-			) {
-				//允许最后一位是点
-				dot = ".";
-			}
-			if (!dot) {
-				//如果不存在点,则归为0, 不拼接字符串
-				dot = 0;
-			}
-			num = parseFloat(num);
-			return num.toFixed(number ? number : 2) + dot;
-		} else {
-			return 0;
-		}
-	},
-	/**
 	 * 对象转get请求数据
 	 */
-	obj2GetData: (obj) => {
+	obj2GetData: (obj: any) => {
 		let str = "";
 		for (let key in obj) {
 			str += (str ? "&" : "") + key + "=" + obj[key];
@@ -137,7 +112,7 @@ const utils = {
 	/**
 	 * 随机数生成数据
 	 */
-	random: (number, fan) => {
+	random: (number: number, fan: number) => {
 		let m = "";
 		fan = fan || 10;
 		for (let i = 0; i < number; i++) {
@@ -149,7 +124,7 @@ const utils = {
 	/**
 	 * 判断是否存在
 	 */
-	isExistent: (id, val) => {
+	isExistent: (id: any, val?: any) => {
 		if (!val) {
 			val = null;
 		}
@@ -174,57 +149,26 @@ const utils = {
 	/**
 	 * 是否是数组
 	 */
-	isArray: (o) => {
+	isArray: (o: any) => {
 		return Object.prototype.toString.call(o) === "[object Array]";
 	},
 
 	/**
 	 * 去除空格
 	 */
-	removeSpace: (s) => {
+	removeSpace: (s: string) => {
 		if (s) {
 			s = s.replace(/\s|\t|\r|\n/g, "");
 		}
 		return s;
 	},
 	/**
-	 * 时间格式
-	 */
-	format: (fmt) => {
-		let o = {
-			"M+": this.getMonth() + 1, //月份
-			"d+": this.getDate(), //日
-			"h+": this.getHours(), //小时
-			"m+": this.getMinutes(), //分
-			"s+": this.getSeconds(), //秒
-			"q+": Math.floor((this.getMonth() + 3) / 3), //季度
-			S: this.getMilliseconds(), //毫秒
-		};
-		if (/(y+)/.test(fmt)) {
-			fmt = fmt.replace(
-				RegExp.$1,
-				(this.getFullYear() + "").substr(4 - RegExp.$1.length),
-			);
-		}
-		for (let k in o) {
-			if (new RegExp("(" + k + ")").test(fmt)) {
-				fmt = fmt.replace(
-					RegExp.$1,
-					RegExp.$1.length == 1
-						? o[k]
-						: ("00" + o[k]).substr(("" + o[k]).length),
-				);
-			}
-		}
-		return fmt;
-	},
-	/**
 	 * 获取当前页面滚动位置
 	 * @return eg:{x: 0, y: 200}
 	 */
-	getScrollPosition: (el = window) => ({
-		x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
-		y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop,
+	getScrollPosition: () => ({
+		x: window.pageXOffset !== undefined ? window.pageXOffset : (window as any).scrollLeft,
+		y: window.pageYOffset !== undefined ? window.pageYOffset : (window as any).scrollTop,
 	}),
 	/**
 	 * 平滑的滚动到页面顶部
@@ -232,7 +176,7 @@ const utils = {
 	scrollToTop: () => {
 		const c = document.documentElement.scrollTop || document.body.scrollTop;
 		if (c > 0) {
-			window.requestAnimationFrame(scrollToTop);
+			window.requestAnimationFrame(utils.scrollToTop);
 			window.scrollTo(0, c - c / 8);
 		}
 	},
@@ -240,7 +184,7 @@ const utils = {
 	 * 判断当前元素在当前视图能够被看见
 	 * @param {HTMLElement} el
 	 */
-	elementIsVisibleInViewport: (el) => {
+	elementIsVisibleInViewport: (el: HTMLElement) => {
 		const { top, left, bottom, right } = el.getBoundingClientRect();
 		const { innerHeight, innerWidth } = window;
 		return (
@@ -263,7 +207,7 @@ const utils = {
 	/**
 	 * 复制文本到剪切板
 	 */
-	copyToClipboard: (data) => {
+	copyToClipboard: (data: HTMLInputElement) => {
 		const _tempInput = document.createElement("input");
 		_tempInput.value = data.value;
 		document.body.appendChild(_tempInput);
@@ -283,7 +227,7 @@ const utils = {
 			s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
 		}
 		s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-		s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+		s[19] = hexDigits.substr(((s as any)[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
 		s[8] = s[13] = s[18] = s[23] = "-";
 		const uuid = s.join("");
 		return uuid;

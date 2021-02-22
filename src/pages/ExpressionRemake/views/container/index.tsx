@@ -7,12 +7,22 @@ import { connect } from "react-redux";
 import { setSelected, setElements, replaceIndex } from "../../actions";
 import utils from "@/utils";
 import styles from "./index.less";
+import { Dispatch } from 'redux';
+import { AppState } from "@/store";
 
-@connect(
-	({ Express2 }) => ({
+type Props = {
+	selected: Object;
+	setSelected: () => void;
+	elements: Object[];
+	replaceIndex: number;
+	setElements: () => void
+}
+
+@(connect(
+	({ Express2 }: AppState) => ({
 		...Express2,
 	}),
-	(dispatch) =>
+	(dispatch: Dispatch) =>
 		bindActionCreators(
 			{
 				setSelected,
@@ -21,12 +31,12 @@ import styles from "./index.less";
 			},
 			dispatch,
 		),
-)
-class ExpressionRemake extends PureComponent {
-	handleAddIndex = (element) => {
+) as any)
+class ExpressionRemake extends PureComponent<Props> {
+	handleAddIndex = (element: Object) => {
 		const { elements } = this.props;
 		const copyElement = utils.objCopy(element);
-		const copyElements = utils.objCopy(elements);
+		const copyElements: Object[] = utils.objCopy(elements);
 		copyElement.id = utils.guid();
 		copyElements.push(copyElement);
 		this.props.setElements(copyElements);

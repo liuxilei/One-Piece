@@ -18,7 +18,7 @@ import { isDev } from "@/utils";
 // 	sagas as shortBookSaga,
 // } from "@/pages/ShortBook";
 // import { reducer as BookKeepingReducer } from "@/pages/BookKeeping";
-// import { reducer as Express2Reducer } from "@/pages/ExpressionRemake";
+
 
 const sagaMiddleware = createSagaMiddleware();
 // const reducer = combineReducers({
@@ -27,7 +27,7 @@ const sagaMiddleware = createSagaMiddleware();
 // 	Todolist: todolistReducer,
 // 	ShortBook: shortBookReducer,
 // 	BookKeeping: BookKeepingReducer,
-// 	Express2: Express2Reducer,
+
 // });
 
 let middlewares = [];

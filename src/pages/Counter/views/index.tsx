@@ -2,7 +2,7 @@ import React, { memo, FC } from "react";
 import { increment, decrement, asyncIncrement } from "../actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {Content, OperateContainer, Score, Special, Operate} from "./style";
+import { Content, OperateContainer, Score, Special, Operate } from "./style";
 import { AppState } from "@/store";
 import { Dispatch } from 'redux';
 
@@ -49,8 +49,8 @@ const Counter: FC<Props> = (props) => {
 	);
 }
 
-const mapStateToProps = (state: AppState) => ({
-	value: state.Counter.value
+const mapStateToProps = ({ Counter }: AppState) => ({
+	value: Counter.value
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

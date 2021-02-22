@@ -15,9 +15,7 @@ import G6DemoThree from "@/pages/G6Try/G6DemoThree/loadable";
 import RoutingReference from "@/pages/RoutingReference";
 import EchartsTest from "@/pages/EchartsTest";
 import TableDemo from "@/pages/TableDemo";
-import Demo from "@/pages/Demo";
 import MotionDemo from "@/pages/Motion";
-import AutoMenu from "@/pages/autoMenu";
 import ReactHookDemo from "@/pages/ReactHookDemo";
 import SplitPanel from "@/pages/SplitPane";
 import Meta from "@/pages/Meta";
@@ -45,7 +43,6 @@ import { view as BookKeeping } from "@/pages/BookKeeping";
 import SvgAnimal from "@/pages/SvgAnimal";
 import ReactDnDStudy from "@/pages/ReactDnDStudy";
 import TabsContext from "@/pages/TabsContext";
-import CurcorInsert from "@/pages/CurcorInsert";
 import IframeMesaage from "@/pages/IframeMesaage";
 
 // const G6Demo = lazy(() => import("@/pages/G6Try/G6Demo/"));
@@ -113,18 +110,8 @@ const RoutingConfigs = [
 		exact: false,
 	},
 	{
-		path: "/demo",
-		component: Demo,
-		exact: false,
-	},
-	{
 		path: "/motiondemo",
 		component: MotionDemo,
-		exact: false,
-	},
-	{
-		path: "/automenu",
-		component: AutoMenu,
 		exact: false,
 	},
 	{
@@ -240,11 +227,6 @@ const RoutingConfigs = [
 	{
 		path: "/TabsContext",
 		component: TabsContext,
-		exact: false,
-	},
-	{
-		path: "/CurcorInsert",
-		component: CurcorInsert,
 		exact: false,
 	},
 	{

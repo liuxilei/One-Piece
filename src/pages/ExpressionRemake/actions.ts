@@ -2,19 +2,19 @@ import {
 	EXPRESS2_SETSELECTED,
 	EXPRESS2_SETELEMENTS,
 	EXPRESS2_REPLACEINDEX,
-} from "./actionTypes";
+} from "./types";
 
-export const setSelected = (selected) => ({
+export const setSelected = (selected: Object) => ({
 	type: EXPRESS2_SETSELECTED,
 	selected,
 });
 
-export const setElements = (elements) => ({
+export const setElements = (elements: Object[]) => ({
 	type: EXPRESS2_SETELEMENTS,
 	elements,
 });
 
-export const replaceIndex = (newElement) => ({
+export const replaceIndex = (newElement: Object) => ({
 	type: EXPRESS2_REPLACEINDEX,
 	newElement,
 });

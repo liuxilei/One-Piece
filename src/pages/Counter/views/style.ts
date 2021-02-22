@@ -10,10 +10,6 @@ export const OperateContainer = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	&.operate {
-		font-size: 33px;
-		cursor: pointer;
-	}
 `;
 
 export const Score = styled.div`
@@ -26,10 +22,6 @@ export const Special = styled.div`
 	width: 140%;
 	display: flex;
 	justify-content: space-between;
-	&.operate {
-		font-size: 25px;
-		cursor: pointer;
-	}
 `;
 
 export const Operate = styled.div<{ fontSize: number }>`

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-export default ({ name }) => {
+type Props = {
+	name: string
+}
+
+export default ({ name }: Props) => {
 	const [num, setNum] = useState(0);
 	return (
 		<div>
