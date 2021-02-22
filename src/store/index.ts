@@ -8,6 +8,7 @@ import {
 	reducer as counterReducer,
 	sagas as counterSaga,
 } from "@/pages/Counter";
+import { isDev } from "@/utils";
 // import { reducer as expressReducer } from "@/pages/RelationalExpression";
 // import {
 // 	reducer as todolistReducer,
@@ -35,21 +36,23 @@ let middlewares = [];
 middlewares.push(sagaMiddleware);
 middlewares.push(thunk);
 // 开发环境添加 redux-logger 日志
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
 	middlewares.push(logger);
 }
 
 const storeEnhancers = compose(
 	applyMiddleware(...middlewares),
-	win && win.devToolsExtension ? win.devToolsExtension() : (f) => f,
+	(window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
-
+ 
 // rehydrate state on app start
 const initialState = {};
 
 const store = createStore(rootReducer, initialState, storeEnhancers);
 sagaMiddleware.run(counterSaga);
-sagaMiddleware.run(todoSaga);
-sagaMiddleware.run(shortBookSaga);
+// sagaMiddleware.run(todoSaga);
+// sagaMiddleware.run(shortBookSaga);
 
+
+export type AppState = ReturnType<typeof rootReducer>
 export default store;

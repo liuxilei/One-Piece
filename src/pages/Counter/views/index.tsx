@@ -2,8 +2,9 @@ import React, { memo, FC } from "react";
 import { increment, decrement, asyncIncrement } from "../actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import styles from "./index.scss";
-import { CounterState } from "../types";
+import {Content, OperateContainer, Score, Special, Operate} from "./style";
+import { AppState } from "@/store";
+import { Dispatch } from 'redux';
 
 type Props = {
 	onIncrement: () => void;
@@ -26,33 +27,33 @@ const Counter: FC<Props> = (props) => {
 
 	const { value, onIncrement, onDecrement } = props;
 	return (
-		<div className={styles.content}>
-			<div className="special">
-				<div className="operate" onClick={oddIncrement}>
+		<Content>
+			<Special>
+				<Operate fontSize={25} onClick={oddIncrement} >
 					Increment if odd
-				</div>
-				<div className="operate" onClick={asyncIncrement}>
+				</Operate>
+				<Operate fontSize={25} onClick={asyncIncrement} >
 					Increment async
-				</div>
-			</div>
-			<div className="operateContainer">
-				<div className="operate" onClick={onDecrement}>
+				</Operate>
+			</Special>
+			<OperateContainer>
+				<Operate fontSize={33} onClick={onDecrement}>
 					-
-				</div>
-				<div className="operate" onClick={onIncrement}>
+				</Operate>
+				<Operate fontSize={33} onClick={onIncrement}>
 					+
-				</div>
-			</div>
-			<div className="score">{value}</div>
-		</div>
+				</Operate>
+			</OperateContainer>
+			<Score>{value}</Score>
+		</Content>
 	);
 }
 
-const mapStateToProps = ({ Counter: CounterState  }) => ({
-	value: Counter.value
+const mapStateToProps = (state: AppState) => ({
+	value: state.Counter.value
 });
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators(
 		{
 			onIncrement: increment,

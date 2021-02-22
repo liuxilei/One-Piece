@@ -1,4 +1,6 @@
-<!-- Redux原生页面练习 -->
+## Redux 原生页面练习
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -78,3 +80,4 @@
 		</script>
 	</body>
 </html>
+```

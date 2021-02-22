@@ -1,3 +1,5 @@
+export const isDev = process.env.NODE_ENV === "development";
+
 const utils = {
 	/**
 	 * 对象copy(属性)
