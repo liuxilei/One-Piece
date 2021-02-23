@@ -52,10 +52,11 @@ export default () => {
                     style={{
                         margin: '24px 16px',
                         padding: 24,
-                        minHeight: "calc(100vh - 64px - 48px)"
+                        minHeight: "calc(100vh - 64px - 48px)",
+                        overflowY: "auto"
                     }}
                 >
-                    Content
+                    11212
                 </Content>
             </Layout>
         </Layout>
