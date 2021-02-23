@@ -6,6 +6,9 @@ const PORT = 4399;
 
 module.exports = merge(common, {
 	target: "web",
+	output: {
+		publicPath: "/",
+	},
 	mode: "development",
 	devtool: "inline-source-map",
 	devServer: {
@@ -20,6 +23,7 @@ module.exports = merge(common, {
 				target: "http://localhost:1234",
 			},
 		},
+		historyApiFallback: true,
 	},
 	plugins: [
 		// 定义环境变量为开发环境， 代码中使用： process.env.NODE_ENV === 'development' 来判断

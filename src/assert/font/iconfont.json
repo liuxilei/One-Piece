@@ -6,6 +6,20 @@
   "description": "react脚手架相关的字体",
   "glyphs": [
     {
+      "icon_id": "991561",
+      "name": "人",
+      "font_class": "ren",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "6056165",
+      "name": "锁",
+      "font_class": "suo",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
       "icon_id": "2678628",
       "name": "删除",
       "font_class": "shanchu1",
