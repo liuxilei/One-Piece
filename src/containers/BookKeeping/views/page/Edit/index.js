@@ -110,11 +110,8 @@ class Edit extends PureComponent {
 		const { way, wayType, title, money, time } = this.state;
 		let id;
 		let isEdit = false;
-		if (
-			this.props.currentEditRecord &&
-			this.props.currentEditRecord.get("id")
-		) {
-			id = this.props.currentEditRecord.get("id");
+		if (this.props.currentEditRecord && this.props.currentEditRecord.id) {
+			id = this.props.currentEditRecord.id;
 			isEdit = true;
 		} else {
 			id = shortid.generate();
@@ -149,10 +146,10 @@ class Edit extends PureComponent {
 		const { currentEditRecord, currentDate } = this.props;
 		if (currentEditRecord) {
 			this.setState({
-				way: currentEditRecord.get("way"),
-				wayType: currentEditRecord.get("wayType"),
-				title: currentEditRecord.get("title"),
-				money: currentEditRecord.get("money"),
+				way: currentEditRecord.way,
+				wayType: currentEditRecord.wayType,
+				title: currentEditRecord.title,
+				money: currentEditRecord.money,
 				time: currentDate,
 			});
 		}
@@ -255,8 +252,8 @@ class Edit extends PureComponent {
 }
 
 const mapStateToProps = ({ BookKeeping }) => ({
-	currentEditRecord: BookKeeping.get("currentEditRecord"),
-	currentDate: BookKeeping.get("currentDate"),
+	currentEditRecord: BookKeeping.currentEditRecord,
+	currentDate: BookKeeping.currentDate,
 });
 
 const mapDispatchToProps = (dispatch) =>

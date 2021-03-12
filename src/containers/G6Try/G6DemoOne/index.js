@@ -1,6 +1,5 @@
 import React, { Component, createRef } from "react";
 import G6 from "@antv/g6";
-import "./index.scss";
 const Util = G6.Util;
 
 const data = {

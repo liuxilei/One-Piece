@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { TODOLIST_GETINITLIST } from "./actionTypes";
+import { TODOLIST_GETINITLIST } from "./types";
 import { initList } from "./actions";
 import axios from "axios";
 

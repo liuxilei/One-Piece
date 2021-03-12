@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { Empty } from "antd";
 import { withRouter } from "react-router-dom";
+import utils from "@/utils";
 
 const nameToIcon = {
 	餐饮: "&#xe656;",
@@ -104,51 +105,47 @@ class Content extends PureComponent {
 						name: "理财",
 						value: 0,
 					};
-					let data = this.props.bookKeeping.get(
-						this.props.currentDate,
-					);
-					if (data) {
+					let data = this.props.accountingRecords;
+					if (utils.isExistent(data)) {
 						data.map((item) => {
-							if (item.get("wayType") === food.name) {
-								food.value += parseFloat(item.get("money"));
+							if (item.wayType === food.name) {
+								food.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === electron.name) {
-								electron.value += parseFloat(item.get("money"));
+							if (item.wayType === electron.name) {
+								electron.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === shopping.name) {
-								shopping.value += parseFloat(item.get("money"));
+							if (item.wayType === shopping.name) {
+								shopping.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === traffic.name) {
-								traffic.value += parseFloat(item.get("money"));
+							if (item.wayType === traffic.name) {
+								traffic.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === housing.name) {
-								housing.value += parseFloat(item.get("money"));
+							if (item.wayType === housing.name) {
+								housing.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === home.name) {
-								home.value += parseFloat(item.get("money"));
+							if (item.wayType === home.name) {
+								home.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === dailyNecessities.name) {
+							if (item.wayType === dailyNecessities.name) {
 								dailyNecessities.value += parseFloat(
-									item.get("money"),
+									item.money,
 								);
 							}
-							if (item.get("wayType") === study.name) {
-								study.value += parseFloat(item.get("money"));
+							if (item.wayType === study.name) {
+								study.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === apparel.name) {
-								apparel.value += parseFloat(item.get("money"));
+							if (item.wayType === apparel.name) {
+								apparel.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === wage.name) {
-								wage.value += parseFloat(item.get("money"));
+							if (item.wayType === wage.name) {
+								wage.value += parseFloat(item.money);
 							}
-							if (item.get("wayType") === partTime.name) {
-								partTime.value += parseFloat(item.get("money"));
+							if (item.wayType === partTime.name) {
+								partTime.value += parseFloat(item.money);
 							}
-							if (
-								item.get("wayType") === financialManagement.name
-							) {
+							if (item.wayType === financialManagement.name) {
 								financialManagement.value += parseFloat(
-									item.get("money"),
+									item.money,
 								);
 							}
 						});
@@ -202,9 +199,7 @@ class Content extends PureComponent {
 
 	render() {
 		const { mode } = this.state;
-		const { currentDate, bookKeeping, deleteRecordItem } = this.props;
-
-		let data = bookKeeping.get(currentDate);
+		const { currentDate, accountingRecords, deleteRecordItem } = this.props;
 		return (
 			<ContentWrapper>
 				<Tabs>
@@ -228,29 +223,29 @@ class Content extends PureComponent {
 				</Link>
 				{mode === "列表模式" && (
 					<BookKeepingRecord>
-						{data ? (
-							data.map((item) => {
+						{utils.isExistent(accountingRecords) ? (
+							accountingRecords.map((item) => {
 								return (
-									<BookKeepingRecordItem key={item.get("id")}>
+									<BookKeepingRecordItem key={item.id}>
 										<div className="item-icon">
 											<i
 												className="iconfont"
 												dangerouslySetInnerHTML={{
 													__html:
 														nameToIcon[
-															item.get("wayType")
+															item.wayType
 														],
 												}}
 											></i>
 										</div>
 										<div className="item-text">
-											{item.get("title")}
+											{item.title}
 										</div>
 										<div className="item-money">{`${
 											item.way === "expenditure"
 												? "-"
 												: ""
-										}${item.get("money")}元`}</div>
+										}${item.money}元`}</div>
 										<div className="item-time">
 											{currentDate}
 										</div>
@@ -266,9 +261,7 @@ class Content extends PureComponent {
 											<i
 												className="iconfont"
 												onClick={() =>
-													deleteRecordItem(
-														item.get("id"),
-													)
+													deleteRecordItem(item.id)
 												}
 											>
 												&#xe747;

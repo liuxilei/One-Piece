@@ -9,8 +9,21 @@ import {
 } from "../actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { Dispatch } from 'redux';
+import { AppState } from "@/store";
 
-const TodoList = (props) => {
+type Props = {
+	inputValue: string
+	list: Array<string>
+	setInputValue: (inputValue: string) => void
+	addTodoItem: () => void
+	deleteTodoItem: (index: number) => void
+	getTolist: () => void
+	getInitList: () => void
+	children: React.ReactNode
+}
+
+const TodoList = (props: Props) => {
 	const {
 		inputValue,
 		list,
@@ -27,14 +40,14 @@ const TodoList = (props) => {
 
 		//redux-saga的方式
 		getInitList();
-	}, [getInitList]);
+	}, []);
 
 	return (
 		<div style={{ marginTop: "10px", marginLeft: "10px" }}>
 			<div>
 				<Input
 					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
+					onChange={e => setInputValue(e.target.value)}
 					placeholder="todo Info"
 					style={{ width: "300px", marginRight: "10px" }}
 				/>
@@ -59,17 +72,11 @@ const TodoList = (props) => {
 	);
 };
 
-// const mapStateToProps = (state) => ({
-//     inputValue: state.getIn(["Todolist", "inputValue"]),
-//     list: Todolist.list
-// });
-
-const mapStateToProps = ({ Todolist }) => ({
-	inputValue: Todolist.get("inputValue"),
-	list: Todolist.get("list"),
+const mapStateToProps = (state: AppState) => ({
+	...state.Todolist,
 });
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators(
 		{
 			setInputValue,

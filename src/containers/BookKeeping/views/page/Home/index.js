@@ -6,7 +6,8 @@ import {
 	setCurrentDate,
 	deleteRecordItem,
 	setEditRecordItem,
-} from "../../../actions";
+} from "@/containers/BookKeeping/actions";
+import utils from "@/utils";
 
 const BookKeeping = memo((props) => {
 	const {
@@ -16,26 +17,30 @@ const BookKeeping = memo((props) => {
 		deleteRecordItem,
 		setEditRecordItem,
 	} = props;
+	//当前时间的记账记录
+	const accountingRecords = utils.isExistent(currentDate)
+		? bookKeeping.filter((item) => item.time === currentDate)
+		: [];
 	return (
 		<div>
 			<Header
 				currentDate={currentDate}
 				setCurrentDate={setCurrentDate}
-				bookKeeping={bookKeeping}
+				accountingRecords={accountingRecords}
 			/>
 			<Content
 				currentDate={currentDate}
-				bookKeeping={bookKeeping}
 				deleteRecordItem={deleteRecordItem}
 				setEditRecordItem={setEditRecordItem}
+				accountingRecords={accountingRecords}
 			/>
 		</div>
 	);
 });
 
 const mapStateToProps = ({ BookKeeping }) => ({
-	currentDate: BookKeeping.get("currentDate"),
-	bookKeeping: BookKeeping.get("bookKeeping"),
+	currentDate: BookKeeping.currentDate,
+	bookKeeping: BookKeeping.bookKeeping,
 });
 
 const mapDispatchToProps = (dispatch) =>

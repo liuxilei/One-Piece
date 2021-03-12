@@ -1,7 +1,6 @@
 import React, { StrictMode, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import Root from "./root";
-import "@/assert/font/iconfont.css";
 import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
 import zhCN from "antd/lib/locale-provider/zh_CN";
@@ -12,16 +11,19 @@ import { Switch, Route, Redirect, Router } from 'react-router-dom';
 import Login from './pages/Auth/Login';
 import Loading from "./components/Loading/index";
 
-import "./global.css";
+import "@/assert/font/iconfont.css";
+import "normalize.css";
+import "@/assert/global.css";
+
 
 const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
 
 const App = () => (
-	<ErrorBoundary>
-		<Provider store={store}>
-			<ConfigProvider locale={zhCN}>
-				<StrictMode>
-					<Router history={history}>
+	<StrictMode>
+		<ErrorBoundary>
+			<Provider store={store}>
+				<ConfigProvider locale={zhCN}>
+					{/* <Router history={history}>
 						<Switch>
 							<Route path="/login">
 								<Login />
@@ -33,7 +35,7 @@ const App = () => (
 										<Suspense fallback={Loading}>
 											<Layouts />
 										</Suspense>
-										
+
 									) : (
 											<Redirect
 												to={{
@@ -45,11 +47,12 @@ const App = () => (
 								}
 							/>
 						</Switch>
-					</Router>
-				</StrictMode>
-			</ConfigProvider>
-		</Provider>
-	</ErrorBoundary>
+					</Router> */}
+					<Root />
+				</ConfigProvider>
+			</Provider>
+		</ErrorBoundary>
+	</StrictMode>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("app"));

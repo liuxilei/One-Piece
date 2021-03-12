@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import styles from "./index.less";
 
 export default () => (
-	<div className="g6test">
+	<div className={styles.g6test}>
 		<h1>G6-demos：</h1>
 		<ul>
 			<li>

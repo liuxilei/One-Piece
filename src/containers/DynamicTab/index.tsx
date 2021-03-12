@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SubPage from "./SubPage";
 import utils from "../../utils";
-import "./index.scss";
+import styles from "./index.less";
 
 const pagesParam = [
 	{
@@ -25,7 +25,7 @@ export default () => {
 		setPageArr(copyPageArr);
 	};
 	return (
-		<div className="dynamicTabWrap">
+		<div className={styles.dynamicTabWrap}>
 			<button onClick={add}>添加新页面</button>
 			<div className="dynamicTab">
 				<div className="list">

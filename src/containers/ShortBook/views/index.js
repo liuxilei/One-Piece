@@ -12,7 +12,7 @@ export default () => {
 	return (
 		<Fragment>
 			<GlobalIconfontStyle />
-			<GlobalStyle />
+			{/* <GlobalStyle /> */}
 			<Header />
 			<HashRouter>
 				<Route path="/ShortBook/" exact component={Home}></Route>

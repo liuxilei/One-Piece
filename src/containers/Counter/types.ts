@@ -3,7 +3,7 @@ export const COUNTER_DECREMENT = "Counter/decrement";
 export const COUNTER_ASYNCINCREMENT = "Counter/asyncIncrement";
 
 export interface CounterState {
-    readonly value: number
+    value: number
 }
 
 interface IncrementAction {

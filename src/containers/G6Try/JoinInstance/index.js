@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Join from "../Join";
-import "./index.scss";
+import styles from "./index.less";
 import left from "../Join/left.png";
 import right from "../Join/right.png";
 import all from "../Join/all.png";
@@ -44,7 +44,7 @@ class JoinInstance extends Component {
 		const { data } = this.state;
 		return (
 			<div>
-				<div className="add" onClick={this.changeData}>
+				<div className={styles.add} onClick={this.changeData}>
 					添加一个元素+
 				</div>
 				<Join

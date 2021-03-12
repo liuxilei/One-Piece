@@ -4,13 +4,13 @@ import styles from "./index.less";
 
 const titleLinks = [
 	{
-		url: "/todolist",
-		name: "TODOLIST",
+		url: "/BookKeeping",
+		name: "记账",
 		visible: true,
 	},
 	{
-		url: "/BookKeeping",
-		name: "记账软件",
+		url: "/todolist",
+		name: "todoList",
 		visible: true,
 	},
 	{

@@ -20,7 +20,7 @@ module.exports = merge(common, {
 		port: PORT, //端口
 		proxy: {
 			"/api/*": {
-				target: "http://localhost:1234",
+				target: "http://localhost:4399/public",
 			},
 		},
 		historyApiFallback: true,

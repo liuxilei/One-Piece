@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 import G6Editor from "@antv/g6-editor";
-import "./index.scss";
+import styles from "./index.less";
 
 class G6EditorDemo extends Component {
 	constructor(props) {
@@ -53,7 +53,7 @@ class G6EditorDemo extends Component {
 
 	render() {
 		return (
-			<div className="main">
+			<div className={styles.main}>
 				<div id="minimap" ref={this.minimap}></div>
 				<div id="toolbar" ref={this.toolbar}></div>
 				<div id="itempannel" ref={this.itempannel}></div>

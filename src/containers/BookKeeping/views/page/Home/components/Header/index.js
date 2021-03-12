@@ -2,26 +2,27 @@ import React, { memo } from "react";
 import { HeaderWrapper, HeaderInfo } from "./style";
 import { DatePicker } from "antd";
 import moment from "moment";
+import NP from "number-precision";
+import utils from "@/utils";
 
 const dateFormat = "YYYY/MM/DD";
 
 const Header = memo((props) => {
-	const { bookKeeping, currentDate, setCurrentDate } = props;
+	const { accountingRecords, currentDate, setCurrentDate } = props;
+	//收入
 	let income = 0;
+	//支出
 	let expenditure = 0;
-	let data = bookKeeping.get(currentDate);
-	if (data) {
-		data.map((item) => {
-			let money = item.get("money");
-			let way = item.get("way");
-			if (way === "income") {
-				income += parseFloat(money);
+	if (utils.isExistent(accountingRecords)) {
+		accountingRecords.forEach((item) => {
+			if (item.way === "income") {
+				income = NP.plus(income, item.money);
 			}
-			income = Math.floor(income * 100) / 100;
-			if (way === "expenditure") {
-				expenditure += parseFloat(money);
+			income = NP.round(income, 2);
+			if (item.way === "expenditure") {
+				expenditure = NP.plus(expenditure, item.money);
 			}
-			expenditure = Math.floor(expenditure * 100) / 100;
+			expenditure = NP.round(expenditure, 2);
 		});
 	}
 
