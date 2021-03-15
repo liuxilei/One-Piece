@@ -1,7 +1,7 @@
 {
-  "name": "demos",
+  "name": "onepiece",
   "version": "1.0.0",
-  "description": "",
+  "description": "想要财报吗？去吧，我把一切全都放在那里",
   "private": true,
   "main": "index.js",
   "scripts": {

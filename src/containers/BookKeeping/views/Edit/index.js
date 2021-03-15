@@ -13,7 +13,7 @@ import { DatePicker } from "antd";
 import moment from "moment";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { addRecord, editSuccess } from "../../../actions";
+import { addRecord, editSuccess } from "@/containers/BookKeeping/actions";
 import { message } from "antd";
 import shortid from "shortid";
 

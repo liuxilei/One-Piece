@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { Header, Content } from "./components";
+import Header from "./Header";
+import Content from "./Content";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {
