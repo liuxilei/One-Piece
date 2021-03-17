@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { HeaderWrapper, HeaderInfo } from "./style";
+import { HeaderWrapper, HeaderInfo } from "./HeaderStyles";
 import { DatePicker } from "antd";
 import moment from "moment";
 import NP from "number-precision";

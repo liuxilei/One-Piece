@@ -4,6 +4,8 @@ import {
 	BOOKKEEPING_DELETERECORDITEM,
 	BOOKKEEPING_SETEDITRECORDITEM,
 	BOOKKEEPING_EDITSUCCESS,
+	BOOKKEEPING_MODECHANGE,
+	BOOKKEEPING_WAYCHANGE,
 } from "./actionTypes";
 
 const parse = (string) => {
@@ -18,12 +20,13 @@ let bookKeeping = parse(localStorage.getItem("bookKeeping")) || [];
 const defaultState = {
 	bookKeeping,
 	currentDate: null,
-	currentEditRecord: null,
+	currentEditRecord: {},
+	mode: "list",
+	way: "expenditure",
 };
 
 export default (state = defaultState, action) => {
 	let bookKeeping = [...state.bookKeeping];
-	let currentDate = state.currentDate;
 	switch (action.type) {
 		case BOOKKEEPING_ADDRECORD:
 			localStorage.setItem(
@@ -42,7 +45,9 @@ export default (state = defaultState, action) => {
 			};
 
 		case BOOKKEEPING_DELETERECORDITEM:
-			let newBookKeeping = bookKeeping.filter(item.id !== action.id);
+			let newBookKeeping = bookKeeping.filter(
+				(item) => item.id !== action.id,
+			);
 			sessionStorage.setItem("bookKeeping", stringify(newBookKeeping));
 			return {
 				...state,
@@ -69,6 +74,16 @@ export default (state = defaultState, action) => {
 				...state,
 				bookKeeping,
 				currentEditRecord: null,
+			};
+		case BOOKKEEPING_MODECHANGE:
+			return {
+				...state,
+				mode: action.mode,
+			};
+		case BOOKKEEPING_WAYCHANGE:
+			return {
+				...state,
+				way: action.way,
 			};
 		default:
 			return state;

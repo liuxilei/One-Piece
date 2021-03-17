@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
-	width: 640px;
+export const HeaderWrapper = styled.header`
+	width: 100%;
 	height: 127px;
 	background: #c7c2f8;
 	color: #313f4e;
 	border: 2px solid #675ef8;
-	margin: 30px auto 15px;
+	margin-bottom: 15px;
 	h1 {
 		text-align: center;
 		font-size: 23px;
@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.div`
 	}
 `;
 
-export const HeaderInfo = styled.div`
+export const HeaderInfo = styled.section`
 	display: inline-block;
 	.date {
 		margin-left: 17px;

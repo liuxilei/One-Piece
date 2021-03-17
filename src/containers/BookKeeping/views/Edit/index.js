@@ -1,127 +1,57 @@
-import React, { PureComponent } from "react";
+import React, { memo } from "react";
+import { ButtonWrapper, OperateButton } from "./style";
 import {
-	EditWrapper,
-	Tabs,
-	TypeWays,
-	TypeWaysItem,
-	FormLayout,
-	ButtonWrapper,
-	OperateButton,
-} from "./style";
-import { Link } from "react-router-dom";
-import { DatePicker } from "antd";
-import moment from "moment";
+	addRecord,
+	editSuccess,
+	wayChange,
+	setEditRecordItem,
+} from "@/containers/BookKeeping/actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { addRecord, editSuccess } from "@/containers/BookKeeping/actions";
+import { AppWrap } from "@/containers/BookKeeping/styles";
+import TabChange from "@/containers/BookKeeping/components/TabChange";
+import TypeWays from "./TypeWays";
+import Form from "./Form";
 import { message } from "antd";
 import shortid from "shortid";
 
-const dateFormat = "YYYY/MM/DD";
+const Edit = memo((props) => {
+	const {
+		way,
+		wayChange,
+		currentEditRecord,
+		setEditRecordItem,
+		history,
+		addRecord,
+		editSuccess,
+	} = props;
+	const { wayType, title, money, time } = currentEditRecord;
 
-const typeList = {
-	//支出
-	expenditure: [
-		{
-			name: "餐饮",
-			unicode: "&#xe656;",
-			select: true,
-		},
-		{
-			name: "电子",
-			unicode: "&#xe62a;",
-		},
-		{
-			name: "购物",
-			unicode: "&#xe7ee;",
-		},
-		{
-			name: "交通",
-			unicode: "&#xe7ed;",
-		},
-
-		{
-			name: "住房",
-			unicode: "&#xe653;",
-		},
-		{
-			name: "居家",
-			unicode: "&#xe645;",
-		},
-		{
-			name: "日用品",
-			unicode: "&#xe612;",
-		},
-		{
-			name: "学习",
-			unicode: "&#xe7f1;",
-		},
-		{
-			name: "服饰",
-			unicode: "&#xe617;",
-		},
-	],
-	income: [
-		{
-			name: "工资",
-			unicode: "&#xe65c;",
-		},
-		{
-			name: "兼职",
-			unicode: "&#xe61d;",
-		},
-		{
-			name: "理财",
-			unicode: "&#xe623;",
-		},
-	],
-};
-
-class Edit extends PureComponent {
-	constructor(props) {
-		super(props);
-		this.state = {
-			way: "expenditure", //expenditure:支出 income:收入
-			wayType: "餐饮",
-			title: "",
-			money: "",
-			time: null,
-		};
-	}
-
-	currySetState = (key, value) => {
-		let result = {
-			[key]: value,
-		};
-		if (key === "way" && value === "expenditure") {
-			Object.assign(result, {
-				wayType: "餐饮",
-			});
-		}
-		if (key === "way" && value === "income") {
-			Object.assign(result, {
-				wayType: "工资",
-			});
-		}
-		this.setState(result);
+	//修改表单数据
+	const editRecordChange = (type, value) => {
+		let newRecord = { ...currentEditRecord };
+		newRecord[type] = value;
+		setEditRecordItem(newRecord);
 	};
 
-	submit = () => {
-		const { way, wayType, title, money, time } = this.state;
-		let id;
-		let isEdit = false;
-		if (this.props.currentEditRecord && this.props.currentEditRecord.id) {
-			id = this.props.currentEditRecord.id;
+	const submit = () => {
+		let id,
+			isEdit = false;
+		if (currentEditRecord.id) {
 			isEdit = true;
 		} else {
 			id = shortid.generate();
+		}
+		if (!wayType) {
+			message.warning("请选择类型");
+			return;
 		}
 		if (!title || !money || !time) {
 			message.warning("数据信息未填完整!");
 			return;
 		}
 		if (isEdit) {
-			this.props.editSuccess({
+			editSuccess({
 				id,
 				way,
 				wayType,
@@ -130,7 +60,7 @@ class Edit extends PureComponent {
 				time,
 			});
 		} else {
-			this.props.addRecord({
+			addRecord({
 				id,
 				way,
 				wayType,
@@ -139,121 +69,53 @@ class Edit extends PureComponent {
 				time,
 			});
 		}
-		this.props.history.push("/BookKeeping");
+		routerChange();
 	};
 
-	componentDidMount() {
-		const { currentEditRecord, currentDate } = this.props;
-		if (currentEditRecord) {
-			this.setState({
-				way: currentEditRecord.way,
-				wayType: currentEditRecord.wayType,
-				title: currentEditRecord.title,
-				money: currentEditRecord.money,
-				time: currentDate,
-			});
-		}
-	}
+	const cancel = () => {
+		setEditRecordItem({});
+		routerChange();
+	};
 
-	render() {
-		const { way, wayType, title, money, time } = this.state;
-		return (
-			<EditWrapper>
-				<Tabs>
-					<div
-						className={`${way === "expenditure" ? "select" : ""}`}
-						onClick={() => this.currySetState("way", "expenditure")}
-					>
-						支出
-					</div>
-					<div
-						className={`${way === "income" ? "select" : ""}`}
-						onClick={() => this.currySetState("way", "income")}
-					>
-						收入
-					</div>
-				</Tabs>
-				<TypeWays>
-					{typeList[way].map((item) => {
-						return (
-							<TypeWaysItem
-								key={item.name}
-								onClick={() =>
-									this.currySetState("wayType", item.name)
-								}
-							>
-								<div
-									className={`icon ${
-										item.name === wayType ? "select" : ""
-									}`}
-								>
-									<i
-										className="iconfont"
-										dangerouslySetInnerHTML={{
-											__html: item.unicode,
-										}}
-									></i>
-								</div>
-								<div className="name">{item.name}</div>
-							</TypeWaysItem>
-						);
-					})}
-				</TypeWays>
-				<FormLayout>
-					<div className="attribute">标题*：</div>
-					<div className="input">
-						<input
-							placeholder="请输入标题"
-							className="normal"
-							value={title}
-							onChange={(e) =>
-								this.currySetState("title", e.target.value)
-							}
-						/>
-					</div>
-				</FormLayout>
-				<FormLayout>
-					<div className="attribute">金额*：</div>
-					<div className="input">
-						<input
-							placeholder="请输入金额"
-							value={money}
-							className="normal"
-							onChange={(e) =>
-								this.currySetState("money", e.target.value)
-							}
-						/>
-					</div>
-				</FormLayout>
-				<FormLayout>
-					<div className="attribute">日期*：</div>
-					<div className="input">
-						<DatePicker
-							value={time ? moment(time, dateFormat) : null}
-							format={dateFormat}
-							className="date"
-							onChange={(date, dateString) =>
-								this.currySetState("time", dateString)
-							}
-						/>
-					</div>
-				</FormLayout>
-				<ButtonWrapper>
-					<OperateButton className="primary" onClick={this.submit}>
-						提交
-					</OperateButton>
-					<Link to="/BookKeeping">
-						<OperateButton>取消</OperateButton>
-					</Link>
-				</ButtonWrapper>
-			</EditWrapper>
-		);
-	}
-}
+	const routerChange = () => {
+		history.push("/BookKeeping");
+	};
+
+	return (
+		<AppWrap>
+			<TabChange
+				type={way}
+				leftType="expenditure"
+				rightType="income"
+				onClick={wayChange}
+				leftChildren="支出"
+				rightChildren="收入"
+			/>
+			<TypeWays
+				way={way}
+				wayType={wayType}
+				editRecordChange={editRecordChange}
+			/>
+			<Form
+				editRecordChange={editRecordChange}
+				title={title}
+				money={money}
+				time={time}
+			/>
+			<ButtonWrapper>
+				<OperateButton className="primary" onClick={submit}>
+					提交
+				</OperateButton>
+				<OperateButton onClick={cancel}>取消</OperateButton>
+			</ButtonWrapper>
+		</AppWrap>
+	);
+});
 
 const mapStateToProps = ({ BookKeeping }) => ({
 	currentEditRecord: BookKeeping.currentEditRecord,
 	currentDate: BookKeeping.currentDate,
+	way: BookKeeping.way,
 });
 
 const mapDispatchToProps = (dispatch) =>
@@ -261,6 +123,8 @@ const mapDispatchToProps = (dispatch) =>
 		{
 			addRecord,
 			editSuccess,
+			wayChange,
+			setEditRecordItem,
 		},
 		dispatch,
 	);
