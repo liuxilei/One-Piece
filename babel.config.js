@@ -1,4 +1,4 @@
-{
+module.exports = {
     "presets": [
         [
             "@babel/env",
@@ -12,7 +12,9 @@
                 "useBuiltIns": false
             }
         ],
-        "@babel/react"
+        ["@babel/react", {
+            "runtime": "automatic"
+        }]
     ],
     "plugins": [
         [
@@ -41,7 +43,10 @@
                 "legacy": true
             }
         ],
-        ["babel-plugin-styled-components"]
+        [
+            "babel-plugin-styled-components"
+        ],
+
     ],
     "env": {
         "production": {

@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createRef } from "react";
+import { Component, Fragment, createRef } from "react";
 import G6 from "@antv/g6";
 import { withRouter } from "react-router";
 

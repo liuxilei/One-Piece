@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { RecommendWrap, RecommendItem } from "../style";
 
 export default memo(({ recommendList }) => {

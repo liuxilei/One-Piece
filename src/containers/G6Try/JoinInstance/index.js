@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import Join from "../Join";
 import styles from "./index.less";
 import left from "../Join/left.png";

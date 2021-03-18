@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import { Component, createRef } from "react";
 import G6Editor from "@antv/g6-editor";
 import styles from "./index.less";
 

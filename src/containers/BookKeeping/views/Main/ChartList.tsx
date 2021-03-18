@@ -1,4 +1,4 @@
-import React, { memo, useRef, useEffect, FC } from "react";
+import { memo, useRef, useEffect, FC } from "react";
 import { PictureWrapper, Ball } from "./ChartListStyles";
 import echarts from "echarts";
 import utils from "@/utils";

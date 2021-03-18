@@ -41,6 +41,9 @@ $ npm i
 # serve with hot reload at localhost:4399
 $ npm run start
 
+# install husky install
+npx husky install 
+
 # build for production
 $ npm run build
 

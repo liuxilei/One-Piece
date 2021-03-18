@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { DatePicker } from "antd";
 import moment from "moment";
 import { FormLayout } from "./FormStyles";

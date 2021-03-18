@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import { FC, memo, ReactNode } from "react";
 import Header from "./Header";
 import CreateButton from "./CreateButton";
 import RecordList from "./RecordList";
@@ -33,7 +33,7 @@ type Props = {
 	mode: Mode;
 	modeChange: (mode: Mode) => BookKeepingActions;
 	wayChange: (way: Way) => BookKeepingActions;
-	children: React.ReactNode;
+	children: ReactNode;
 };
 
 const BookKeeping: FC = memo((props: Props) => {

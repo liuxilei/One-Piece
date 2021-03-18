@@ -61,6 +61,9 @@ module.exports = {
         
         "react/jsx-key": 1,
 
-        "no-case-declarations": 1
+        "no-case-declarations": 1,
+
+        "react/jsx-uses-react": 0,
+        "react/react-in-jsx-scope": 0
     }
 };

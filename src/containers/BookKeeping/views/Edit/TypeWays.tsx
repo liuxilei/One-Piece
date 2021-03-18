@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { TypeWays, TypeWaysItem } from "./TypeWaysStyles";
 import { typeList } from "@/containers/BookKeeping/constants";
 import { Way } from "@/containers/BookKeeping/types";

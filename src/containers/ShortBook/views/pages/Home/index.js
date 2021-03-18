@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 import { Topic, List, Recommend, Writer } from "./components";
 import { getHomeInfo, getMoreList, changeShowScroll } from "../../../actions";

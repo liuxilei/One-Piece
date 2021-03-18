@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import { createRef, Component, Fragment } from "react";
 import { Modal, Button, Steps, Form, Input, Select, Row, Col } from "antd";
 import styles from "./index.less";
 const Step = Steps.Step;
@@ -35,7 +35,7 @@ class Init extends Component {
 		};
 	}
 
-	formRef = React.createRef();
+	formRef = createRef();
 
 	step = () => {
 		const { current } = this.state;

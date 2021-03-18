@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SubPage from "./SubPage";
 import utils from "../../utils";
 import styles from "./index.less";

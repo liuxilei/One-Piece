@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { ListItem, ListInfo, LoadMore } from "../style";
 import { Link } from "react-router-dom";
 

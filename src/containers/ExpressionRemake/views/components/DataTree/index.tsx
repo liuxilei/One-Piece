@@ -1,4 +1,3 @@
-import React from "react";
 import { Tree } from "antd";
 import styles from "./index.less";
 import utils from "@/utils";

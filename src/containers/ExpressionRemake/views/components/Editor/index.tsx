@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { useDrop } from "react-dnd";
 import cls from "classnames";
 import styles from "./index.less";

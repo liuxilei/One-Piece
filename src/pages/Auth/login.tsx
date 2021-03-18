@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./Login.less";
 import history from "@/utils/history";
 import { message } from "antd";

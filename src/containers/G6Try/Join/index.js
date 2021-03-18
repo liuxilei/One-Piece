@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import G6 from "@antv/g6";
 import left from "./left.png";

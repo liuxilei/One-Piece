@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, createElement } from "react";
 import { logout } from "@/utils";
 import history from "@/utils/history";
 import { Layout, Menu } from 'antd';
@@ -46,7 +46,7 @@ export default () => {
             </Sider>
             <Layout className="site-layout">
                 <Header className="site-layout-background" style={{ padding: 0 }}>
-                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    {createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
                         onClick: toggle,
                     })}

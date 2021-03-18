@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { GlobalStyle } from "./style";
 import Header from "./common/header";
 import { GlobalIconfontStyle } from "./iconfont/iconfont";

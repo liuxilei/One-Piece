@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import { useEffect, memo } from "react";
 import { DetailWrapper, Header, Content } from "./style";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";

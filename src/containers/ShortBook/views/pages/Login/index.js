@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import { memo, useRef } from "react";
 import { LoginWrapper, LoginBox, Input, Button } from "./style";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";

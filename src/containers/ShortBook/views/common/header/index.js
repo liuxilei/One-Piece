@@ -1,4 +1,4 @@
-import React, { useRef, memo } from "react";
+import { useRef, memo } from "react";
 import { CSSTransition } from "react-transition-group";
 import {
 	HeaderWrapper,

@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 // import ReactBodymovin from "react-bodymovin";
 // import animation from "./animation.json";
 const json = require("./demo.json");

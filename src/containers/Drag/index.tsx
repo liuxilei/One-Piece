@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from "react";
+import { Fragment, memo, DragEvent } from "react";
 import styles from "./index.less";
 
 //source: 拖动源
@@ -13,7 +13,7 @@ import styles from "./index.less";
 
 //更多可参考：https://github.com/liuxilei/notes/issues/27
 export default memo(() => {
-	const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
+	const dragStart = (e: DragEvent<HTMLDivElement>) => {
 		e.dataTransfer.setData(
 			"text",
 			JSON.stringify({
@@ -23,31 +23,31 @@ export default memo(() => {
 		console.log("刚开始拖动时触发");
 	};
 
-	const drag = (e: React.DragEvent<HTMLDivElement>) => {
+	const drag = (e: DragEvent<HTMLDivElement>) => {
 		//console.log("拖动源拖动中持续触发");
 	};
 
-	const dragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+	const dragEnd = (e: DragEvent<HTMLDivElement>) => {
 		console.log("拖动停止");
 	};
 
-	const dragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+	const dragEnter = (e: DragEvent<HTMLDivElement>) => {
 		//设置有效的放置源
 		e.preventDefault();
 		console.log("进入到放置源");
 	};
 
-	const dragOver = (e: React.DragEvent<HTMLDivElement>) => {
+	const dragOver = (e: DragEvent<HTMLDivElement>) => {
 		//设置有效的放置源
 		e.preventDefault();
 		//console.log("在放置源内持续拖动触发");
 	};
 
-	const dragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+	const dragLeave = (e: DragEvent<HTMLDivElement>) => {
 		console.log("拖动源进入放置源并离开时触发");
 	};
 
-	const drop = (e: React.DragEvent<HTMLDivElement>) => {
+	const drop = (e: DragEvent<HTMLDivElement>) => {
 		//防止打开默认到url
 		e.preventDefault();
 		console.log(JSON.parse(e.dataTransfer.getData("Text")));

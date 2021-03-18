@@ -4,14 +4,9 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
-	mode: "production",
+	mode: "production", //设置process.env.NODE_ENV为"production"
 	devtool: "cheap-module-source-map",
 	plugins: [
-		// 定义环境变量为生产环境， 代码中使用： process.env.NODE_ENV === 'production' 来判断
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify("production"),
-			IS_DEVELOPMETN: false,
-		}),
 		new BundleAnalyzerPlugin(),
 	],
 });
