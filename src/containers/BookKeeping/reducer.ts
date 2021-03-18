@@ -6,27 +6,30 @@ import {
 	BOOKKEEPING_EDITSUCCESS,
 	BOOKKEEPING_MODECHANGE,
 	BOOKKEEPING_WAYCHANGE,
-} from "./actionTypes";
+	State,
+	BookKeepingActions,
+	Record,
+} from "./types";
 
-const parse = (string) => {
+const parse = (string: any) => {
 	return JSON.parse(string);
 };
 
-const stringify = (val) => {
+const stringify = (val: any) => {
 	return JSON.stringify(val);
 };
 
 let bookKeeping = parse(localStorage.getItem("bookKeeping")) || [];
-const defaultState = {
+const defaultState: State = {
 	bookKeeping,
-	currentDate: null,
+	currentDate: "",
 	currentEditRecord: {},
 	mode: "list",
 	way: "expenditure",
 };
 
-export default (state = defaultState, action) => {
-	let bookKeeping = [...state.bookKeeping];
+export default (state = defaultState, action: BookKeepingActions): State => {
+	let bookKeeping: Record[] = [...state.bookKeeping];
 	switch (action.type) {
 		case BOOKKEEPING_ADDRECORD:
 			localStorage.setItem(
@@ -48,7 +51,7 @@ export default (state = defaultState, action) => {
 			let newBookKeeping = bookKeeping.filter(
 				(item) => item.id !== action.id,
 			);
-			sessionStorage.setItem("bookKeeping", stringify(newBookKeeping));
+			localStorage.setItem("bookKeeping", stringify(newBookKeeping));
 			return {
 				...state,
 				bookKeeping: newBookKeeping,
@@ -69,7 +72,7 @@ export default (state = defaultState, action) => {
 			} else {
 				bookKeeping.push(action.record);
 			}
-			sessionStorage.setItem("bookKeeping", stringify(bookKeeping));
+			localStorage.setItem("bookKeeping", stringify(bookKeeping));
 			return {
 				...state,
 				bookKeeping,

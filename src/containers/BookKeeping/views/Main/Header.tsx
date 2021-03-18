@@ -1,13 +1,20 @@
-import React, { memo } from "react";
+import React, { memo, FC } from "react";
 import { HeaderWrapper, HeaderInfo } from "./HeaderStyles";
 import { DatePicker } from "antd";
 import moment from "moment";
 import NP from "number-precision";
 import utils from "@/utils";
+import { Record, BookKeepingActions } from "@/containers/BookKeeping/types";
 
 const dateFormat = "YYYY/MM/DD";
 
-const Header = memo((props) => {
+type Props = {
+	accountingRecords: Record[];
+	currentDate: string;
+	setCurrentDate: (currentDate: string) => BookKeepingActions;
+};
+
+const Header: FC<Props> = memo((props) => {
 	const { accountingRecords, currentDate, setCurrentDate } = props;
 	//收入
 	let income = 0;

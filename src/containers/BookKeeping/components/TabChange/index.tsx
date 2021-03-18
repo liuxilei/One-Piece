@@ -1,7 +1,16 @@
 import React, { memo } from "react";
 import { Tabs } from "./style";
 
-export default memo((props) => {
+type Props = {
+	type: string;
+	leftType: string;
+	rightType: string;
+	onClick: (str: string) => void;
+	leftChildren: React.ReactNode;
+	rightChildren: React.ReactNode;
+};
+
+export default memo((props: Props) => {
 	const {
 		type,
 		leftType,

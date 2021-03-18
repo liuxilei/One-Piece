@@ -1,11 +1,24 @@
 import React, { memo } from "react";
 import { BookKeepingRecord, BookKeepingRecordItem } from "./RecordStyles";
-import { withRouter } from "react-router-dom";
 import { nameToIcon } from "@/containers/BookKeeping/constants";
+import { withRouter } from "react-router-dom";
 import { Empty } from "antd";
 import utils from "@/utils";
+import {
+	Record,
+	BookKeepingActions,
+	Way,
+} from "@/containers/BookKeeping/types";
+import { RouteComponentProps } from "react-router-dom";
 
-const RecordList = (props) => {
+interface Props extends RouteComponentProps {
+	accountingRecords: Record[];
+	setEditRecordItem: (record: Record) => BookKeepingActions;
+	wayChange: (way: Way) => BookKeepingActions;
+	deleteRecordItem: (id: string) => BookKeepingActions;
+}
+
+const RecordList = (props: Props) => {
 	const {
 		accountingRecords,
 		setEditRecordItem,
@@ -14,7 +27,7 @@ const RecordList = (props) => {
 		history,
 	} = props;
 
-	const editStart = (item) => {
+	const editStart = (item: Record) => {
 		setEditRecordItem(item);
 		wayChange(item.way);
 		history.push("/BookKeeping/Edit");

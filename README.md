@@ -48,23 +48,8 @@ $ npm run build
 $ npm run test
 ```
 
-## others
-
-```bash
-# 本地 mock 数据
-$ npm install http-server -g
-
-# Config
-$ webpack devServer配置代理 /api/*
-
-#Usage:(public目录下起一个1234端口服务)
-$ http-server -p 1234
-```
-
 ## TODOS:
 
--   public 下 api 文件下的资源请求不到
--   favicon.icon 请求不到
 -   重新搭建项目
 -   添加测试用例
 -   全面转换为 typescript

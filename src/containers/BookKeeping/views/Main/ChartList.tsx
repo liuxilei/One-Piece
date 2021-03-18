@@ -1,8 +1,9 @@
-import React, { memo, useRef, useEffect } from "react";
+import React, { memo, useRef, useEffect, FC } from "react";
 import { PictureWrapper, Ball } from "./ChartListStyles";
 import echarts from "echarts";
 import utils from "@/utils";
 import NP from "number-precision";
+import { Record } from "@/containers/BookKeeping/types";
 
 let food = {
 	name: "餐饮",
@@ -53,13 +54,18 @@ let financialManagement = {
 	value: 0,
 };
 
-const ChartList = (props) => {
+type Props = {
+	accountingRecords: Record[];
+};
+
+const ChartList: FC<Props> = (props) => {
 	const incomeRef = useRef(null);
 	const expenditureRef = useRef(null);
 	let incomeChart = null;
 	let expenditureChart = null;
 
-	const setOption = (chart, name, data) => {
+	// @ts-ignore
+	const setOption = (chart, name: string, data: Object[]) => {
 		chart.setOption({
 			tooltip: {
 				trigger: "item",

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, FC } from "react";
 import { ButtonWrapper, OperateButton } from "./style";
 import {
 	addRecord,
@@ -10,26 +10,46 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { AppWrap } from "@/containers/BookKeeping/styles";
 import TabChange from "@/containers/BookKeeping/components/TabChange";
+import {
+	Record,
+	BookKeepingActions,
+	Way,
+} from "@/containers/BookKeeping/types";
+import { RouteComponentProps } from "react-router-dom";
 import TypeWays from "./TypeWays";
 import Form from "./Form";
 import { message } from "antd";
 import shortid from "shortid";
+import { Dispatch } from "redux";
+import { AppState } from "@/store";
 
-const Edit = memo((props) => {
+interface Props extends RouteComponentProps {
+	way: Way;
+	wayChange: (way: Way) => BookKeepingActions;
+	currentEditRecord: Record;
+	setEditRecordItem: (record: Record) => BookKeepingActions;
+	addRecord: (record: Record) => BookKeepingActions;
+	editSuccess: (record: Record) => BookKeepingActions;
+}
+
+const Edit: FC<Props> = memo((props) => {
 	const {
 		way,
 		wayChange,
 		currentEditRecord,
 		setEditRecordItem,
-		history,
 		addRecord,
 		editSuccess,
+		history,
 	} = props;
 	const { wayType, title, money, time } = currentEditRecord;
 
 	//修改表单数据
-	const editRecordChange = (type, value) => {
-		let newRecord = { ...currentEditRecord };
+	const editRecordChange = (type: string, value: string) => {
+		interface Map {
+			[key: string]: string | undefined;
+		}
+		let newRecord: Map = { ...currentEditRecord };
 		newRecord[type] = value;
 		setEditRecordItem(newRecord);
 	};
@@ -112,13 +132,13 @@ const Edit = memo((props) => {
 	);
 });
 
-const mapStateToProps = ({ BookKeeping }) => ({
+const mapStateToProps = ({ BookKeeping }: AppState) => ({
 	currentEditRecord: BookKeeping.currentEditRecord,
 	currentDate: BookKeeping.currentDate,
 	way: BookKeeping.way,
 });
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators(
 		{
 			addRecord,

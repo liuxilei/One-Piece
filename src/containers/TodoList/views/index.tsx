@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { Input, Button, List } from "antd";
 import {
 	setInputValue,
@@ -9,21 +9,21 @@ import {
 } from "../actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Dispatch } from 'redux';
+import { Dispatch } from "redux";
 import { AppState } from "@/store";
 
 type Props = {
-	inputValue: string
-	list: Array<string>
-	setInputValue: (inputValue: string) => void
-	addTodoItem: () => void
-	deleteTodoItem: (index: number) => void
-	getTolist: () => void
-	getInitList: () => void
-	children: React.ReactNode
-}
+	inputValue: string;
+	list: Array<string>;
+	setInputValue: (inputValue: string) => void;
+	addTodoItem: () => void;
+	deleteTodoItem: (index: number) => void;
+	getTolist: () => void;
+	getInitList: () => void;
+	children: React.ReactNode;
+};
 
-const TodoList = (props: Props) => {
+const TodoList: FC = (props: Props) => {
 	const {
 		inputValue,
 		list,
@@ -47,7 +47,7 @@ const TodoList = (props: Props) => {
 			<div>
 				<Input
 					value={inputValue}
-					onChange={e => setInputValue(e.target.value)}
+					onChange={(e) => setInputValue(e.target.value)}
 					placeholder="todo Info"
 					style={{ width: "300px", marginRight: "10px" }}
 				/>
@@ -72,8 +72,8 @@ const TodoList = (props: Props) => {
 	);
 };
 
-const mapStateToProps = (state: AppState) => ({
-	...state.Todolist,
+const mapStateToProps = ({ Todolist }: AppState) => ({
+	...Todolist,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

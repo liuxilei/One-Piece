@@ -4,7 +4,14 @@ import moment from "moment";
 import { FormLayout } from "./FormStyles";
 import { dateFormat } from "@/containers/BookKeeping/constants";
 
-export default memo((props) => {
+type Props = {
+	title: string;
+	money: string;
+	time: string;
+	editRecordChange: (type: string, value: string) => void;
+};
+
+export default memo((props: Props) => {
 	const { editRecordChange, title, money, time } = props;
 	return (
 		<>
@@ -41,7 +48,7 @@ export default memo((props) => {
 						value={time ? moment(time, dateFormat) : null}
 						format={dateFormat}
 						className="date"
-						onChange={(date, dateString) =>
+						onChange={(date, dateString: string) =>
 							editRecordChange("time", dateString)
 						}
 					/>

@@ -1,8 +1,15 @@
 import React, { memo } from "react";
 import { TypeWays, TypeWaysItem } from "./TypeWaysStyles";
 import { typeList } from "@/containers/BookKeeping/constants";
+import { Way } from "@/containers/BookKeeping/types";
 
-export default memo((props) => {
+type Props = {
+	way: Way;
+	wayType: string;
+	editRecordChange: (type: string, value: string) => void;
+};
+
+export default memo((props: Props) => {
 	const { way, wayType, editRecordChange } = props;
 	return (
 		<TypeWays>

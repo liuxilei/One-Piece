@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { FC, memo } from "react";
 import Header from "./Header";
 import CreateButton from "./CreateButton";
 import RecordList from "./RecordList";
@@ -13,10 +13,30 @@ import {
 	modeChange,
 	wayChange,
 } from "@/containers/BookKeeping/actions";
+import {
+	Record,
+	BookKeepingActions,
+	Mode,
+	Way,
+} from "@/containers/BookKeeping/types";
 import { AppWrap } from "@/containers/BookKeeping/styles";
-import utils from "@/utils";
+import { Dispatch } from "redux";
+import { AppState } from "@/store";
 
-const BookKeeping = memo((props) => {
+type Props = {
+	currentDate: string;
+	bookKeeping: Array<Record>;
+	currentEditRecord: Record;
+	setCurrentDate: (currentDate: string) => BookKeepingActions;
+	deleteRecordItem: (id: string) => BookKeepingActions;
+	setEditRecordItem: (record: Record) => BookKeepingActions;
+	mode: Mode;
+	modeChange: (mode: Mode) => BookKeepingActions;
+	wayChange: (way: Way) => BookKeepingActions;
+	children: React.ReactNode;
+};
+
+const BookKeeping: FC = memo((props: Props) => {
 	const {
 		setCurrentDate,
 		currentDate,
@@ -28,7 +48,7 @@ const BookKeeping = memo((props) => {
 		wayChange,
 	} = props;
 	//当前时间的记账记录
-	const accountingRecords = utils.isExistent(currentDate)
+	const accountingRecords: Record[] = currentDate
 		? bookKeeping.filter((item) => item.time === currentDate)
 		: [];
 	return (
@@ -69,13 +89,13 @@ const BookKeeping = memo((props) => {
 	);
 });
 
-const mapStateToProps = ({ BookKeeping }) => ({
+const mapStateToProps = ({ BookKeeping }: AppState) => ({
 	currentDate: BookKeeping.currentDate,
 	bookKeeping: BookKeeping.bookKeeping,
 	mode: BookKeeping.mode,
 });
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = (dispatch: Dispatch) =>
 	bindActionCreators(
 		{
 			setCurrentDate,

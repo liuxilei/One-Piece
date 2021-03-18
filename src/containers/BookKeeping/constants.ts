@@ -1,6 +1,10 @@
 export const dateFormat = "YYYY/MM/DD";
 
-export const nameToIcon = {
+interface Map {
+	[key: string]: string | undefined;
+}
+
+export const nameToIcon: Map = {
 	餐饮: "&#xe656;",
 	电子: "&#xe62a;",
 	购物: "&#xe7ee;",
