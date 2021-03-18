@@ -6,9 +6,9 @@
 
 ## Preview
 
-在线预览：https://liuxilei.github.io/demos/#/
+在线预览：https://liuxilei.github.io/One-Piece/#/
 
-源代码： https://github.com/liuxilei/demos
+源代码： https://github.com/liuxilei/One-Piece
 
 ## Technology
 
@@ -30,10 +30,10 @@
 
 ```bash
 # clone with Git Bash
-$ git clone https://github.com/liuxilei/demos.git
+$ git clone https://github.com/liuxilei/One-Piece.git
 
 # change directory
-$ cd demos
+$ cd One-Piece
 
 # install dependencies
 $ npm i
@@ -56,6 +56,6 @@ $ npm run test
 
 ## License
 
-[MIT](https://github.com/liuxilei/demos/blob/master/LICENSE)
+[MIT](https://github.com/liuxilei/One-Piece/blob/master/LICENSE)
 
 Copyright(c) 2021 liuxilei
