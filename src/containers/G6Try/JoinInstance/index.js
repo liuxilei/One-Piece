@@ -1,10 +1,6 @@
 import { Component } from "react";
 import Join from "../Join";
 import styles from "./index.less";
-import left from "../Join/left.png";
-import right from "../Join/right.png";
-import all from "../Join/all.png";
-import inside from "../Join/inside.png";
 
 class JoinInstance extends Component {
 	constructor(props) {

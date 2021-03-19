@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { ReactElement, FC, useEffect } from "react";
 import { Input, Button, List } from "antd";
 import {
 	setInputValue,
@@ -20,7 +20,7 @@ type Props = {
 	deleteTodoItem: (index: number) => void;
 	getTolist: () => void;
 	getInitList: () => void;
-	children: React.ReactNode;
+	children: ReactElement;
 };
 
 const TodoList: FC = (props: Props) => {

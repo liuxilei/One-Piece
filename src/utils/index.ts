@@ -1,16 +1,5 @@
 export const isDev = process.env.NODE_ENV === "development";
 
-export const getType = <T>(type: T) =>
-	Object.prototype.toString.call(type).slice(8, -1).toLowerCase()
-
-export const isNumber = <T>(type: T) => getType(type) === 'number'
-
-export const isString = <T>(type: T) => getType(type) === 'string'
-
-export const isBoolean = <T>(type: T) => getType(type) === 'boolean'
-
-export const isArray = <T>(type: T) => Array.isArray(type)
-
 export const login = () => localStorage.setItem("token", "yes");
 
 export const logout = () => localStorage.clear();
@@ -58,6 +47,12 @@ const utils = {
 	 */
 	isIdentity: (s: string) => {
 		return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(s);
+	},
+	/**
+	 * 是否是数组
+	 */
+	isArray: (o: any) => {
+		return Object.prototype.toString.call(o) === "[object Array]" || Array.isArray(o);
 	},
 	/**
 	 * 数字验证
@@ -159,12 +154,7 @@ const utils = {
 		return true;
 	},
 
-	/**
-	 * 是否是数组
-	 */
-	isArray: (o: any) => {
-		return Object.prototype.toString.call(o) === "[object Array]";
-	},
+
 
 	/**
 	 * 去除空格

@@ -1,4 +1,4 @@
-import { memo, FC, ReactNode } from "react";
+import { memo, FC } from "react";
 import { increment, decrement, asyncIncrement } from "../actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -11,7 +11,6 @@ type Props = {
 	asyncIncrement: Function;
 	onDecrement: () => void;
 	value: number;
-	children: ReactNode;
 }
 
 const Counter: FC<Props> = (props) => {

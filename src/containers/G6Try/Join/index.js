@@ -408,7 +408,7 @@ export default ({ data, setData, history, width, height }) => {
 		if (
 			!String.prototype.startsWith.call(
 				nextRoutePathName,
-				"/joininstance",
+				"/g6try",
 			)
 		) {
 			graph = null;
