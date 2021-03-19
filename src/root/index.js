@@ -6,17 +6,11 @@ import {
 	Redirect,
 } from "react-router-dom";
 import Home from "@/containers/Home";
-import G6Demo from "@/containers/G6Try/G6Demo/loadable";
-import G6DemoOne from "@/containers/G6Try/G6DemoOne/loadable";
-import G6EditorDemo from "@/containers/G6Try/G6EditorDemo/loadable";
 import G6Try from "@/containers/G6Try";
-import G6DemoThree from "@/containers/G6Try/G6DemoThree/loadable";
 import EchartsTest from "@/containers/EchartsTest";
 import MouseTracker from "@/containers/MouseTracker";
 import Drag from "@/containers/Drag";
 import JoinInstance from "@/containers/G6Try/JoinInstance";
-// import SvgAnimation from '@/containers/SvgAnimation';
-import { view as Init } from "@/containers/Init";
 import { view as Counter } from "@/containers/Counter";
 import { view as RelationalExpression } from "@/containers/RelationalExpression";
 import { view as ExpressionRemake } from "@/containers/ExpressionRemake";
@@ -40,31 +34,6 @@ const RoutingConfigs = [
 	{
 		path: "/g6try",
 		component: G6Try,
-		exact: false,
-	},
-	{
-		path: "/g6demo",
-		component: G6Demo,
-		exact: false,
-	},
-	{
-		path: "/g6demoone",
-		component: G6DemoOne,
-		exact: false,
-	},
-	{
-		path: "/g6demo3",
-		component: G6DemoThree,
-		exact: false,
-	},
-	{
-		path: "/g6editordemo",
-		component: G6EditorDemo,
-		exact: false,
-	},
-	{
-		path: "/init",
-		component: Init,
 		exact: false,
 	},
 	{

@@ -78,7 +78,6 @@
   },
   "dependencies": {
     "@antv/g6": "3.1.1",
-    "@antv/g6-editor": "^1.2.0",
     "@types/shortid": "0.0.29",
     "antd": "^4.10.2",
     "axios": "^0.21.1",
