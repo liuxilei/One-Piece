@@ -1,4 +1,4 @@
-import utils from "./index.js";
+import utils from "./";
 
 describe("工具方法测试", () => {
 	describe("isExistent(存在方法)测试", () => {
