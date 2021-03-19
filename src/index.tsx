@@ -8,15 +8,15 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import store from "./store";
 import history from "./utils/history";
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
-import Login from './pages/Auth/Login';
-import Loading from "./components/Loading/index";
+// import Login from './pages/Auth/Login';
+// import Loading from "./components/Loading/index";
 
 import "@/assert/font/iconfont.css";
 import "normalize.css";
 import "@/assert/global.css";
 
 
-const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
+// const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
 
 const App = () => (
 	<StrictMode>
