@@ -6,6 +6,16 @@ node_js:
 cache: yarn # 开启缓存
 
 install:
-  - yarn
+  - npm install
 script:
-  - yarn build
+  - npm run test
+  - npm run build
+
+deploy:
+  provider: pages  # 指定部署到Github Pages，即 gh-pages分支
+  github_token: f0ab5c6c667eea1de590f608d0f68bad7266dc76 # 名字对应我们上方的 token
+  skip_cleanup: true # 指定保留构建后的文件
+  keep-history: true # 指定每次部署会新增一个提交记录再推送，而不是使用 git push --force
+  local_dir: dist # 指定构建后要部署的目录
+  on:
+    branch: master # 指定 master 分支有提交行为时，将触发构建后部署
