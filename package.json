@@ -11,7 +11,7 @@
     "build": "webpack --config config/webpack.prod.js",
     "prettier": "prettier --write ./src",
     "commit": "git-cz",
-    "postinstall": "husky install"
+    "postinstall": "npx husky install"
   },
   "keywords": [],
   "author": "liuxilei",
