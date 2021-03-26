@@ -12,50 +12,37 @@ import {
 	Way,
 } from "./types";
 
-export function addRecord(record: Record): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_ADDRECORD,
-		record,
-	};
-}
+export const addRecord = (record: Record): BookKeepingActions => ({
+	type: BOOKKEEPING_ADDRECORD,
+	record,
+});
 
-export function setCurrentDate(currentDate: string): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_SETCURRENTDATE,
-		currentDate,
-	};
-}
+export const setCurrentDate = (currentDate: string): BookKeepingActions => ({
+	type: BOOKKEEPING_SETCURRENTDATE,
+	currentDate,
+});
 
-export function deleteRecordItem(id: string): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_DELETERECORDITEM,
-		id,
-	};
-}
+export const deleteRecordItem = (id: string): BookKeepingActions => ({
+	type: BOOKKEEPING_DELETERECORDITEM,
+	id,
+})
 
-export function setEditRecordItem(record: Record): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_SETEDITRECORDITEM,
-		record,
-	};
-}
+export const setEditRecordItem = (record: Record): BookKeepingActions => ({
+	type: BOOKKEEPING_SETEDITRECORDITEM,
+	record,
+});
 
-export function editSuccess(record: Record): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_EDITSUCCESS,
-		record,
-	};
-}
-export function modeChange(mode: Mode): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_MODECHANGE,
-		mode,
-	};
-}
+export const editSuccess = (record: Record): BookKeepingActions => ({
+	type: BOOKKEEPING_EDITSUCCESS,
+	record,
+});
 
-export function wayChange(way: Way): BookKeepingActions {
-	return {
-		type: BOOKKEEPING_WAYCHANGE,
-		way,
-	};
-}
+export const modeChange = (mode: Mode): BookKeepingActions  => ({
+	type: BOOKKEEPING_MODECHANGE,
+	mode,
+});
+
+export const wayChange = (way: Way): BookKeepingActions => ({
+	type: BOOKKEEPING_WAYCHANGE,
+	way,
+});

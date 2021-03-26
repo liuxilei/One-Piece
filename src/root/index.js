@@ -21,6 +21,8 @@ import { view as ShortBook } from "@/containers/ShortBook";
 import { view as BookKeeping } from "@/containers/BookKeeping";
 import SvgAnimal from "@/containers/SvgAnimal";
 import ReactDnDStudy from "@/containers/ReactDnDStudy";
+import ProjectList from "@/containers/ProjectList";
+import HookTest from "@/containers/HookTest";
 
 // const G6Demo = lazy(() => import("@/containers/G6Try/G6Demo/"));
 
@@ -99,6 +101,16 @@ const RoutingConfigs = [
 	{
 		path: "/ReactDnDStudy",
 		component: ReactDnDStudy,
+		exact: false,
+	},
+	{
+		path: "/ProjectList",
+		component: ProjectList,
+		exact: false,
+	},
+	{
+		path: "/HookTest",
+		component: HookTest,
 		exact: false,
 	},
 	{

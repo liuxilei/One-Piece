@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./index.less";
+import { logout } from "@/utils";
+import history from "@/utils/history";
 
 const titleLinks = [
 	{
@@ -72,9 +74,24 @@ const titleLinks = [
 		name: "ReactDnD示例",
 		visible: true,
 	},
+	{
+		url: "/ProjectList",
+		name: "项目列表",
+		visible: true
+	},
+	{
+		url: "/HookTest",
+		name: "Hook测试",
+		visible: true
+	}
 ];
+const handleLogout = () => {
+	logout();
+	history.replace("/login");
+}
 export default () => (
 	<div className={styles.home}>
+		<span onClick={handleLogout}>登出</span>
 		<h1>demo-lists：</h1>
 		<ul>
 			{titleLinks.map((item) => {
@@ -87,5 +104,6 @@ export default () => (
 				}
 			})}
 		</ul>
+		
 	</div>
 );

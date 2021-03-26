@@ -8,22 +8,22 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import store from "./store";
 import history from "./utils/history";
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
-// import Login from './pages/Auth/Login';
-// import Loading from "./components/Loading/index";
+import Login from './pages/Auth/Login';
+import Loading from "./components/Loading/index";
 
 import "@/assert/font/iconfont.css";
 import "normalize.css";
 import "@/assert/global.css";
 
 
-// const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
+const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
 
 const App = () => (
 	<StrictMode>
 		<ErrorBoundary>
 			<Provider store={store}>
 				<ConfigProvider locale={zhCN}>
-					{/* <Router history={history}>
+					<Router history={history}>
 						<Switch>
 							<Route path="/login">
 								<Login />
@@ -33,7 +33,8 @@ const App = () => (
 								render={({ location }) =>
 									window.localStorage.getItem('token') ? (
 										<Suspense fallback={Loading}>
-											<Layouts />
+											<Root />
+											{/* <Layouts /> */}
 										</Suspense>
 
 									) : (
@@ -47,8 +48,8 @@ const App = () => (
 								}
 							/>
 						</Switch>
-					</Router> */}
-					<Root />
+					</Router>
+					
 				</ConfigProvider>
 			</Provider>
 		</ErrorBoundary>

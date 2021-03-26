@@ -9,32 +9,23 @@ import {
 import axios from "axios";
 import { Dispatch } from 'redux';
 
-export function setInputValue(inputValue: string): TodoListAction {
-	return {
-		type: TODOLIST_SETINPUTVALUE,
-		inputValue,
-	}
-};
+export const setInputValue = (inputValue: string): TodoListAction => ({
+	type: TODOLIST_SETINPUTVALUE,
+	inputValue,
+});
+export const addTodoItem = (): TodoListAction => ({
+	type: TODOLIST_ADDTODOITEM,
+})
 
-export function addTodoItem(): TodoListAction {
-	return {
-		type: TODOLIST_ADDTODOITEM,
-	}
-}
+export const deleteTodoItem = (index: number): TodoListAction => ({
+	type: TODOLIST_DELETETODOITEM,
+	index,
+})
 
-export function deleteTodoItem(index: number): TodoListAction {
-	return {
-		type: TODOLIST_DELETETODOITEM,
-		index,
-	}
-}
-
-export function initList(list: Array<string>): TodoListAction {
-	return {
-		type: TODOLIST_INITLIST,
-		list,
-	}
-}
+export const initList = (list: Array<string>): TodoListAction => ({
+	type: TODOLIST_INITLIST,
+	list,
+})
 
 //redux-thunk使用示例
 export function getTolist() {
@@ -51,8 +42,6 @@ export function getTolist() {
 	};
 };
 
-export function getInitList() {
-	return {
-		type: TODOLIST_GETINITLIST
-	}
-}
+export const getInitList = (): TodoListAction => ({
+	type: TODOLIST_GETINITLIST
+})

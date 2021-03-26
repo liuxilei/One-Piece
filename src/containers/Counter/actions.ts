@@ -5,20 +5,14 @@ import {
 	CounterAction
 } from "./types";
 
-export function increment(): CounterAction {
-	return {
-		type: COUNTER_INCREMENT,
-	}
-};
+export const increment = (): CounterAction => ({
+	type: COUNTER_INCREMENT,
+});
 
-export function decrement(): CounterAction {
-	return {
-		type: COUNTER_DECREMENT,
-	}
-};
+export const decrement = (): CounterAction => ({
+	type: COUNTER_DECREMENT,
+});
 
-export function asyncIncrement(): CounterAction {
-	return {
-		type: COUNTER_ASYNCINCREMENT,
-	}
-};
+export const asyncIncrement = (): CounterAction => ({
+	type: COUNTER_ASYNCINCREMENT,
+});

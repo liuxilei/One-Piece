@@ -11,7 +11,8 @@
     "build": "webpack --config config/webpack.prod.js",
     "prettier": "prettier --write ./src",
     "commit": "git-cz",
-    "postinstall": "npx husky install"
+    "postinstall": "npx husky install",
+    "json-server": "json-server __json_server_mock__/db.json --watch --port 3001 --middlewares ./__json_server_mock__/middleware.js"
   },
   "keywords": [],
   "author": "liuxilei",
@@ -29,6 +30,7 @@
     "@types/echarts": "^4.9.3",
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.20",
+    "@types/qs": "^6.9.6",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-redux": "^7.1.16",
@@ -56,6 +58,7 @@
     "html-webpack-plugin": "^5.0.0-beta.5",
     "husky": "^4.2.5",
     "jest": "^26.6.3",
+    "json-server": "^0.16.3",
     "less-loader": "^5.0.0",
     "lint-staged": "^10.2.11",
     "mini-css-extract-plugin": "^0.7.0",
@@ -91,6 +94,7 @@
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "number-precision": "^1.5.0",
+    "qs": "^6.10.0",
     "react": "^17.0.1",
     "react-bodymovin": "^2.0.0",
     "react-color": "^2.19.3",
