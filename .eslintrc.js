@@ -1,3 +1,7 @@
+const OFF = 0;
+const WARN = 1;
+const ERROR = 2;
+
 module.exports = {
     "parser": "babel-eslint",
     // 指定解析器选项
@@ -37,33 +41,33 @@ module.exports = {
     // 每个规则对应的0，1，2分别表示off, warning, error三个错误级别
     "rules": {
         // 定义了变量却没有在代码中使用，这是防止产生多余没用的变量
-        "no-unused-vars": 0,
+        "no-unused-vars": OFF,
 
         // 禁用 console
-        "no-console": 0,
+        "no-console": OFF,
 
         // 禁用未声明的变量
-        "no-undef": 0,
+        "no-undef": OFF,
 
-        "no-useless-escape": 0,
+        "no-useless-escape": OFF,
 
-        "react/no-deprecated": 0,
+        "react/no-deprecated": OFF,
 
-        "react/no-find-dom-node": 0,
+        "react/no-find-dom-node": OFF,
 
-        "react/display-name": 0,
+        "react/display-name": OFF,
 
-        "react/prop-types": 0,
+        "react/prop-types": OFF,
 
-        "react-hooks/rules-of-hooks": 2,
+        "react-hooks/rules-of-hooks": ERROR,
 
-        "react-hooks/exhaustive-deps": 1,
-        
-        "react/jsx-key": 1,
+        "react-hooks/exhaustive-deps": WARN,
 
-        "no-case-declarations": 1,
+        "react/jsx-key": WARN,
 
-        "react/jsx-uses-react": 0,
-        "react/react-in-jsx-scope": 0
+        "no-case-declarations": WARN,
+
+        "react/jsx-uses-react": OFF,
+        "react/react-in-jsx-scope": OFF,
     }
 };

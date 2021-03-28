@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { BookKeepingRecord, BookKeepingRecordItem } from "./RecordStyles";
 import { nameToIcon } from "@/containers/BookKeeping/constants";
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Empty } from "antd";
 import utils from "@/utils";
 import {
@@ -9,7 +9,6 @@ import {
 	BookKeepingActions,
 	Way,
 } from "@/containers/BookKeeping/types";
-import { RouteComponentProps } from "react-router-dom";
 
 interface Props extends RouteComponentProps {
 	accountingRecords: Record[];

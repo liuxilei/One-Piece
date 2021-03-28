@@ -8,5 +8,5 @@ cache: yarn # 开启缓存
 install:
   - npm install
 script:
-  - npm run build
+  #- npm run build
   #- sh ./deploy.sh

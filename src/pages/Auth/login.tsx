@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import styles from "./Login.less";
+import styles from "./index.less";
 import history from "@/utils/history";
 import { message } from "antd";
 import { login } from "@/utils";
@@ -9,26 +9,26 @@ const Login: FC = () => {
     const [passWord, setPassWord] = useState("admin");
 
     const handlLogin = () => {
-        // if (userName === "admin" && passWord === "admin") {
-        //     login();
-        //     message.success("登录成功");
-        //     history.replace("/Main");
-        // } else {
-        //     message.error("账号密码错误");
-        // }
-        fetch("http://localhost:3001/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ username: userName, password: passWord })
-        }).then(
-            async (response) => {
-                if (response.ok) {
-
-                }
-            }
-        )
+        // fetch("http://localhost:3001/login", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({ username: userName, password: passWord })
+        // }).then(
+        //     async (response) => {
+        //         if (response.ok) {
+        //             history.replace("/Main");
+        //         }
+        //     }
+        // )
+        if (userName === "admin" && passWord === "admin") {
+            login();
+            message.success("登录成功");
+            history.replace("/Main");
+        } else {
+            message.error("账号密码错误");
+        }
     }
 
     return (

@@ -1,7 +1,7 @@
-# EditorConfig helps developers define and maintain consistent
-# coding styles between different editors and IDEs
-# editorconfig.org
+# 跨编辑器维护一致编码风格的配置文件，一般编辑器会默认读取该配置，vscode需要安装扩展EditorConfig For vs Code
+# 文档地址：https://editorconfig.org/
 
+# top-most EditorConfig file
 root = true
 
 [*]
@@ -12,7 +12,7 @@ indent_size = 4
 charset = utf-8
 
 end_of_line = lf
-insert_final_newline = true
+insert_final_newline = false
 
 trim_trailing_whitespace = true
 

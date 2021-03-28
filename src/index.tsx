@@ -1,4 +1,4 @@
-import React, { StrictMode, lazy, Suspense } from "react";
+import { StrictMode, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import Root from "./root";
 import { ConfigProvider } from "antd";
@@ -19,41 +19,48 @@ import "@/assert/global.css";
 const Layouts = lazy(() => import('./pages/Layouts/Layouts'));
 
 const App = () => (
-	<StrictMode>
-		<ErrorBoundary>
-			<Provider store={store}>
-				<ConfigProvider locale={zhCN}>
-					<Router history={history}>
-						<Switch>
-							<Route path="/login">
-								<Login />
-							</Route>
-							<Route
-								path="/"
-								render={({ location }) =>
-									window.localStorage.getItem('token') ? (
-										<Suspense fallback={Loading}>
-											<Root />
-											{/* <Layouts /> */}
-										</Suspense>
+    <StrictMode>
+        <ErrorBoundary>
+            <Provider store={store}>
+                <ConfigProvider locale={zhCN}>
+                    <Router history={history}>
+                        <Switch>
+                            <Route path="/login">
+                                <Login />
+                            </Route>
+                            <Route
+                                path="/"
+                                render={({ location }) =>
+                                    window.localStorage.getItem('token') ? (
+                                        <Suspense fallback={Loading}>
+                                            <Root />
+                                            {/* <Layouts /> */}
+                                        </Suspense>
 
-									) : (
-											<Redirect
-												to={{
-													pathname: '/login',
-													state: { from: location },
-												}}
-											/>
-										)
-								}
-							/>
-						</Switch>
-					</Router>
-					
-				</ConfigProvider>
-			</Provider>
-		</ErrorBoundary>
-	</StrictMode>
+                                    ) : (
+                                        <Redirect
+                                            to={{
+                                                pathname: '/login',
+                                                state: { from: location },
+                                            }}
+                                        />
+                                    )
+                                }
+                            />
+                        </Switch>
+                    </Router>
+
+                </ConfigProvider>
+            </Provider>
+        </ErrorBoundary>
+    </StrictMode>
 );
 
-ReactDOM.render(<App />, document.getElementById("app"));
+if (module && module.hot) {
+    module.hot.accept()
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("app")
+);

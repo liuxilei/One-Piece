@@ -6,16 +6,20 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack serve --config config/webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack serve --config ./scripts/config/webpack.dev.js",
     "start": "npm run dev",
-    "build": "webpack --config config/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js",
     "prettier": "prettier --write ./src",
     "commit": "git-cz",
     "postinstall": "npx husky install",
     "json-server": "json-server __json_server_mock__/db.json --watch --port 3001 --middlewares ./__json_server_mock__/middleware.js"
   },
   "keywords": [],
-  "author": "liuxilei",
+  "author": {
+    "name": "liuxilei",
+    "url": "https://github.com/liuxilei",
+    "email": "liuxileioo@qq.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -24,6 +28,7 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.13.0",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@types/classnames": "^2.2.11",
@@ -37,6 +42,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/redux-logger": "^3.0.8",
     "@types/styled-components": "^5.1.7",
+    "@types/webpack-env": "^1.16.0",
     "autoprefixer": "^9.7.6",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^26.6.3",
@@ -47,6 +53,8 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^2.1.1",
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^5.12.1",
@@ -55,6 +63,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "file-loader": "^3.0.1",
+    "fork-ts-checker-webpack-plugin": "^6.2.0",
     "html-webpack-plugin": "^5.0.0-beta.5",
     "husky": "^4.2.5",
     "jest": "^26.6.3",
@@ -69,7 +78,6 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
-    "ts-loader": "^8.0.17",
     "typescript": "^4.1.5",
     "url-loader": "^1.1.2",
     "webpack": "^5.15.0",
@@ -90,6 +98,7 @@
     "history": "^4.10.1",
     "immutability-helper": "^3.1.1",
     "immutable": "^4.0.0-rc.12",
+    "jira-dev-tool": "^1.7.61",
     "less": "^3.9.0",
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
@@ -137,5 +146,8 @@
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     }
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
