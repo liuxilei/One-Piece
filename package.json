@@ -91,6 +91,7 @@
     "@antv/g6": "3.1.1",
     "@types/shortid": "0.0.29",
     "antd": "^4.10.2",
+    "antd-mobile": "^2.3.4",
     "axios": "^0.21.1",
     "connected-react-router": "^6.8.0",
     "echarts": "^4.2.1",

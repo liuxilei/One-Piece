@@ -10,8 +10,6 @@ import history from "./utils/history";
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
 import Login from './pages/Auth/Login';
 import Loading from "./components/Loading/index";
-import { loadDevTools } from "jira-dev-tool";
-
 import "@/assert/font/iconfont.css";
 import "normalize.css";
 import "@/assert/global.css";

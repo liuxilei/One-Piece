@@ -80,10 +80,25 @@ const titleLinks = [
 		visible: true
 	},
 	{
+		url: "/AntdMobile",
+		name: "antd-mobile测试",
+		visible: true
+	},
+	{
+		url: "/HookDemo",
+		name: "HookDemo",
+		visible: true
+	},
+	{
 		url: "/HookTest",
 		name: "Hook测试",
 		visible: true
-	}
+	},
+	{
+		url: "/Test",
+		name: "测试页面",
+		visible: true
+	},
 ];
 const handleLogout = () => {
 	logout();

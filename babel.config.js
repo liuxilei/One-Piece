@@ -33,7 +33,16 @@ module.exports = {
                 "libraryName": "antd",
                 "libraryDirectory": "es",
                 "style": "css"
-            }
+            },
+            "ant"
+        ],
+        [
+            "import",
+            {
+                "libraryName": "antd-mobile",
+                "libraryDirectory": "lib"
+            }, 
+            "antd-mobile"
         ],
         [
             "dynamic-import-webpack"

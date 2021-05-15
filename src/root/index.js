@@ -22,7 +22,10 @@ import { view as BookKeeping } from "@/containers/BookKeeping";
 import SvgAnimal from "@/containers/SvgAnimal";
 import ReactDnDStudy from "@/containers/ReactDnDStudy";
 import ProjectList from "@/containers/ProjectList";
+import HookDemo from "@/containers/HookDemo";
 import HookTest from "@/containers/HookTest";
+import AntdMobile from "@/containers/AntdMobile";
+import Test from "@/containers/Test";
 
 // const G6Demo = lazy(() => import("@/containers/G6Try/G6Demo/"));
 
@@ -36,42 +39,42 @@ const RoutingConfigs = [
 	{
 		path: "/g6try",
 		component: G6Try,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/counter",
 		component: Counter,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/echartstest",
 		component: EchartsTest,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/mousetracker",
 		component: MouseTracker,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/drag",
 		component: Drag,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/joininstance",
 		component: JoinInstance,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/relationalExpression",
 		component: RelationalExpression,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/ExpressionRemake",
 		component: ExpressionRemake,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/dynamictab",
@@ -81,42 +84,57 @@ const RoutingConfigs = [
 	{
 		path: "/todolist",
 		component: TodoList,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/SvgAnimal",
 		component: SvgAnimal,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/ShortBook",
 		component: ShortBook,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/BookKeeping",
 		component: BookKeeping,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/ReactDnDStudy",
 		component: ReactDnDStudy,
-		exact: false,
+		exact: true,
 	},
 	{
 		path: "/ProjectList",
 		component: ProjectList,
-		exact: false,
+		exact: true,
+	},
+	{
+		path: "/HookDemo",
+		component: HookDemo,
+		exact: true,
 	},
 	{
 		path: "/HookTest",
 		component: HookTest,
-		exact: false,
+		exact: true,
+	},
+	{
+		path: "/AntdMobile",
+		component: AntdMobile,
+		exact: true,
+	},
+	{
+		path: "/Test",
+		component: Test,
+		exact: true,
 	},
 	{
 		path: "/404",
 		component: NotFind,
-		exact: false,
+		exact: true,
 	},
 ];
 
