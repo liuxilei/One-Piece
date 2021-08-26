@@ -1,7 +1,7 @@
 const Test = () => {
   return (
     <div>
-      多ssh测试2222
+      多ssh测试
     </div>
   )
 
