@@ -114,7 +114,7 @@ module.exports = {
         }),
         new WebpackBar({
             name: isDev ? '正在启动' : '正在打包',
-            color: '#fa8c16',
+            color: '#00ffff',
         }),
         //检查ts类型，并报错
         new ForkTsCheckerWebpackPlugin({
