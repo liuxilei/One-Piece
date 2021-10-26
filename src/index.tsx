@@ -8,7 +8,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import store from "./store";
 import history from "./utils/history";
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
-import Login from './pages/Auth/login';
+import Login from './pages/Auth/Login';
 import Loading from "./components/Loading/index";
 import "@/assert/font/iconfont.css";
 import "normalize.css";
